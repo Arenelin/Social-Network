@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import myPhoto from '../../../../../assets/images/photo_2021-09-05_17-53-37.jpg'
 
 export const About = () => {
     return (
@@ -9,9 +10,8 @@ export const About = () => {
                 </UserPhotoWrapper>
                 <UserBody>
                     <UserInfo>
-                        <UserName>Margarita Akmaykina (Nezabudka)</UserName>
+                        <UserName>Nikita Akmaykin</UserName>
                         <UserStatus>When I am building an empire, do not come to me without materials and tools.</UserStatus>
-
                     </UserInfo>
                     <WrapperButtons>
                         <button>Edit profile</button>
@@ -73,7 +73,7 @@ font-size: 13px;
 const UserPhotoWrapper = styled.div`
 width:150px;
 height:150px;
-    background-image: url("https://proprikol.ru/wp-content/uploads/2019/09/kartinki-schastlivaya-zhenshhina-41.jpg");
+    background-image: url(${myPhoto});
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: cover;

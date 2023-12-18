@@ -18,5 +18,5 @@ export function Content(){
 }
 
 const StyledContent = styled.div`
-height: calc(100vh - 120.89px);
+overflow: hidden;
 `

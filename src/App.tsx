@@ -3,7 +3,6 @@ import './App.css';
 import {Header} from './layout/header/Header';
 import {Content} from './layout/content/Content';
 
-
 function App() {
     return (
         <div className="App">

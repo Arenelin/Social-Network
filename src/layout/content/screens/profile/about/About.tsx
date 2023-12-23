@@ -1,9 +1,12 @@
 import styled from 'styled-components';
 import myPhoto from '../../../../../assets/images/photo_2021-09-05_17-53-37.jpg'
+import {GeneralButton} from '../../../../../components/button/GeneralButton';
+import {Icon} from '../../../../../components/icon/Icon';
+import React from 'react';
 
-export const About = () => {
+export const AboutUser = () => {
     return (
-        <StyledAbout>
+        <StyledAboutUser>
             <UserDescription>
                 <UserPhotoWrapper>
                     <div></div>
@@ -11,20 +14,23 @@ export const About = () => {
                 <UserBody>
                     <UserInfo>
                         <UserName>Nikita Akmaykin</UserName>
-                        <UserStatus>When I am building an empire, do not come to me without materials and tools.</UserStatus>
+                        <UserStatus>When I am building an empire, do not come to me without materials and
+                            tools.</UserStatus>
                     </UserInfo>
                     <WrapperButtons>
-                        <button>Edit profile</button>
-                        <button>More</button>
+                        <GeneralButton as={'a'} href={'#'} primary name={'Edit profile'}/>
+                        <GeneralButton primary name={'More'}>
+                            <Icon iconId={'arrow-to-down'} viewBox={'0 0 512 512'} w={'16'} h={'12'}/>
+                        </GeneralButton>
                     </WrapperButtons>
                 </UserBody>
             </UserDescription>
-        </StyledAbout>
+        </StyledAboutUser>
     )
 }
 
-const StyledAbout = styled.div`
-width: 100%;
+const StyledAboutUser = styled.div`
+    width: 100%;
     min-height: 322px;
     margin-bottom: 20px;
     background-image: url("https://sneg.top/uploads/posts/2023-03/1678037075_sneg-top-p-oboi-dlya-glavnogo-ekrana-priroda-instagra-49.jpg");
@@ -57,46 +63,34 @@ const UserBody = styled.div`
 
 const UserInfo = styled.div`
     max-width: 450px;
-    
+
 `
 const UserName = styled.span`
-font-size: 21px;
+    font-size: 21px;
     font-weight: 600;
     line-height: 26px;
 `
 const UserStatus = styled.p`
-font-size: 13px;
+    font-size: 13px;
     line-height: 16px;
-    font-family: -apple-system, system-ui, "Helvetica Neue", Roboto, sans-serif;;
+    font-family: -apple-system, system-ui, "Helvetica Neue", Roboto, sans-serif;
 `
 
 const UserPhotoWrapper = styled.div`
-width:150px;
-height:150px;
+    width: 150px;
+    height: 150px;
     background-image: url(${myPhoto});
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: cover;
-        border-radius: 50%; 
-        position: absolute;
+    border-radius: 50%;
+    position: absolute;
     left: 20px;
     bottom: 20%;
-    
+
 `
 
 const WrapperButtons = styled.div`
-    & button {
-        font-size: 14px;
-        font-weight: 500;
-        line-height: 20px;
-        font-family: -apple-system, system-ui, "Helvetica Neue", Roboto, sans-serif;;
-        padding: 5px 16px;
-        border-radius: 5px;
-        color: #1f76c7;
-        background-color: #e5eeff;
-
-        & + button {
-            margin-left: 20px;
-        }
-    }
+    display: flex;
+    gap: 10px;
 `

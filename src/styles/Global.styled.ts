@@ -14,9 +14,7 @@ export const GlobalStyle = createGlobalStyle`
 
     body {
         margin: 0;
-        font-family: 'Poppins', -apple-system, BlinkMacSystemfont, 'Segoe UI', 'Roboto', 'Oxygen',
-        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-        sans-serif;
+        font-family: -apple-system, system-ui, "Helvetica Neue", Roboto, sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         color: #000000;
@@ -43,7 +41,7 @@ export const GlobalStyle = createGlobalStyle`
         cursor: pointer;
         background-color: unset;
         border: none;
-        color: #000000;
+        font-family: -apple-system, system-ui, "Helvetica Neue", Roboto, sans-serif;
     }
 
     button::-moz-focus-inner {
@@ -55,6 +53,7 @@ export const GlobalStyle = createGlobalStyle`
         text-decoration: none;
         color: #000000;
         cursor: pointer;
+        
     }
 
     a:hover, a:visited {

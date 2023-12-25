@@ -17,11 +17,4 @@ export function Profile() {
     )
 }
 
-
-const StyledMain = styled.main`
-    max-width: 911px;
-    width: 100%;
-    padding-top: 25px;
-    height: calc(100vh - 50px);
-    overflow: auto;
-`
+const StyledMain = styled.main``

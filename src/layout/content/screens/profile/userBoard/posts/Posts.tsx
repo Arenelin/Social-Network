@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {UserFormPost} from './userFormPost/UserFormPost';
 import {UserPosts} from './userPosts/UserPosts';
 
-export const Post = () => {
+export const Posts = () => {
     return (
         <StyledPost>
             <UserFormPost/>

@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Interests} from './interests/Interests';
-import {Post} from './post/Post';
+import {Posts} from './posts/Posts';
 
 export const UserBoard = () => {
     return (
             <StyledUserBoard>
                 <Interests/>
-                <Post/>
+                <Posts/>
             </StyledUserBoard>
     );
 };

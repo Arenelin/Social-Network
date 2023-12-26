@@ -1,31 +1,27 @@
 import React from 'react';
 import {UserPost} from './userPost/UserPost';
-import {
-    PlaceholderNoInformation
-} from '../../../../../../../../components/placeholderNoInformation/PlaceholderNoInformation';
 import styled from 'styled-components';
 import {PlaceholderNoPosts} from './placeholderNoPosts/PlaceholderNoPosts';
 
-export const AllUserPosts = () => {
+export type PostType = {
+    id: number
+    title: string
+    likesCount: number
+}
 
+type AllUserPropsType = {
+    posts: PostType[]
+}
+
+export const AllUserPosts = (props: AllUserPropsType) => {
     return (
         <StyledAllUserPosts>
-            <UserPost message={'Hello'} likesCount={12}/>
-            <UserPost message={'My first post'} likesCount={0}/>
-            {/*<PlaceholderNoPosts/>*/}
+            {props.posts.length
+                ? props.posts.map(p =>
+                    <UserPost key={p.id} message={p.title} likesCount={p.likesCount}/>)
+                : <PlaceholderNoPosts/>}
         </StyledAllUserPosts>
     );
 };
 
-const StyledAllUserPosts = styled.div`
-    padding: 36px 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    ${PlaceholderNoInformation} {
-        text-align: center;
-        margin-bottom: 0;
-    }
-`
+const StyledAllUserPosts = styled.div``

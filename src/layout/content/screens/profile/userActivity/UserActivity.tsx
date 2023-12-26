@@ -39,7 +39,6 @@ const CurrentFriends = styled.div`
     flex-direction: column;
     align-items: center;
     padding: 48px 32px;
-
     & a {
         box-shadow: none;
 

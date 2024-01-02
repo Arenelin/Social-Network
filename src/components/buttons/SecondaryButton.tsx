@@ -1,8 +1,8 @@
 import React from 'react';
-import styled, {css} from 'styled-components';
+import styled from 'styled-components';
 import {theme} from '../../styles/theme';
 
-type TabButtonPropsType = {
+type SecondaryButtonProps = {
     name: string
     isActive?: boolean
     children?: React.ReactNode
@@ -10,19 +10,26 @@ type TabButtonPropsType = {
     href?: string
 }
 
-type StyledButtonPropsType = {
+type StyledButtonProps = {
     isActive: boolean | undefined
     as: string
     href: string | undefined
 }
 
+export const SecondaryButton: React.FC<SecondaryButtonProps> = (props) => {
+    const {
+        children,
+        name,
+        href,
+        isActive,
+        as
+    } = props;
 
-export const TabButton = (props: TabButtonPropsType) => {
     return (
-        <StyledTabButton as={props.as} href={props.href} isActive={props.isActive}>
+        <StyledTabButton as={as} href={href} isActive={isActive}>
             <StyledTestDiv>
-                {props.children}
-                <span>{props.name}</span>
+                {children}
+                <span>{name}</span>
             </StyledTestDiv>
         </StyledTabButton>
     );
@@ -34,7 +41,7 @@ const StyledTestDiv = styled.div`
     gap: 6px;
 `
 
-const StyledTabButton = styled.button<StyledButtonPropsType>`
+const StyledTabButton = styled.button<StyledButtonProps>`
     color: ${({isActive}) => isActive ? theme.colors.fonts.primary : theme.colors.fonts.third};
     font-weight: 500;
     font-size: 14px;
@@ -44,4 +51,3 @@ const StyledTabButton = styled.button<StyledButtonPropsType>`
     border-radius: 8px;
     transition: all .4s;
 `
-

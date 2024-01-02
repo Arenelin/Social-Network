@@ -1,5 +1,5 @@
 import React from 'react';
-import {TabButton} from '../../../../../../../../components/buttons/TabButton';
+import {SecondaryButton} from '../../../../../../../../components/buttons/SecondaryButton';
 import styled from 'styled-components';
 import {GeneralBlockWrapper} from '../../../../../../../../components/blockWrappers/generalBlockWrapper/GeneralBlockWrapper';
 import {FlexWrapper} from '../../../../../../../../components/FlexWrapper';
@@ -12,9 +12,9 @@ export const NavigationUserPosts = () => {
             <GeneralBlockWrapper>
                 <FlexWrapper jc={'space-between'}>
                     <FilterPostsTabs>
-                        <TabButton as={'a'} href={'#'} isActive name={'All posts'}/>
-                        <TabButton as={'a'} href={'#'} name={'My posts'}/>
-                        <TabButton as={'a'} href={'#'} name={'Post archive'}/>
+                        <SecondaryButton as={'a'} href={'#'} isActive name={'All posts'}/>
+                        <SecondaryButton as={'a'} href={'#'} name={'My posts'}/>
+                        <SecondaryButton as={'a'} href={'#'} name={'Post archive'}/>
                     </FilterPostsTabs>
                    <ButtonSvg>
                        <Icon iconId={'search'} w={'20'} h={'20'} viewBox={'0 0 20 20'}/>

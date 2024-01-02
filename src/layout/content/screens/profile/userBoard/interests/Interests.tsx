@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {FlexWrapper} from '../../../../../../components/FlexWrapper';
-import {TabButton} from '../../../../../../components/buttons/TabButton';
+import {SecondaryButton} from '../../../../../../components/buttons/SecondaryButton';
 import {Icon} from '../../../../../../components/icon/Icon';
 import {GeneralButton} from '../../../../../../components/buttons/GeneralButton';
 import {PlaceholderNoInformation} from '../../../../../../components/placeholders/noInformation/PlaceholderNoInformation';
@@ -13,21 +13,21 @@ export const Interests = () => {
             <GeneralBlockWrapper>
                 <InterestsTabs>
                     <FlexWrapper gap={'6px'} >
-                        <TabButton name={'Photos'} >
+                        <SecondaryButton name={'Photos'} >
                             <Icon iconId={'tab-photos'} w={'20'} h={'20'} viewBox={'0 0 24 24'}/>
-                        </TabButton>
-                        <TabButton name={'Clips'}>
+                        </SecondaryButton>
+                        <SecondaryButton name={'Clips'}>
                             <Icon iconId={'tab-clips'} w={'20'} h={'20'} viewBox={'0 0 24 24'}/>
-                        </TabButton>
-                        <TabButton name={'Music'} isActive>
+                        </SecondaryButton>
+                        <SecondaryButton name={'Music'} isActive>
                             <Icon iconId={'tab-music'} w={'20'} h={'20'} viewBox={'0 0 24 24'}/>
-                        </TabButton>
-                        <TabButton name={'Articles'}>
+                        </SecondaryButton>
+                        <SecondaryButton name={'Articles'}>
                             <Icon iconId={'tab-articles'} w={'20'} h={'20'} viewBox={'0 0 24 24'}/>
-                        </TabButton>
-                        <TabButton name={'Albums'}>
+                        </SecondaryButton>
+                        <SecondaryButton name={'Albums'}>
                             <Icon iconId={'tab-albums'} w={'20'} h={'20'} viewBox={'0 0 24 24'}/>
-                        </TabButton>
+                        </SecondaryButton>
                     </FlexWrapper>
                 </InterestsTabs>
                 <CurrentInterestInfo>

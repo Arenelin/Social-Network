@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {TabButton} from '../../../../../components/buttons/TabButton';
+import {SecondaryButton} from '../../../../../components/buttons/SecondaryButton';
 import {Icon} from '../../../../../components/icon/Icon';
 import {GeneralBlockWrapper} from '../../../../../components/blockWrappers/generalBlockWrapper/GeneralBlockWrapper';
 import {PlaceholderNoInformation} from '../../../../../components/placeholders/noInformation/PlaceholderNoInformation';
@@ -15,9 +15,9 @@ export const UserActivity = () => {
                     <FriendsHeader>Friends</FriendsHeader>
                     <CurrentFriends>
                         <PlaceholderNoInformation>You haven't added any friends yet</PlaceholderNoInformation>
-                        <TabButton as={'a'} href={'#'} isActive name={'Add friends'}>
+                        <SecondaryButton as={'a'} href={'#'} isActive name={'Add friends'}>
                             <Icon iconId={'add-friends'} h={'24'} w={'24'} viewBox={'0 0 16 16'}/>
-                        </TabButton>
+                        </SecondaryButton>
                     </CurrentFriends>
                 </GeneralBlockWrapper>
         </StyledUserActivity>

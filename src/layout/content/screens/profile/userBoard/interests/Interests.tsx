@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import {FlexWrapper} from '../../../../../../components/FlexWrapper';
-import {TabButton} from '../../../../../../components/button/TabButton';
+import {TabButton} from '../../../../../../components/buttons/TabButton';
 import {Icon} from '../../../../../../components/icon/Icon';
-import {GeneralButton} from '../../../../../../components/button/GeneralButton';
-import {PlaceholderNoInformation} from '../../../../../../components/placeholderNoInformation/PlaceholderNoInformation';
-import {GeneralBlockWrapper} from '../../../../../../components/generalBlockWrapper/GeneralBlockWrapper';
+import {GeneralButton} from '../../../../../../components/buttons/GeneralButton';
+import {PlaceholderNoInformation} from '../../../../../../components/placeholders/noInformation/PlaceholderNoInformation';
+import {GeneralBlockWrapper} from '../../../../../../components/blockWrappers/generalBlockWrapper/GeneralBlockWrapper';
 
 export const Interests = () => {
     return (

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import myPhoto from '../../../../../assets/images/photo_2021-09-05_17-53-37.jpg'
-import {GeneralButton} from '../../../../../components/button/GeneralButton';
+import {GeneralButton} from '../../../../../components/buttons/GeneralButton';
 import {Icon} from '../../../../../components/icon/Icon';
 import React from 'react';
 

@@ -1,26 +1,24 @@
-import styled from 'styled-components';
-import {AboutUser} from './about/About';
-import {FlexWrapper} from '../../../../components/FlexWrapper';
 import React from 'react';
-import {UserBoard} from './userBoard/UserBoard';
-import {UserActivity} from './userActivity/UserActivity';
+import styled from 'styled-components';
+import {FlexWrapper} from '../../../../components/FlexWrapper';
 import {PageBlockLeft} from '../../../../components/blockWrappers/pageBlockLeft/PageBlockLeft';
 import {PageBlockRight} from '../../../../components/blockWrappers/pageBlockRight/PageBlockRight';
+import {ChatsBoard} from './chatsBoard/ChatsBoard';
+import {FilterChats} from './filterChats/FilterChats';
 
-export function Profile() {
+export const Dialogs = () => {
     return (
-        <StyledMain>
-            <AboutUser/>
+        <StyledDialogs>
             <FlexWrapper gap={'16px'}>
                 <PageBlockLeft>
-                    <UserBoard/>
+                    <ChatsBoard/>
                 </PageBlockLeft>
-               <PageBlockRight>
-                   <UserActivity/>
-               </PageBlockRight>
+                <PageBlockRight>
+                    <FilterChats/>
+                </PageBlockRight>
             </FlexWrapper>
-        </StyledMain>
-    )
-}
+        </StyledDialogs>
+    );
+};
 
-const StyledMain = styled.main``
+const StyledDialogs = styled.div``

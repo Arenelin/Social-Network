@@ -3,85 +3,85 @@ export type DataType = {
     id:number
     iconId:string
     title:string
-    href:string
+    path:string
 }
 export const data:Array<DataType> = [
     {
         id: 1,
         iconId: 'profile',
         title:'My profile',
-        href:'/profile'
+        path:'/profile'
     },
     {
         id: 2,
         iconId: 'news',
         title:'News',
-        href:'/news'
+        path:'/feed'
     },
     {
         id: 3,
         iconId: 'messenger',
         title:'Messenger',
-        href:'/dialogs'
+        path:'/dialogs'
     },
     {
         id: 4,
         iconId: 'calls',
         title:'Calls',
-        href:'#'
+        path:'#'
     },
     {
         id: 5,
         iconId: 'friends',
         title:'Friends',
-        href:'/friends'
+        path:'/friends'
     },
     {
         id: 6,
         iconId: 'communities',
         title:'Communities',
-        href:'#'
+        path:'#'
     },
     {
         id: 7,
         iconId: 'photos',
         title:'Photos',
-        href:'#'
+        path:'#'
     },
     {
         id: 8,
         iconId: 'music',
         title:'Music',
-        href:'/music'
+        path:'/audios'
     },
     {
         id: 9,
         iconId: 'video',
         title:'Video',
-        href:'#'
+        path:'#'
     },
     {
         id: 10,
         iconId: 'clips',
         title:'Clips',
-        href:'#'
+        path:'#'
     },
     {
         id: 11,
         iconId: 'games',
         title:'Games',
-        href:'#'
+        path:'#'
     },
     {
         id: 12,
         iconId: 'stickers',
         title:'Stickers',
-        href:'#'
+        path:'#'
     },
     {
         id: 13,
         iconId: 'market',
         title:'Market',
-        href:'#'
+        path:'#'
     },
 ]

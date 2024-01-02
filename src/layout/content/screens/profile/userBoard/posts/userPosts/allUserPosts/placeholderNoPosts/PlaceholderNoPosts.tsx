@@ -2,7 +2,7 @@ import React from 'react';
 import {Icon} from '../../../../../../../../../components/icon/Icon';
 import {
     PlaceholderNoInformation
-} from '../../../../../../../../../components/placeholderNoInformation/PlaceholderNoInformation';
+} from '../../../../../../../../../components/placeholders/noInformation/PlaceholderNoInformation';
 import styled from 'styled-components';
 
 export const PlaceholderNoPosts = () => {

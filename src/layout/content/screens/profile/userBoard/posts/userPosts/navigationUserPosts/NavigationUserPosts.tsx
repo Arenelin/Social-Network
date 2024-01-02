@@ -1,9 +1,9 @@
 import React from 'react';
-import {TabButton} from '../../../../../../../../components/button/TabButton';
+import {TabButton} from '../../../../../../../../components/buttons/TabButton';
 import styled from 'styled-components';
-import {GeneralBlockWrapper} from '../../../../../../../../components/generalBlockWrapper/GeneralBlockWrapper';
+import {GeneralBlockWrapper} from '../../../../../../../../components/blockWrappers/generalBlockWrapper/GeneralBlockWrapper';
 import {FlexWrapper} from '../../../../../../../../components/FlexWrapper';
-import {ButtonSvg} from '../../../../../../../../components/button/ButtonSvg';
+import {ButtonSvg} from '../../../../../../../../components/buttons/ButtonSvg';
 import {Icon} from '../../../../../../../../components/icon/Icon';
 
 export const NavigationUserPosts = () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {GeneralButton} from '../../../../../../../components/button/GeneralButton';
+import {GeneralButton} from '../../../../../../../components/buttons/GeneralButton';
 
 export const UserFormPost = () => {
     return (

@@ -4,6 +4,9 @@ import {FlexWrapper} from '../../components/FlexWrapper';
 import {Profile} from './screens/profile/Profile';
 import {Aside} from './sidebar/Aside';
 import {Dialogs} from './screens/dialogs/Dialogs/Dialogs';
+import {Route} from 'react-router-dom';
+import {Friends} from './screens/friends/Friends/Friends';
+import {Music} from './screens/music/Music/Music';
 
 export function Content() {
     return (
@@ -12,8 +15,10 @@ export function Content() {
                 <FlexWrapper gap={'6px'}>
                     <Aside/>
                     <ScreensWrapper>
-                        <Profile/>
-                        {/*<Dialogs/>*/}
+                        <Route path="/profile" component={Profile}/>
+                        <Route path="/dialogs" component={Dialogs}/>
+                        <Route path="/friends" component={Friends}/>
+                        <Route path="/music" component={Music}/>
                     </ScreensWrapper>
                 </FlexWrapper>
             </Container>

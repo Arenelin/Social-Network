@@ -10,19 +10,19 @@ export const data:Array<DataType> = [
         id: 1,
         iconId: 'profile',
         title:'My profile',
-        href:'#'
+        href:'/profile'
     },
     {
         id: 2,
         iconId: 'news',
         title:'News',
-        href:'#'
+        href:'/news'
     },
     {
         id: 3,
         iconId: 'messenger',
         title:'Messenger',
-        href:'#'
+        href:'/dialogs'
     },
     {
         id: 4,
@@ -34,7 +34,7 @@ export const data:Array<DataType> = [
         id: 5,
         iconId: 'friends',
         title:'Friends',
-        href:'#'
+        href:'/friends'
     },
     {
         id: 6,
@@ -52,7 +52,7 @@ export const data:Array<DataType> = [
         id: 8,
         iconId: 'music',
         title:'Music',
-        href:'#'
+        href:'/music'
     },
     {
         id: 9,

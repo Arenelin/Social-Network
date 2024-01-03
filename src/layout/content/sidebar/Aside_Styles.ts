@@ -6,7 +6,10 @@ const Aside = styled.aside`
     padding-top: 12px;
 `
 
-const MenuItems = styled.ul``
+const MenuItems = styled.ul`
+    position: sticky;
+    top: 12px;
+`
 
 const MenuLinkWrapper = styled.div`
     display: flex;

@@ -9,7 +9,7 @@ export const AboutUser: React.FC = () => {
         <StyledAboutUser>
             <UserDescription>
                 <UserPhotoWrapper>
-                    <PhotoUnderlay></PhotoUnderlay>
+                    {/*<PhotoUnderlay></PhotoUnderlay>*/}
                     <UserAvatar></UserAvatar>
                 </UserPhotoWrapper>
                 <UserBody>
@@ -110,6 +110,7 @@ const UserAvatar = styled.div`
     padding: 20px;
     bottom: 44px;
     left: 0;
+    border: 4px solid white;
 `
 
 const WrapperButtons = styled.div`

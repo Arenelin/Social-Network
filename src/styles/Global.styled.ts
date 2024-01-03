@@ -22,6 +22,7 @@ export const GlobalStyle = createGlobalStyle`
         font-weight: 400;
         min-width: 360px;
         font-size: 14px;
+        position: relative;
     }
 
     nav, footer, header, aside {

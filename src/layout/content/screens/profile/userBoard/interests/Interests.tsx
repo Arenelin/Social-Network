@@ -6,12 +6,13 @@ import {Icon} from '../../../../../../components/icon/Icon';
 import {GeneralButton} from '../../../../../../components/buttons/GeneralButton';
 import {PlaceholderNoInformation} from '../../../../../../components/placeholders/noInformation/PlaceholderNoInformation';
 import {GeneralBlockWrapper} from '../../../../../../components/blockWrappers/generalBlockWrapper/GeneralBlockWrapper';
+import { S } from './Interests_Styles';
 
-export const Interests = () => {
+export const Interests:React.FC = () => {
     return (
-        <StyledInterests>
+        <S.Interests>
             <GeneralBlockWrapper>
-                <InterestsTabs>
+                <S.InterestsTabs>
                     <FlexWrapper gap={'6px'} >
                         <SecondaryButton name={'Photos'} >
                             <Icon iconId={'tab-photos'} w={'20'} h={'20'} viewBox={'0 0 24 24'}/>
@@ -29,29 +30,13 @@ export const Interests = () => {
                             <Icon iconId={'tab-albums'} w={'20'} h={'20'} viewBox={'0 0 24 24'}/>
                         </SecondaryButton>
                     </FlexWrapper>
-                </InterestsTabs>
-                <CurrentInterestInfo>
+                </S.InterestsTabs>
+                <S.CurrentInterestInfo>
                     <PlaceholderNoInformation>You haven't added any photos yet</PlaceholderNoInformation>
                     <GeneralButton primary name={'Upload photo'}/>
-                </CurrentInterestInfo>
+                </S.CurrentInterestInfo>
             </GeneralBlockWrapper>
 
-        </StyledInterests>
+        </S.Interests>
     );
 };
-
-const StyledInterests = styled.div`
-    ${GeneralBlockWrapper}{
-        padding: 8px;
-    }
-`
-const InterestsTabs = styled.div`
-    margin: 8px 0 8px 12px;
-`
-
-const CurrentInterestInfo = styled.div`
-    padding: 56px 44px 60px 44px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-`

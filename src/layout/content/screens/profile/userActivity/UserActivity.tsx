@@ -7,44 +7,20 @@ import {PlaceholderNoInformation} from '../../../../../components/placeholders/n
 import {theme} from '../../../../../styles/theme';
 import {PageBlockLeft} from '../../../../../components/blockWrappers/pageBlockLeft/PageBlockLeft';
 import {PageBlockRight} from '../../../../../components/blockWrappers/pageBlockRight/PageBlockRight';
+import { S } from './UserActivity_Styles';
 
-export const UserActivity = () => {
+export const UserActivity:React.FC = () => {
     return (
-        <StyledUserActivity>
+        <S.UserActivity>
                 <GeneralBlockWrapper>
-                    <FriendsHeader>Friends</FriendsHeader>
-                    <CurrentFriends>
+                    <S.FriendsHeader>Friends</S.FriendsHeader>
+                    <S.CurrentFriends>
                         <PlaceholderNoInformation>You haven't added any friends yet</PlaceholderNoInformation>
                         <SecondaryButton as={'a'} href={'#'} isActive name={'Add friends'}>
                             <Icon iconId={'add-friends'} h={'24'} w={'24'} viewBox={'0 0 16 16'}/>
                         </SecondaryButton>
-                    </CurrentFriends>
+                    </S.CurrentFriends>
                 </GeneralBlockWrapper>
-        </StyledUserActivity>
+        </S.UserActivity>
     );
 };
-
-const StyledUserActivity = styled.div`
-    ${GeneralBlockWrapper} {
-        padding: 8px;
-    }
-`
-
-const FriendsHeader = styled.h4`
-    padding: 15px 12px 9px;
-`
-
-const CurrentFriends = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 48px 32px;
-    & a {
-        box-shadow: none;
-
-        &:hover {
-            background-color: ${theme.colors.buttons.background.hover.primary};
-        }
-    }
-
-`

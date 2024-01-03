@@ -4,7 +4,7 @@ import {Interests} from './interests/Interests';
 import {Posts} from './posts/Posts';
 import {PageBlockLeft} from '../../../../../components/blockWrappers/pageBlockLeft/PageBlockLeft';
 
-export const UserBoard = () => {
+export const UserBoard:React.FC = () => {
     return (
             <StyledUserBoard>
                     <Interests/>

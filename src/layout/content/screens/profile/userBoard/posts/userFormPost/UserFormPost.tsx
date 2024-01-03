@@ -1,23 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
 import {GeneralButton} from '../../../../../../../components/buttons/GeneralButton';
+import { S } from './UserFormPost_Styles';
 
-export const UserFormPost = () => {
+export const UserFormPost:React.FC = () => {
     return (
-        <StyledUserFormPost>
-            <TextArea/>
+        <S.UserFormPost>
+            <S.TextArea/>
             <GeneralButton name={'Post'}/>
-        </StyledUserFormPost>
+        </S.UserFormPost>
     );
 };
-
-const StyledUserFormPost = styled.form`
-    width: 100%;
-    background-color: #ffffff;
-    border-radius: 12px;
-    padding: 16px 42px 16px 12px;
-    margin-bottom: 16px;
-`
-const TextArea = styled.textarea`
-
-`

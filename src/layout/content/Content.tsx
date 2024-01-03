@@ -1,38 +1,32 @@
-import styled from 'styled-components';
 import {Container} from '../../components/Container';
 import {FlexWrapper} from '../../components/FlexWrapper';
 import {Profile} from './screens/profile/Profile';
 import {Aside} from './sidebar/Aside';
-import {Dialogs} from './screens/dialogs/Dialogs';
 import {Route} from 'react-router-dom';
 import {Friends} from './screens/friends/Friends/Friends';
 import {Music} from './screens/music/Music/Music';
+import {Messenger} from './screens/messenger/Messenger';
+import {Dialog} from './screens/dialog/Dialog';
+import {S} from './Content_Styles'
+import React from 'react';
 
-export function Content() {
+export const Content:React.FC = () =>{
     return (
-        <StyledContent>
+        <S.Content>
             <Container>
                 <FlexWrapper gap={'6px'}>
                     <Aside/>
-                    <ScreensWrapper>
+                    <S.ScreensWrapper>
                         <Route path="/profile" component={Profile}/>
-                        <Route path="/dialogs" component={Dialogs}/>
+                        <Route exact path="/messenger" component={Messenger}/>
                         <Route path="/friends" component={Friends}/>
                         <Route path="/audios" component={Music}/>
-                    </ScreensWrapper>
+                        <Route path="/messenger/1" component={Dialog}/>
+                        <Route path="/messenger/2" component={Dialog}/>
+                        <Route path="/messenger/3" component={Dialog}/>
+                    </S.ScreensWrapper>
                 </FlexWrapper>
             </Container>
-        </StyledContent>
+        </S.Content>
     )
 }
-
-const StyledContent = styled.div`
-    overflow: hidden;
-`
-const ScreensWrapper = styled.div`
-    max-width: 911px;
-    width: 100%;
-    padding-top: 16px;
-    height: calc(100vh - 50px);
-    overflow: auto;
-`

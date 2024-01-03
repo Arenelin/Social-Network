@@ -1,41 +1,13 @@
-import React from 'react';
 import styled from 'styled-components';
-import {FlexWrapper} from '../../../../../../../components/FlexWrapper';
 
-type ChatProps = {
-    lastMessage: string
-    authorName: string
-    date: string
-}
-
-export const Chat: React.FC<ChatProps> = (props) => {
-    const {lastMessage, authorName, date} = props;
-    return (
-        <StyledChat>
-            <FlexWrapper ai={'center'}>
-                <AvatarOfInterlocutor/>
-                <BriefInfoAboutChat>
-                    <AuthorAndDateWrapper>
-                        <InterlocutorName>{authorName}</InterlocutorName>
-                        <MessageDate>{date}</MessageDate>
-                    </AuthorAndDateWrapper>
-                    <LastMessage>
-                        <UserAvatar/>
-                        <Message>{lastMessage}</Message>
-                    </LastMessage>
-                </BriefInfoAboutChat>
-            </FlexWrapper>
-        </StyledChat>
-    );
-};
-
-const StyledChat = styled.li`
+const Chat = styled.div`
     padding-left: 20px;
     &:hover {
         background-color: rgba(174, 183, 194, 0.12);
         cursor: pointer;
     }
 `
+
 const AvatarOfInterlocutor = styled.div`
     width: 50px;
     height: 50px;
@@ -81,3 +53,15 @@ const UserAvatar = styled.div`
     background-color: #d9d6d6;
     margin-right: 12px;
 `
+
+export const S = {
+    Chat,
+    AvatarOfInterlocutor,
+    BriefInfoAboutChat,
+    AuthorAndDateWrapper,
+    LastMessage,
+    Message,
+    InterlocutorName,
+    MessageDate,
+    UserAvatar
+}

@@ -22,7 +22,7 @@ export const data:Array<DataType> = [
         id: 3,
         iconId: 'messenger',
         title:'Messenger',
-        path:'/dialogs'
+        path:'/messenger'
     },
     {
         id: 4,

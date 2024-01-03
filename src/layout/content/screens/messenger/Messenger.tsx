@@ -6,7 +6,7 @@ import {PageBlockRight} from '../../../../components/blockWrappers/pageBlockRigh
 import {ChatsBoard} from './chatsBoard/ChatsBoard';
 import {FilterChats} from './filterChats/FilterChats';
 
-export const Dialogs = () => {
+export const Messenger = () => {
     return (
         <StyledDialogs>
             <FlexWrapper gap={'16px'}>

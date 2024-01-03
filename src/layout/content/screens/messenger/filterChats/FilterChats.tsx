@@ -1,21 +1,15 @@
 import React from 'react';
-import styled from 'styled-components';
 import {GeneralBlockWrapper} from '../../../../../components/blockWrappers/generalBlockWrapper/GeneralBlockWrapper';
 import {FilterTab} from '../../../../../components/buttons/filterTab/FilterTab';
+import {S} from './FilterChats_Styles'
 
-export const FilterChats = () => {
+export const FilterChats: React.FC = () => {
     return (
-        <StyledFilterChats>
+        <S.FilterChats>
             <GeneralBlockWrapper>
                 <FilterTab text={'All chats'}/>
                 <FilterTab text={'Unread'}/>
             </GeneralBlockWrapper>
-        </StyledFilterChats>
+        </S.FilterChats>
     );
 };
-
-const StyledFilterChats = styled.div`
-${GeneralBlockWrapper}{
-    padding: 8px;
-}
-`

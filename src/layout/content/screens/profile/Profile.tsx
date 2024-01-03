@@ -7,7 +7,7 @@ import {UserActivity} from './userActivity/UserActivity';
 import {PageBlockLeft} from '../../../../components/blockWrappers/pageBlockLeft/PageBlockLeft';
 import {PageBlockRight} from '../../../../components/blockWrappers/pageBlockRight/PageBlockRight';
 
-export function Profile() {
+export const Profile:React.FC = ()=> {
     return (
         <StyledMain>
             <AboutUser/>

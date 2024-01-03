@@ -6,8 +6,11 @@ const Aside = styled.aside`
     padding-top: 12px;
 `
 
-const MenuItems = styled.ul`
+const MenuItems = styled.ul``
 
+const MenuLinkWrapper = styled.div`
+    display: flex;
+    align-items: center;
 `
 
 const MenuItem = styled.li`
@@ -27,11 +30,12 @@ const IconWrapper = styled.div`
     margin-right: 10px;
 `
 
-const MenuTitle = styled.span`
-`
+const MenuTitle = styled.span``
+
 export const S = {
     Aside,
     MenuItems,
+    MenuLinkWrapper,
     MenuItem,
     MenuLink,
     IconWrapper,

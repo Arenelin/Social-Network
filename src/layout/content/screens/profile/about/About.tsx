@@ -4,7 +4,7 @@ import {GeneralButton} from '../../../../../components/buttons/GeneralButton';
 import {Icon} from '../../../../../components/icon/Icon';
 import React from 'react';
 
-export const AboutUser = () => {
+export const AboutUser: React.FC = () => {
     return (
         <StyledAboutUser>
             <UserDescription>
@@ -15,7 +15,8 @@ export const AboutUser = () => {
                 <UserBody>
                     <UserInfo>
                         <UserName>Nikita Akmaykin</UserName>
-                        <UserStatus>When I am building an empire, do not come to me without materials and tools.</UserStatus>
+                        <UserStatus>When I am building an empire, do not come to me without materials and
+                            tools.</UserStatus>
                         <ShortInfoCell>
                             <Icon iconId={'info'} w={'18'} h={'18'} viewBox={'0 0 17 17'}/>
                             <LearnMore>Learn More</LearnMore>
@@ -84,13 +85,11 @@ const UserPhotoWrapper = styled.div`
     width: 150px;
     height: 150px;
     margin-top: -50px;
-    
     position: relative;
-    
 `
 
 const PhotoUnderlay = styled.div`
-background-color: #ffffff;
+    background-color: #ffffff;
     width: 158px;
     height: 158px;
     position: absolute;
@@ -98,6 +97,7 @@ background-color: #ffffff;
     bottom: 40px;
     border-radius: 50%;
 `
+
 const UserAvatar = styled.div`
     background-image: url(${myPhoto});
     background-repeat: no-repeat;
@@ -119,22 +119,23 @@ const WrapperButtons = styled.div`
 `
 
 const LearnMore = styled.span`
-color: #626d7a;
-    font-family: -apple-system, BlinkMacSystemFont, Roboto, "Open Sans", "Helvetica Neue", "Noto Sans Armenian", "Noto Sans Bengali", "Noto Sans Cherokee", "Noto Sans Devanagari", "Noto Sans Ethiopic", "Noto Sans Georgian", "Noto Sans Hebrew", "Noto Sans Kannada", "Noto Sans Khmer", "Noto Sans Lao", "Noto Sans Osmanya", "Noto Sans Tamil", "Noto Sans Telugu", "Noto Sans Thai", sans-serif;
+    color: #626d7a;
     font-size: 13px;
     padding-top: 3px;
     transition: all .4s;
 `
 
 const ShortInfoCell = styled.div`
-display: flex;
+    display: flex;
     gap: 4px;
     align-items: center;
     padding: 3px 3px 2px;
     max-width: 96px;
-    &:hover{
+
+    &:hover {
         cursor: pointer;
-        ${LearnMore}{
+
+        ${LearnMore} {
             text-decoration: underline;
         }
     }

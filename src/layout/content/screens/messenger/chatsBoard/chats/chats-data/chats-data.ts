@@ -12,13 +12,13 @@ export const chatsData: ChatData[] = [
         date:'25 Mar 2023'
     },
     {
-        id: 1,
+        id: 2,
         authorName: 'Nikita Akmaykin',
         lastMessage: 'I am a developer!',
         date:'18 Sep 2023'
     },
     {
-        id: 1,
+        id: 3,
         authorName: 'Alexey Akmaykin',
         lastMessage: 'I go to home',
         date:'31 Dec 2023'

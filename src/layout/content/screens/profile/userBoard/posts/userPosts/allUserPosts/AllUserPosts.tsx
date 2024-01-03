@@ -9,15 +9,17 @@ export type PostType = {
     likesCount: number
 }
 
-type AllUserPropsType = {
+type AllUserProps = {
     posts: PostType[]
 }
 
-export const AllUserPosts = (props: AllUserPropsType) => {
+export const AllUserPosts: React.FC<AllUserProps> = (props) => {
+    const {posts} = props;
+
     return (
         <StyledAllUserPosts>
-            {props.posts.length
-                ? props.posts.map(p =>
+            {posts.length
+                ? posts.map(p =>
                     <UserPost key={p.id} message={p.title} likesCount={p.likesCount}/>)
                 : <PlaceholderNoPosts/>}
         </StyledAllUserPosts>

@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import myPhoto from '../../../../../assets/images/photo_2021-09-05_17-53-37.jpg'
-import {GeneralButton} from '../../../../../components/buttons/GeneralButton';
 import {Icon} from '../../../../../components/icon/Icon';
 import React from 'react';
+import {NavLink} from 'react-router-dom';
+import {UniversalButton} from '../../../../../components/buttons/UniversalButton';
 
 export const AboutUser: React.FC = () => {
     return (
@@ -23,10 +24,12 @@ export const AboutUser: React.FC = () => {
                         </ShortInfoCell>
                     </UserInfo>
                     <WrapperButtons>
-                        <GeneralButton as={'a'} href={'#'} primary name={'Edit profile'}/>
-                        <GeneralButton primary name={'More'}>
+                        <NavLink to={'/edit'}>
+                            <UniversalButton name={'Edit profile'}/>
+                        </NavLink>
+                        <UniversalButton name={'More'} withIconRight>
                             <Icon iconId={'arrow-to-down'} viewBox={'0 0 512 512'} w={'16'} h={'12'}/>
-                        </GeneralButton>
+                        </UniversalButton>
                     </WrapperButtons>
                 </UserBody>
             </UserDescription>

@@ -1,10 +1,9 @@
 import React from 'react';
-import {SecondaryButton} from '../../../../../../../../components/buttons/SecondaryButton';
 import {GeneralBlockWrapper} from '../../../../../../../../components/blockWrappers/generalBlockWrapper/GeneralBlockWrapper';
 import {FlexWrapper} from '../../../../../../../../components/FlexWrapper';
-import {ButtonSvg} from '../../../../../../../../components/buttons/ButtonSvg';
 import {Icon} from '../../../../../../../../components/icon/Icon';
 import {S} from './NavigationUserPosts_Styles'
+import {UniversalButton} from '../../../../../../../../components/buttons/UniversalButton';
 
 export const NavigationUserPosts: React.FC = () => {
     return (
@@ -12,13 +11,13 @@ export const NavigationUserPosts: React.FC = () => {
             <GeneralBlockWrapper>
                 <FlexWrapper jc={'space-between'}>
                     <S.FilterPostsTabs>
-                        <SecondaryButton as={'a'} href={'#'} isActive name={'All posts'}/>
-                        <SecondaryButton as={'a'} href={'#'} name={'My posts'}/>
-                        <SecondaryButton as={'a'} href={'#'} name={'Post archive'}/>
+                        <UniversalButton name={'All posts'} type={'tab'}/>
+                        <UniversalButton name={'My posts'} type={'tab'}/>
+                        <UniversalButton name={'Post archive'} type={'tab'}/>
                     </S.FilterPostsTabs>
-                    <ButtonSvg>
+                    <UniversalButton type={'onlyIcon'}>
                         <Icon iconId={'search'} w={'20'} h={'20'} viewBox={'0 0 20 20'}/>
-                    </ButtonSvg>
+                    </UniversalButton>
                 </FlexWrapper>
             </GeneralBlockWrapper>
         </S.NavigationUserPosts>

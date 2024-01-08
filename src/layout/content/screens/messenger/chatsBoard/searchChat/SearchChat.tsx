@@ -1,8 +1,8 @@
 import React from 'react';
 import {FlexWrapper} from '../../../../../../components/FlexWrapper';
-import {ButtonSvg} from '../../../../../../components/buttons/ButtonSvg';
 import {Icon} from '../../../../../../components/icon/Icon';
 import {S} from './SearchChat_Styles'
+import {UniversalButton} from '../../../../../../components/buttons/UniversalButton';
 
 export const SearchChat:React.FC = () => {
     return (
@@ -13,15 +13,15 @@ export const SearchChat:React.FC = () => {
                 </S.WrapperInputSearch>
                 <S.WrapperButtonsForChats>
                     <FlexWrapper gap={'12px'}>
-                        <ButtonSvg>
+                        <UniversalButton type={'onlyIcon'}>
                             <Icon iconId={'callInChats'} h={'24'} viewBox={'0 0 24 24'} w={'24'}/>
-                        </ButtonSvg>
-                        <ButtonSvg>
+                        </UniversalButton>
+                        <UniversalButton type={'onlyIcon'}>
                             <Icon iconId={'createNewChat'} h={'24'} viewBox={'0 0 24 24'} w={'24'}/>
-                        </ButtonSvg>
-                        <ButtonSvg>
+                        </UniversalButton>
+                        <UniversalButton type={'onlyIcon'}>
                             <Icon iconId={'settingsChats'} h={'24'} viewBox={'0 0 24 24'} w={'24'}/>
-                        </ButtonSvg>
+                        </UniversalButton>
                     </FlexWrapper>
                 </S.WrapperButtonsForChats>
             </FlexWrapper>

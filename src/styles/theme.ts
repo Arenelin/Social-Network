@@ -9,9 +9,13 @@ export const theme = {
             background:{
                 primary: '#ecf2fa',
                 secondary: '#447BBA',
+                tab:'#ffffff',
+                onlyIcon:'#f0f2f5',
                 hover:{
                     primary:'rgb(227, 232, 239)',
-                    secondary:'rgb(59, 107, 161)'
+                    secondary:'rgb(59, 107, 161)',
+                    tab:'#F0F2F5FF',
+                    onlyIcon:'#e5e6ea',
                 }
             }
         },

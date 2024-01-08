@@ -1,12 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
 import {FlexWrapper} from '../../../../../../components/FlexWrapper';
-import {SecondaryButton} from '../../../../../../components/buttons/SecondaryButton';
 import {Icon} from '../../../../../../components/icon/Icon';
-import {GeneralButton} from '../../../../../../components/buttons/GeneralButton';
 import {PlaceholderNoInformation} from '../../../../../../components/placeholders/noInformation/PlaceholderNoInformation';
 import {GeneralBlockWrapper} from '../../../../../../components/blockWrappers/generalBlockWrapper/GeneralBlockWrapper';
 import { S } from './Interests_Styles';
+import {UniversalButton} from '../../../../../../components/buttons/UniversalButton';
 
 export const Interests:React.FC = () => {
     return (
@@ -14,26 +12,26 @@ export const Interests:React.FC = () => {
             <GeneralBlockWrapper>
                 <S.InterestsTabs>
                     <FlexWrapper gap={'6px'} >
-                        <SecondaryButton name={'Photos'} >
+                        <UniversalButton name={'Photos'} withIconLeft type={'tab'}>
                             <Icon iconId={'tab-photos'} w={'20'} h={'20'} viewBox={'0 0 24 24'}/>
-                        </SecondaryButton>
-                        <SecondaryButton name={'Clips'}>
+                        </UniversalButton>
+                        <UniversalButton name={'Clips'} withIconLeft type={'tab'}>
                             <Icon iconId={'tab-clips'} w={'20'} h={'20'} viewBox={'0 0 24 24'}/>
-                        </SecondaryButton>
-                        <SecondaryButton name={'Music'} isActive>
+                        </UniversalButton>
+                        <UniversalButton name={'Music'} withIconLeft type={'tab'}>
                             <Icon iconId={'tab-music'} w={'20'} h={'20'} viewBox={'0 0 24 24'}/>
-                        </SecondaryButton>
-                        <SecondaryButton name={'Articles'}>
+                        </UniversalButton>
+                        <UniversalButton name={'Articles'} withIconLeft type={'tab'}>
                             <Icon iconId={'tab-articles'} w={'20'} h={'20'} viewBox={'0 0 24 24'}/>
-                        </SecondaryButton>
-                        <SecondaryButton name={'Albums'}>
+                        </UniversalButton>
+                        <UniversalButton name={'Albums'} withIconLeft type={'tab'}>
                             <Icon iconId={'tab-albums'} w={'20'} h={'20'} viewBox={'0 0 24 24'}/>
-                        </SecondaryButton>
+                        </UniversalButton>
                     </FlexWrapper>
                 </S.InterestsTabs>
                 <S.CurrentInterestInfo>
                     <PlaceholderNoInformation>You haven't added any photos yet</PlaceholderNoInformation>
-                    <GeneralButton primary name={'Upload photo'}/>
+                    <UniversalButton name={'Upload photo'}/>
                 </S.CurrentInterestInfo>
             </GeneralBlockWrapper>
 

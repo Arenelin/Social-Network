@@ -16,6 +16,7 @@ const FilterPostsTabs = styled.div`
     display: flex;
     max-width: 262px;
     padding: 18px 0 18px;
+    gap: 6px;
 `
 
 export const S = {

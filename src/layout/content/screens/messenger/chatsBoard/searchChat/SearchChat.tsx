@@ -13,13 +13,13 @@ export const SearchChat:React.FC = () => {
                 </S.WrapperInputSearch>
                 <S.WrapperButtonsForChats>
                     <FlexWrapper gap={'12px'}>
-                        <UniversalButton type={'onlyIcon'}>
+                        <UniversalButton type={'onlyIconPrimary'}>
                             <Icon iconId={'callInChats'} h={'24'} viewBox={'0 0 24 24'} w={'24'}/>
                         </UniversalButton>
-                        <UniversalButton type={'onlyIcon'}>
+                        <UniversalButton type={'onlyIconPrimary'}>
                             <Icon iconId={'createNewChat'} h={'24'} viewBox={'0 0 24 24'} w={'24'}/>
                         </UniversalButton>
-                        <UniversalButton type={'onlyIcon'}>
+                        <UniversalButton type={'onlyIconPrimary'}>
                             <Icon iconId={'settingsChats'} h={'24'} viewBox={'0 0 24 24'} w={'24'}/>
                         </UniversalButton>
                     </FlexWrapper>

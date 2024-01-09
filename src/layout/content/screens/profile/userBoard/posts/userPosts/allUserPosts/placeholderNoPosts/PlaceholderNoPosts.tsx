@@ -3,7 +3,6 @@ import {Icon} from '../../../../../../../../../components/icon/Icon';
 import {
     PlaceholderNoInformation
 } from '../../../../../../../../../components/placeholders/noInformation/PlaceholderNoInformation';
-import styled from 'styled-components';
 import { S } from './PlaceholderNoPosts_Styles';
 
 export const PlaceholderNoPosts = () => {

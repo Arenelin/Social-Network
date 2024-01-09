@@ -5,7 +5,6 @@ import {AllUserPosts, PostType} from './allUserPosts/AllUserPosts';
 
 export const UserPosts:React.FC = () => {
     const [posts, setPosts] = useState<PostType[]>([
-        {id: -1, title: 'Lorem ipsum dolor sit amet hey hey,', likesCount: 100},
         {id: 0, title: 'Lorem ipsum dolor sit amet,', likesCount: 0},
         {id: 1, title: 'Lorem ipsum dolor sit amet,', likesCount: 0},
         {id: 2, title: ' consectetur adipisicing elit.', likesCount: 14},

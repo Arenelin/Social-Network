@@ -12,7 +12,7 @@ export const Interests:React.FC = () => {
             <GeneralBlockWrapper>
                 <S.InterestsTabs>
                     <FlexWrapper gap={'6px'} >
-                        <UniversalButton name={'Photos'} withIconLeft type={'tab'}>
+                        <UniversalButton name={'Photos'} withIconLeft type={'tab'} isActive>
                             <Icon iconId={'tab-photos'} w={'20'} h={'20'} viewBox={'0 0 24 24'}/>
                         </UniversalButton>
                         <UniversalButton name={'Clips'} withIconLeft type={'tab'}>
@@ -34,7 +34,6 @@ export const Interests:React.FC = () => {
                     <UniversalButton name={'Upload photo'}/>
                 </S.CurrentInterestInfo>
             </GeneralBlockWrapper>
-
         </S.Interests>
     );
 };

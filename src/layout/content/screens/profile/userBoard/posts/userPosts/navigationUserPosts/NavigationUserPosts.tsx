@@ -11,11 +11,11 @@ export const NavigationUserPosts: React.FC = () => {
             <GeneralBlockWrapper>
                 <FlexWrapper jc={'space-between'}>
                     <S.FilterPostsTabs>
-                        <UniversalButton name={'All posts'} type={'tab'}/>
+                        <UniversalButton name={'All posts'} type={'tab'} isActive/>
                         <UniversalButton name={'My posts'} type={'tab'}/>
                         <UniversalButton name={'Post archive'} type={'tab'}/>
                     </S.FilterPostsTabs>
-                    <UniversalButton type={'onlyIcon'}>
+                    <UniversalButton type={'onlyIconPrimary'}>
                         <Icon iconId={'search'} w={'20'} h={'20'} viewBox={'0 0 20 20'}/>
                     </UniversalButton>
                 </FlexWrapper>

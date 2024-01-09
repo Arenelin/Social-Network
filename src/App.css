@@ -1,5 +1,5 @@
-.App{
-background-color: #EDEEF0;
-  /*height: 100vh;*/
+.App {
+    background-color: #EDEEF0;
+    min-height: 100vh;
 }
 

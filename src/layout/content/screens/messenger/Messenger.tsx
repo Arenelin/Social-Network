@@ -5,13 +5,19 @@ import {PageBlockLeft} from '../../../../components/blockWrappers/pageBlockLeft/
 import {PageBlockRight} from '../../../../components/blockWrappers/pageBlockRight/PageBlockRight';
 import {ChatsBoard} from './chatsBoard/ChatsBoard';
 import {FilterChats} from './filterChats/FilterChats';
+import {ChatData, PostType} from '../../../../index';
 
-export const Messenger = () => {
+type MessengerProps = {
+    chats: ChatData[]
+}
+
+export const Messenger: React.FC<MessengerProps> = (props) => {
+    const {chats} = props;
     return (
         <StyledDialogs>
             <FlexWrapper gap={'16px'}>
                 <PageBlockLeft>
-                    <ChatsBoard/>
+                    <ChatsBoard chats={chats}/>
                 </PageBlockLeft>
                 <PageBlockRight>
                     <FilterChats/>

@@ -2,12 +2,18 @@ import React from 'react';
 import styled from 'styled-components';
 import {UserFormPost} from './userFormPost/UserFormPost';
 import {UserPosts} from './userPosts/UserPosts';
+import {PostType} from '../../../../../../index';
 
-export const Posts:React.FC = () => {
+type PostsProps = {
+    posts: PostType[]
+}
+
+export const Posts: React.FC<PostsProps> = (props) => {
+    const {posts} = props;
     return (
         <StyledPost>
             <UserFormPost/>
-            <UserPosts/>
+            <UserPosts posts={posts}/>
         </StyledPost>
     );
 };

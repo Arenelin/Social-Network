@@ -9,21 +9,28 @@ import {Messenger} from './screens/messenger/Messenger';
 import {Dialog} from './screens/dialog/Dialog';
 import {S} from './Content_Styles'
 import React from 'react';
+import {ChatData, PostType} from '../../index';
 
-export const Content:React.FC = () =>{
+type ContentProps = {
+    posts: PostType[]
+    chats: ChatData[]
+}
+
+export const Content: React.FC<ContentProps> = (props) => {
+    const {posts, chats} = props;
     return (
         <S.Content>
             <Container>
                 <FlexWrapper gap={'6px'}>
                     <Aside/>
                     <S.ScreensWrapper>
-                        <Route path="/profile" component={Profile}/>
-                        <Route exact path="/messenger" component={Messenger}/>
-                        <Route path="/friends" component={Friends}/>
-                        <Route path="/audios" component={Music}/>
-                        <Route path="/messenger/1" component={Dialog}/>
-                        <Route path="/messenger/2" component={Dialog}/>
-                        <Route path="/messenger/3" component={Dialog}/>
+                        <Route path="/profile" render={() => <Profile posts={posts}/>}/>
+                        <Route exact path="/messenger" render={() => <Messenger chats={chats}/>}/>
+                        <Route path="/friends" render={() => <Friends/>}/>
+                        <Route path="/audios" render={() => <Music/>}/>
+                        <Route path="/messenger/1" render={() => <Dialog/>}/>
+                        <Route path="/messenger/2" render={() => <Dialog/>}/>
+                        <Route path="/messenger/3" render={() => <Dialog/>}/>
                     </S.ScreensWrapper>
                 </FlexWrapper>
             </Container>

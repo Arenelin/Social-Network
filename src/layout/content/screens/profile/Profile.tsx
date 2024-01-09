@@ -6,18 +6,24 @@ import {UserBoard} from './userBoard/UserBoard';
 import {UserActivity} from './userActivity/UserActivity';
 import {PageBlockLeft} from '../../../../components/blockWrappers/pageBlockLeft/PageBlockLeft';
 import {PageBlockRight} from '../../../../components/blockWrappers/pageBlockRight/PageBlockRight';
+import {PostType} from '../../../../index';
 
-export const Profile:React.FC = ()=> {
+type ProfileProps = {
+    posts: PostType[]
+}
+
+export const Profile: React.FC<ProfileProps> = (props) => {
+    const {posts} = props;
     return (
         <StyledMain>
             <AboutUser/>
             <FlexWrapper gap={'16px'}>
                 <PageBlockLeft>
-                    <UserBoard/>
+                    <UserBoard posts={posts}/>
                 </PageBlockLeft>
-               <PageBlockRight>
-                   <UserActivity/>
-               </PageBlockRight>
+                <PageBlockRight>
+                    <UserActivity/>
+                </PageBlockRight>
             </FlexWrapper>
         </StyledMain>
     )

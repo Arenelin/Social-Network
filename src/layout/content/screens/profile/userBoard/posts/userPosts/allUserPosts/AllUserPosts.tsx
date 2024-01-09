@@ -2,12 +2,7 @@ import React from 'react';
 import {UserPost} from './userPost/UserPost';
 import styled from 'styled-components';
 import {PlaceholderNoPosts} from './placeholderNoPosts/PlaceholderNoPosts';
-
-export type PostType = {
-    id: number
-    title: string
-    likesCount: number
-}
+import {PostType} from '../../../../../../../../index';
 
 type AllUserProps = {
     posts: PostType[]

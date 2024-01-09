@@ -1,10 +1,15 @@
 import React from 'react';
-import {ChatData, chatsData} from './chats-data/chats-data';
 import {Chat} from './chat/Chat';
 import {S} from './Chats_Styles';
+import {ChatData} from '../../../../../../index';
 
-export const Chats: React.FC = () => {
-    const allChats: JSX.Element[] = chatsData.map((c: ChatData) => {
+type ChatsProps = {
+    chats: ChatData[]
+}
+
+export const Chats: React.FC<ChatsProps> = (props) => {
+    const {chats} = props;
+    const allChats: JSX.Element[] = chats.map((c: ChatData) => {
         return (
             <Chat
                 key={c.id}

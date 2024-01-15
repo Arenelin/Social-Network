@@ -22,7 +22,7 @@ export const Profile: React.FC<ProfileProps> = (props) => {
                     <UserBoard posts={state.posts}/>
                 </PageBlockLeft>
                 <PageBlockRight>
-                    <UserActivity/>
+                    <UserActivity friends={state.friends}/>
                 </PageBlockRight>
             </FlexWrapper>
         </StyledMain>

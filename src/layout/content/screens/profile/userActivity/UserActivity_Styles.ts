@@ -4,15 +4,21 @@ import {theme} from '../../../../../styles/theme';
 
 const UserActivity = styled.div`
     ${GeneralBlockWrapper} {
-        padding: 8px;
+        padding: 8px 8px 10px;
     }
 `
 
 const FriendsHeader = styled.h4`
-    padding: 15px 12px 9px;
+   
 `
+const CurrentUserFriendsBoard = styled.div`
+//max-height: 256px;
+//    overflow: hidden; //Высчитать корректный размер блока, на основании гридов и размера лишки
+`
+const FriendsBoard = styled.div`
 
-const CurrentFriends = styled.div`
+`
+const PlaceholderNoFriends = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -24,11 +30,33 @@ const CurrentFriends = styled.div`
             background-color: ${theme.colors.buttons.background.hover.primary};
         }
     }
+`
+const FriendsHeaderWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    padding: 15px 12px 11px;
 
+`
+const NumberOfFriends = styled.span`
+    color: rgb(98, 109, 122);
+    font-weight: 500;
+    font-size: 13px;
+    display: inline-block;
+    margin: 0 0 2px 6px;
+`
+const CurrentFriends = styled.ul`
+    display: grid;
+    grid-template-columns: repeat(4, 80px);
+    grid-template-rows: repeat(2, 96px);
 `
 
 export const S = {
     UserActivity,
     FriendsHeader,
-    CurrentFriends
+    CurrentFriends,
+    CurrentUserFriendsBoard,
+    NumberOfFriends,
+    FriendsHeaderWrapper,
+    PlaceholderNoFriends,
+    FriendsBoard
 }

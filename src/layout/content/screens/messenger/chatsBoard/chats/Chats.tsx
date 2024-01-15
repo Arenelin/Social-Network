@@ -1,15 +1,15 @@
 import React from 'react';
 import {Chat} from './chat/Chat';
 import {S} from './Chats_Styles';
-import {ChatData} from '../../../../../../index';
+import {ChatType} from '../../../../../../redux/state';
 
 type ChatsProps = {
-    chats: ChatData[]
+    chats: ChatType[]
 }
 
 export const Chats: React.FC<ChatsProps> = (props) => {
     const {chats} = props;
-    const allChats: JSX.Element[] = chats.map((c: ChatData) => {
+    const allChats: JSX.Element[] = chats.map((c: ChatType) => {
         return (
             <Chat
                 key={c.id}

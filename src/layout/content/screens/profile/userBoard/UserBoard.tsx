@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import {Interests} from './interests/Interests';
 import {Posts} from './posts/Posts';
-import {PostType} from '../../../../../index';
+import {PostType} from '../../../../../redux/state';
 
 type UserBoardProps = {
     posts: PostType[]

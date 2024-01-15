@@ -2,23 +2,20 @@ import React from 'react';
 import './App.css';
 import {Header} from './layout/header/Header';
 import {Content} from './layout/content/Content';
-import {BrowserRouter, NavLink} from 'react-router-dom';
-import {UniversalButton} from './components/buttons/UniversalButton';
-import {Icon} from './components/icon/Icon';
-import {ChatData, chats, PostType} from './index';
+import {BrowserRouter} from 'react-router-dom';
+import {RootStateType} from './redux/state';
 
 type AppProps = {
-    posts: PostType[]
-    chats: ChatData[]
+    state: RootStateType
 }
 
 const App: React.FC<AppProps> = (props) => {
-    const {posts, chats} = props;
+    const {state} = props;
     return (
         <BrowserRouter>
             <div className="App">
                 <Header/>
-                <Content posts={posts} chats={chats}/>
+                <Content state={state}/>
             </div>
         </BrowserRouter>
     );

@@ -2,7 +2,7 @@ import React from 'react';
 import {UserPost} from './userPost/UserPost';
 import styled from 'styled-components';
 import {PlaceholderNoPosts} from './placeholderNoPosts/PlaceholderNoPosts';
-import {PostType} from '../../../../../../../../index';
+import {PostType} from '../../../../../../../../redux/state';
 
 type AllUserProps = {
     posts: PostType[]

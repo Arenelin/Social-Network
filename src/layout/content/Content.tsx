@@ -9,23 +9,22 @@ import {Messenger} from './screens/messenger/Messenger';
 import {Dialog} from './screens/dialog/Dialog';
 import {S} from './Content_Styles'
 import React from 'react';
-import {ChatData, PostType} from '../../index';
+import {RootStateType} from '../../redux/state';
 
 type ContentProps = {
-    posts: PostType[]
-    chats: ChatData[]
+    state: RootStateType
 }
 
 export const Content: React.FC<ContentProps> = (props) => {
-    const {posts, chats} = props;
+    const {state} = props;
     return (
         <S.Content>
             <Container>
                 <FlexWrapper gap={'6px'}>
                     <Aside/>
                     <S.ScreensWrapper>
-                        <Route path="/profile" render={() => <Profile posts={posts}/>}/>
-                        <Route exact path="/messenger" render={() => <Messenger chats={chats}/>}/>
+                        <Route path="/profile" render={() => <Profile state={state.profilePage}/>}/>
+                        <Route exact path="/messenger" render={() => <Messenger state={state.messengerPage}/>}/>
                         <Route path="/friends" render={() => <Friends/>}/>
                         <Route path="/audios" render={() => <Music/>}/>
                         <Route path="/messenger/1" render={() => <Dialog/>}/>

@@ -3,10 +3,10 @@ import styled from 'styled-components';
 import {GeneralBlockWrapper} from '../../../../../components/blockWrappers/generalBlockWrapper/GeneralBlockWrapper';
 import {SearchChat} from './searchChat/SearchChat';
 import {Chats} from './chats/Chats';
-import {ChatData} from '../../../../../index';
+import {ChatType} from '../../../../../redux/state';
 
 type ChatsBoardProps = {
-    chats: ChatData[]
+    chats: ChatType[]
 }
 
 export const ChatsBoard: React.FC<ChatsBoardProps> = (props) => {

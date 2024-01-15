@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import {NavigationUserPosts} from './navigationUserPosts/NavigationUserPosts';
 import {AllUserPosts} from './allUserPosts/AllUserPosts';
-import {PostType} from '../../../../../../../index';
+import {PostType} from '../../../../../../../redux/state';
 
 type UserPostsProps = {
     posts: PostType[]

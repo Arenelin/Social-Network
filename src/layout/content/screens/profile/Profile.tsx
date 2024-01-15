@@ -6,20 +6,20 @@ import {UserBoard} from './userBoard/UserBoard';
 import {UserActivity} from './userActivity/UserActivity';
 import {PageBlockLeft} from '../../../../components/blockWrappers/pageBlockLeft/PageBlockLeft';
 import {PageBlockRight} from '../../../../components/blockWrappers/pageBlockRight/PageBlockRight';
-import {PostType} from '../../../../index';
+import {ProfilePageType} from '../../../../redux/state';
 
 type ProfileProps = {
-    posts: PostType[]
+    state: ProfilePageType
 }
 
 export const Profile: React.FC<ProfileProps> = (props) => {
-    const {posts} = props;
+    const {state} = props;
     return (
         <StyledMain>
             <AboutUser/>
             <FlexWrapper gap={'16px'}>
                 <PageBlockLeft>
-                    <UserBoard posts={posts}/>
+                    <UserBoard posts={state.posts}/>
                 </PageBlockLeft>
                 <PageBlockRight>
                     <UserActivity/>

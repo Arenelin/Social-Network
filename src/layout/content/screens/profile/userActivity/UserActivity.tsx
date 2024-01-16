@@ -6,6 +6,7 @@ import {S} from './UserActivity_Styles';
 import {UniversalButton} from '../../../../../components/buttons/UniversalButton';
 import {FriendType} from '../../../../../redux/state';
 import {Friend} from './Friend/Friend';
+import {NavLink} from 'react-router-dom';
 
 type UserActivityProps = {
     friends: FriendType[]
@@ -26,10 +27,12 @@ export const UserActivity: React.FC<UserActivityProps> = (props) => {
         <S.UserActivity>
             <S.CurrentUserFriendsBoard>
                 <GeneralBlockWrapper>
-                    <S.FriendsHeaderWrapper>
-                        <S.FriendsHeader>Friends</S.FriendsHeader>
-                        <S.NumberOfFriends>{friendsList.length > 0 ? friendsList.length : 0}</S.NumberOfFriends>
-                    </S.FriendsHeaderWrapper>
+                    <NavLink to={'/friends'}>
+                        <S.FriendsHeaderWrapper>
+                            <S.FriendsHeader>Friends</S.FriendsHeader>
+                            <S.NumberOfFriends>{friendsList.length > 0 ? friendsList.length : 0}</S.NumberOfFriends>
+                        </S.FriendsHeaderWrapper>
+                    </NavLink>
                     <S.FriendsBoard>
                         {friendsList.length > 0
                             ? <S.CurrentFriends>

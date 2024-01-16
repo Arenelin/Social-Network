@@ -6,11 +6,11 @@ import {NavLink} from 'react-router-dom';
 import {UniversalButton} from '../../../../../components/buttons/UniversalButton';
 
 export const AboutUser: React.FC = () => {
+    const someFunction = () => {}
     return (
         <StyledAboutUser>
             <UserDescription>
                 <UserPhotoWrapper>
-                    {/*<PhotoUnderlay></PhotoUnderlay>*/}
                     <UserAvatar></UserAvatar>
                 </UserPhotoWrapper>
                 <UserBody>
@@ -25,9 +25,9 @@ export const AboutUser: React.FC = () => {
                     </UserInfo>
                     <WrapperButtons>
                         <NavLink to={'/edit'}>
-                            <UniversalButton name={'Edit profile'}/>
+                            <UniversalButton callback={someFunction} name={'Edit profile'}/>
                         </NavLink>
-                        <UniversalButton name={'More'} withIconRight>
+                        <UniversalButton callback={someFunction} name={'More'} withIconRight>
                             <Icon iconId={'arrow-to-down'} viewBox={'0 0 512 512'} w={'16'} h={'12'}/>
                         </UniversalButton>
                     </WrapperButtons>
@@ -89,16 +89,6 @@ const UserPhotoWrapper = styled.div`
     height: 150px;
     margin-top: -50px;
     position: relative;
-`
-
-const PhotoUnderlay = styled.div`
-    background-color: #ffffff;
-    width: 158px;
-    height: 158px;
-    position: absolute;
-    left: -4px;
-    bottom: 40px;
-    border-radius: 50%;
 `
 
 const UserAvatar = styled.div`

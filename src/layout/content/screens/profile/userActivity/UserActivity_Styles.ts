@@ -13,7 +13,8 @@ const FriendsHeader = styled.h4`
 `
 const CurrentUserFriendsBoard = styled.div`
 //max-height: 256px;
-//    overflow: hidden; //Высчитать корректный размер блока, на основании гридов и размера лишки
+//    overflow: hidden; //Высчитать корректный размер блока, на основании гридов и размера лишки. Нет смысла делать это,
+    //так как с бэка будет приходить не вся пачка друзей, а только кусочек из 8 штук
 `
 const FriendsBoard = styled.div`
 

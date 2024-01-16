@@ -10,16 +10,17 @@ import {ProfilePageType} from '../../../../redux/state';
 
 type ProfileProps = {
     state: ProfilePageType
+    addPost:(postMessage:string)=>void
 }
 
 export const Profile: React.FC<ProfileProps> = (props) => {
-    const {state} = props;
+    const {state, addPost} = props;
     return (
         <StyledMain>
             <AboutUser/>
             <FlexWrapper gap={'16px'}>
                 <PageBlockLeft>
-                    <UserBoard posts={state.posts}/>
+                    <UserBoard posts={state.posts} addPost={addPost}/>
                 </PageBlockLeft>
                 <PageBlockRight>
                     <UserActivity friends={state.friends}/>

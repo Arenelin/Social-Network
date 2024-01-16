@@ -12,6 +12,7 @@ type UserPostProps = {
 
 export const UserPost:React.FC<UserPostProps> = (props) => {
     const {message, likesCount} = props;
+    const someFunction = () => {}
     return (
         <S.UserPost>
             <GeneralBlockWrapper>
@@ -23,19 +24,19 @@ export const UserPost:React.FC<UserPostProps> = (props) => {
                             <S.PublicationDate>Today</S.PublicationDate>
                         </S.AuthorWrapper>
                     </S.AuthorInfo>
-                    <UniversalButton type={'onlyIconPrimary'}>
+                    <UniversalButton callback={someFunction} type={'onlyIconPrimary'}>
                         <Icon iconId={'ellipsis'} viewBox={'0 0 24 24'} w={'24'} h={'24'}/>
                     </UniversalButton>
                 </FlexWrapper>
                 <S.Content>{message}</S.Content>
                 <S.ActionsWrapper>
-                    <UniversalButton type={'onlyIconSecondary'}>
+                    <UniversalButton callback={someFunction} type={'onlyIconSecondary'}>
                         <Icon iconId={'like'} viewBox={'0 0 24 24'} w={'24'} h={'24'}/>
                     </UniversalButton>
-                    <UniversalButton type={'onlyIconSecondary'}>
+                    <UniversalButton callback={someFunction} type={'onlyIconSecondary'}>
                         <Icon iconId={'comment'} viewBox={'0 0 24 24'} w={'24'} h={'24'}/>
                     </UniversalButton>
-                    <UniversalButton type={'onlyIconSecondary'}>
+                    <UniversalButton callback={someFunction} type={'onlyIconSecondary'}>
                         <Icon iconId={'share'} viewBox={'0 0 24 24'} w={'24'} h={'24'}/>
                     </UniversalButton>
                 </S.ActionsWrapper>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {MouseEvent} from 'react';
 import styled from 'styled-components';
 import {theme} from '../../styles/theme';
 
@@ -11,6 +11,8 @@ type UniversalButtonProps = {
     withIconLeft?: boolean
     isActive?: boolean
     type?: ButtonType
+    callback: () => void //Пока оставлю необязательным.
+    // По мере добавления логики буду добавлять функции для каждой кнопки, затем уберу '?'
 }
 
 type StyledUniversalButtonProps = {
@@ -25,10 +27,18 @@ export const UniversalButton: React.FC<UniversalButtonProps> = (props) => {
         withIconRight,
         withIconLeft,
         isActive,
-        type
+        type,
+        callback
     } = props;
+
+    const onClickHandler = (e: MouseEvent<HTMLButtonElement>) => {
+        callback()
+        e.preventDefault()
+
+    }
+
     return (
-        <StyledGeneralButton isActive={isActive} type={type}>
+        <StyledGeneralButton onClick={onClickHandler} isActive={isActive} type={type}>
             <WrapperContent>
                 {withIconLeft && children}
                 {name && <span>{name}</span>}

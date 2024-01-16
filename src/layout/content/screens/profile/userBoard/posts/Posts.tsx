@@ -6,13 +6,14 @@ import {PostType} from '../../../../../../redux/state';
 
 type PostsProps = {
     posts: PostType[]
+    addPost: (postMessage: string) => void
 }
 
 export const Posts: React.FC<PostsProps> = (props) => {
-    const {posts} = props;
+    const {posts, addPost} = props;
     return (
         <StyledPost>
-            <UserFormPost/>
+            <UserFormPost addPost={addPost}/>
             <UserPosts posts={posts}/>
         </StyledPost>
     );

@@ -14,6 +14,7 @@ type UserActivityProps = {
 export const UserActivity: React.FC<UserActivityProps> = (props) => {
     const {friends} = props;
 
+    const someFunction = () => {}
     const friendsList = friends.map(f =>
         <Friend
             key={f.id}
@@ -36,7 +37,7 @@ export const UserActivity: React.FC<UserActivityProps> = (props) => {
                             </S.CurrentFriends>
                             : <S.PlaceholderNoFriends>
                                 <PlaceholderNoInformation>You haven't added any friends yet</PlaceholderNoInformation>
-                                <UniversalButton name={'Add friends'} withIconLeft>
+                                <UniversalButton callback={someFunction} name={'Add friends'} withIconLeft>
                                     <Icon iconId={'add-friends'} h={'24'} w={'24'} viewBox={'0 0 16 16'}/>
                                 </UniversalButton>
                             </S.PlaceholderNoFriends>

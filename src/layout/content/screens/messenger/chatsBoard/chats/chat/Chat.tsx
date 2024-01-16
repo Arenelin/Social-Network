@@ -4,7 +4,7 @@ import {NavLink} from 'react-router-dom';
 import {S} from './Chat_Styles'
 
 type ChatProps = {
-    id:number
+    id: string
     lastMessage: string
     authorName: string
     date: string

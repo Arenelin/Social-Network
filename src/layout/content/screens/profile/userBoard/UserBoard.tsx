@@ -6,14 +6,15 @@ import {PostType} from '../../../../../redux/state';
 
 type UserBoardProps = {
     posts: PostType[]
+    addPost:(postMessage:string)=>void
 }
 
 export const UserBoard: React.FC<UserBoardProps> = (props) => {
-    const {posts} = props;
+    const {posts, addPost} = props;
     return (
         <StyledUserBoard>
             <Interests/>
-            <Posts posts={posts}/>
+            <Posts posts={posts} addPost={addPost}/>
         </StyledUserBoard>
     );
 };

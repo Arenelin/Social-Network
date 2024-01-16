@@ -4,35 +4,36 @@ import {Icon} from '../../../../../components/icon/Icon';
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import {UniversalButton} from '../../../../../components/buttons/UniversalButton';
+import {GeneralBlockWrapper} from '../../../../../components/blockWrappers/generalBlockWrapper/GeneralBlockWrapper';
 
 export const AboutUser: React.FC = () => {
     const someFunction = () => {}
     return (
         <StyledAboutUser>
-            <UserDescription>
-                <UserPhotoWrapper>
-                    <UserAvatar></UserAvatar>
-                </UserPhotoWrapper>
-                <UserBody>
-                    <UserInfo>
-                        <UserName>Nikita Akmaykin</UserName>
-                        <UserStatus>When I am building an empire, do not come to me without materials and
-                            tools.</UserStatus>
-                        <ShortInfoCell>
-                            <Icon iconId={'info'} w={'18'} h={'18'} viewBox={'0 0 17 17'}/>
-                            <LearnMore>Learn More</LearnMore>
-                        </ShortInfoCell>
-                    </UserInfo>
-                    <WrapperButtons>
-                        <NavLink to={'/edit'}>
-                            <UniversalButton callback={someFunction} name={'Edit profile'}/>
-                        </NavLink>
-                        <UniversalButton callback={someFunction} name={'More'} withIconRight>
-                            <Icon iconId={'arrow-to-down'} viewBox={'0 0 512 512'} w={'16'} h={'12'}/>
-                        </UniversalButton>
-                    </WrapperButtons>
-                </UserBody>
-            </UserDescription>
+                <UserDescription>
+                    <UserPhotoWrapper>
+                        <UserAvatar></UserAvatar>
+                    </UserPhotoWrapper>
+                    <UserBody>
+                        <UserInfo>
+                            <UserName>Nikita Akmaykin</UserName>
+                            <UserStatus>When I am building an empire, do not come to me without materials and
+                                tools.</UserStatus>
+                            <ShortInfoCell>
+                                <Icon iconId={'info'} w={'18'} h={'18'} viewBox={'0 0 17 17'}/>
+                                <LearnMore>Learn More</LearnMore>
+                            </ShortInfoCell>
+                        </UserInfo>
+                        <WrapperButtons>
+                            <NavLink to={'/edit'}>
+                                <UniversalButton callback={someFunction} name={'Edit profile'}/>
+                            </NavLink>
+                            <UniversalButton callback={someFunction} name={'More'} withIconRight>
+                                <Icon iconId={'arrow-to-down'} viewBox={'0 0 512 512'} w={'16'} h={'12'}/>
+                            </UniversalButton>
+                        </WrapperButtons>
+                    </UserBody>
+                </UserDescription>
         </StyledAboutUser>
     )
 }

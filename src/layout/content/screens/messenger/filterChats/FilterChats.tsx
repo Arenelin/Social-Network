@@ -9,6 +9,7 @@ export const FilterChats: React.FC = () => {
             <GeneralBlockWrapper>
                 <FilterTab text={'All chats'}/>
                 <FilterTab text={'Unread'}/>
+                <FilterTab text={'Business notifications'}/>
             </GeneralBlockWrapper>
         </S.FilterChats>
     );

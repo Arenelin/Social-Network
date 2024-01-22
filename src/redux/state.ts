@@ -7,7 +7,6 @@ import f5 from '../assets/images/friend5.jpg'
 import f6 from '../assets/images/friend6.jpg'
 import f7 from '../assets/images/friend7.jpg'
 import f8 from '../assets/images/friend8.jpg'
-import {rerenderEntireTree} from '../render';
 
 export type ChatType = {
     id: string
@@ -97,6 +96,8 @@ export const state: RootStateType = {
     },
 }
 
+let rerenderEntireTree = (state: RootStateType) => {}
+
 export const changeCurrentPostMessage = (symbol: string) => {
     state.profilePage.posts.currentPostMessage = symbol;
     rerenderEntireTree(state)
@@ -107,4 +108,8 @@ export const addPost = () => {
     state.profilePage.posts.addedPosts.push(newPost); //Пока только муттабельно, ввиду того, что нет стейта
     state.profilePage.posts.currentPostMessage = '';
     rerenderEntireTree(state)
+}
+
+export const subscribe = (observer: (state: RootStateType) => void) => {
+    rerenderEntireTree = observer
 }

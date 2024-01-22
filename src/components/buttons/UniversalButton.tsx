@@ -11,8 +11,7 @@ type UniversalButtonProps = {
     withIconLeft?: boolean
     isActive?: boolean
     type?: ButtonType
-    callback: () => void //Пока оставлю необязательным.
-    // По мере добавления логики буду добавлять функции для каждой кнопки, затем уберу '?'
+    callback: () => void
 }
 
 type StyledUniversalButtonProps = {
@@ -34,7 +33,6 @@ export const UniversalButton: React.FC<UniversalButtonProps> = (props) => {
     const onClickHandler = (e: MouseEvent<HTMLButtonElement>) => {
         callback()
         e.preventDefault()
-
     }
 
     return (

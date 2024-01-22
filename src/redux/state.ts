@@ -7,6 +7,7 @@ import f5 from '../assets/images/friend5.jpg'
 import f6 from '../assets/images/friend6.jpg'
 import f7 from '../assets/images/friend7.jpg'
 import f8 from '../assets/images/friend8.jpg'
+import {rerenderEntireTree} from '../render';
 
 export type ChatType = {
     id: string
@@ -32,8 +33,14 @@ export type MessengerPageType = {
     chats: ChatType[]
 }
 
+export type PostsType = {
+    addedPosts: PostType[]
+    currentPostMessage: string
+}
+
+
 export type ProfilePageType = {
-    posts: PostType[]
+    posts: PostsType
     friends: FriendType[]
 }
 
@@ -44,14 +51,17 @@ export type RootStateType = {
 
 export const state: RootStateType = {
     profilePage: {
-        posts: [
-            {id: v1(), title: 'Lorem ipsum dolor sit amet,', likesCount: 0},
-            {id: v1(), title: 'Lorem ipsum dolor sit amet,', likesCount: 0},
-            {id: v1(), title: ' consectetur adipisicing elit.', likesCount: 14},
-            {id: v1(), title: 'Adipisci cupiditate deserunt', likesCount: 2},
-            {id: v1(), title: 'explicabo iure laboriosam nam nostrum', likesCount: 10},
-            {id: v1(), title: '  reiciendis repellendus sed temporibus?', likesCount: 8},
-        ],
+        posts: {
+            addedPosts: [
+                {id: v1(), title: 'Lorem ipsum dolor sit amet,', likesCount: 0},
+                {id: v1(), title: 'Lorem ipsum dolor sit amet,', likesCount: 0},
+                {id: v1(), title: ' consectetur adipisicing elit.', likesCount: 14},
+                {id: v1(), title: 'Adipisci cupiditate deserunt', likesCount: 2},
+                {id: v1(), title: 'explicabo iure laboriosam nam nostrum', likesCount: 10},
+                {id: v1(), title: '  reiciendis repellendus sed temporibus?', likesCount: 8},
+            ],
+            currentPostMessage: ''
+        },
         friends: [
             {id: v1(), firstName: 'Kristina', lastName: 'Ovsyannikova', avatar: f1},
             {id: v1(), firstName: 'Anastasia', lastName: 'Sudakina', avatar: f2},
@@ -87,8 +97,14 @@ export const state: RootStateType = {
     },
 }
 
-export const addPost = (postMessage: string) => {
-    const newPost: PostType = {id: v1(), title: postMessage, likesCount: 0}
-    state.profilePage.posts.push(newPost); //Пока только муттабельно, ввиду того, что нет стейта
-    console.log(state);
+export const changeCurrentPostMessage = (symbol: string) => {
+    state.profilePage.posts.currentPostMessage = symbol;
+    rerenderEntireTree(state)
+}
+
+export const addPost = () => {
+    const newPost: PostType = {id: v1(), title: state.profilePage.posts.currentPostMessage, likesCount: 0}
+    state.profilePage.posts.addedPosts.push(newPost); //Пока только муттабельно, ввиду того, что нет стейта
+    state.profilePage.posts.currentPostMessage = '';
+    rerenderEntireTree(state)
 }

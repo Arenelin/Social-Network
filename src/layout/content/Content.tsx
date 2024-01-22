@@ -13,18 +13,24 @@ import {RootStateType} from '../../redux/state';
 
 type ContentProps = {
     state: RootStateType
-    addPost:(postMessage:string)=>void
+    addPost:()=>void
+    changeCurrentPostMessage: (symbol:string)=> void
 }
 
 export const Content: React.FC<ContentProps> = (props) => {
-    const {state,addPost} = props;
+    const {state,addPost, changeCurrentPostMessage} = props;
     return (
         <S.Content>
             <Container>
                 <FlexWrapper gap={'6px'}>
                     <Aside/>
                     <S.ScreensWrapper>
-                        <Route path="/profile" render={() => <Profile state={state.profilePage} addPost={addPost}/>}/>
+                        <Route path="/profile" render={() =>
+                            <Profile
+                                state={state.profilePage}
+                                addPost={addPost}
+                                changeCurrentPostMessage={changeCurrentPostMessage}
+                            />}/>
                         <Route exact path="/messenger" render={() => <Messenger state={state.messengerPage}/>}/>
                         <Route path="/friends" render={() => <Friends/>}/>
                         <Route path="/audios" render={() => <Music/>}/>

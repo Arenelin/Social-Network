@@ -2,21 +2,22 @@ import React from 'react';
 import styled from 'styled-components';
 import {Interests} from './interests/Interests';
 import {Posts} from './posts/Posts';
-import {PostType} from '../../../../../redux/state';
+import {PostType, store} from '../../../../../redux/state';
 
 type UserBoardProps = {
     posts: PostType[]
-    addPost:()=>void
-    changeCurrentPostMessage: (symbol:string)=> void
+    // addPost:()=>void
+    // changeCurrentPostMessage: (symbol:string)=> void
+    store: any
     currentPostMessage:string
 }
 
 export const UserBoard: React.FC<UserBoardProps> = (props) => {
-    const {posts, addPost, changeCurrentPostMessage, currentPostMessage} = props;
+    const {posts, store, currentPostMessage} = props;
     return (
         <StyledUserBoard>
             <Interests/>
-            <Posts posts={posts} addPost={addPost} changeCurrentPostMessage={changeCurrentPostMessage} currentPostMessage={currentPostMessage}/>
+            <Posts posts={posts} store={store} currentPostMessage={currentPostMessage}/>
         </StyledUserBoard>
     );
 };

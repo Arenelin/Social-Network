@@ -9,16 +9,17 @@ import {Messenger} from './screens/messenger/Messenger';
 import {Dialog} from './screens/dialog/Dialog';
 import {S} from './Content_Styles'
 import React from 'react';
-import {RootStateType} from '../../redux/state';
+import {RootStateType, store} from '../../redux/state';
 
 type ContentProps = {
     state: RootStateType
-    addPost:()=>void
-    changeCurrentPostMessage: (symbol:string)=> void
+    // addPost:()=>void
+    // changeCurrentPostMessage: (symbol:string)=> void
+    store: any
 }
 
 export const Content: React.FC<ContentProps> = (props) => {
-    const {state,addPost, changeCurrentPostMessage} = props;
+    const {state,store} = props;
     return (
         <S.Content>
             <Container>
@@ -28,8 +29,7 @@ export const Content: React.FC<ContentProps> = (props) => {
                         <Route path="/profile" render={() =>
                             <Profile
                                 state={state.profilePage}
-                                addPost={addPost}
-                                changeCurrentPostMessage={changeCurrentPostMessage}
+                                store={store}
                             />}/>
                         <Route exact path="/messenger" render={() => <Messenger state={state.messengerPage}/>}/>
                         <Route path="/friends" render={() => <Friends/>}/>

@@ -10,12 +10,13 @@ const rerenderEntireTree = (state: RootStateType) => {
     ReactDOM.render(
         <>
             <GlobalStyle/>
-            <App  state={store.getState()} store={store}/>
+            <App state={state}
+                 addPost={store.addPost.bind(store)}
+                 changeCurrentPostMessage={store.changeCurrentPostMessage.bind(store)}
+            />
         </>,
-
         document.getElementById('root')
     );
 }
 rerenderEntireTree(store.getState())
 store.subscribe(rerenderEntireTree)
-// subscribe(rerenderEntireTree)

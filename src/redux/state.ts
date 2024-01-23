@@ -37,7 +37,6 @@ export type PostsType = {
     currentPostMessage: string
 }
 
-
 export type ProfilePageType = {
     posts: PostsType
     friends: FriendType[]
@@ -47,7 +46,6 @@ export type RootStateType = {
     messengerPage: MessengerPageType
     profilePage: ProfilePageType
 }
-
 
 export const store = {
     _state: {
@@ -97,91 +95,21 @@ export const store = {
             ],
         },
     },
-    _subscriber(state: RootStateType) {
-        console.log('I don\'t have information ')
-    },
+    _callSubscriber(state: RootStateType) {},
     subscribe(observer: (state: RootStateType) => void) {
-        this._subscriber = observer;
+        this._callSubscriber = observer;
     },
     getState() {
         return this._state;
     },
     changeCurrentPostMessage(symbol: string) {
         this._state.profilePage.posts.currentPostMessage = symbol;
-        this._subscriber(this._state)
+        this._callSubscriber(this._state)
     },
     addPost() {
         const newPost: PostType = {id: v1(), title: this._state.profilePage.posts.currentPostMessage, likesCount: 0}
         this._state.profilePage.posts.addedPosts.push(newPost)
         this._state.profilePage.posts.currentPostMessage = '';
-        this._subscriber(this._state)
+        this._callSubscriber(this._state)
     }
 }
-
-// export const state: RootStateType = {
-//     profilePage: {
-//         posts: {
-//             addedPosts: [
-//                 {id: v1(), title: 'Lorem ipsum dolor sit amet,', likesCount: 0},
-//                 {id: v1(), title: 'Lorem ipsum dolor sit amet,', likesCount: 0},
-//                 {id: v1(), title: ' consectetur adipisicing elit.', likesCount: 14},
-//                 {id: v1(), title: 'Adipisci cupiditate deserunt', likesCount: 2},
-//                 {id: v1(), title: 'explicabo iure laboriosam nam nostrum', likesCount: 10},
-//                 {id: v1(), title: '  reiciendis repellendus sed temporibus?', likesCount: 8},
-//             ],
-//             currentPostMessage: ''
-//         },
-//         friends: [
-//             {id: v1(), firstName: 'Kristina', lastName: 'Ovsyannikova', avatar: f1},
-//             {id: v1(), firstName: 'Anastasia', lastName: 'Sudakina', avatar: f2},
-//             {id: v1(), firstName: 'Roman', lastName: 'Azarov', avatar: f3},
-//             {id: v1(), firstName: 'Leonid', lastName: 'Gempel', avatar: f4},
-//             {id: v1(), firstName: 'Evgeny', lastName: 'Andreev', avatar: f5},
-//             {id: v1(), firstName: 'Marina', lastName: 'Bantser', avatar: f6},
-//             {id: v1(), firstName: 'Ekaterina', lastName: 'Feyn', avatar: f7},
-//             {id: v1(), firstName: 'Natasha', lastName: 'Vlasova', avatar: f8},
-//         ]
-//     },
-//     messengerPage: {
-//         chats: [
-//             {
-//                 id: v1(),
-//                 authorName: 'Darya Akmaykina',
-//                 lastMessage: 'How are you?',
-//                 date: '25 Mar 2023'
-//             },
-//             {
-//                 id: v1(),
-//                 authorName: 'Nikita Akmaykin',
-//                 lastMessage: 'I am a developer!',
-//                 date: '18 Sep 2023'
-//             },
-//             {
-//                 id: v1(),
-//                 authorName: 'Alexey Akmaykin',
-//                 lastMessage: 'I go to home',
-//                 date: '31 Dec 2023'
-//             },
-//         ],
-//     },
-// }
-
-let rerenderEntireTree = (state: RootStateType) => {
-}
-
-// export const changeCurrentPostMessage = (symbol: string) => {
-//     state.profilePage.posts.currentPostMessage = symbol;
-//     rerenderEntireTree(state)
-// }
-
-// export const addPost = () => {
-//     const newPost: PostType = {id: v1(), title: state.profilePage.posts.currentPostMessage, likesCount: 0}
-//     state.profilePage.posts.addedPosts.push(newPost); //Пока только муттабельно, ввиду того, что нет стейта
-//     state.profilePage.posts.currentPostMessage = '';
-//     rerenderEntireTree(state)
-// }
-
-// export const subscribe = (observer: (state: RootStateType) => void) => {
-//     rerenderEntireTree = observer
-// }
-// store.subscribe()

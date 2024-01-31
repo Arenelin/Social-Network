@@ -95,21 +95,50 @@ export const store = {
             ],
         },
     },
-    _callSubscriber(state: RootStateType) {},
+    _callSubscriber(state: RootStateType) {
+    },
+
     subscribe(observer: (state: RootStateType) => void) {
         this._callSubscriber = observer;
     },
     getState() {
         return this._state;
     },
-    changeCurrentPostMessage(symbol: string) {
-        this._state.profilePage.posts.currentPostMessage = symbol;
-        this._callSubscriber(this._state)
-    },
-    addPost() {
-        const newPost: PostType = {id: v1(), title: this._state.profilePage.posts.currentPostMessage, likesCount: 0}
-        this._state.profilePage.posts.addedPosts.push(newPost)
-        this._state.profilePage.posts.currentPostMessage = '';
-        this._callSubscriber(this._state)
+    dispatch(action: AppRootAction) {
+        switch (action.type) {
+            case 'ADD-POST': {
+                const newPost: PostType = {
+                    id: v1(),
+                    title: this._state.profilePage.posts.currentPostMessage,
+                    likesCount: 0
+                }
+                this._state.profilePage.posts.addedPosts.push(newPost)
+                this._state.profilePage.posts.currentPostMessage = '';
+                this._callSubscriber(this._state)
+                break
+            }
+            case 'CHANGE-POST-MESSAGE': {
+                this._state.profilePage.posts.currentPostMessage = action.payload.symbol;
+                this._callSubscriber(this._state)
+                break
+            }
+            default:
+                return this._state
+        }
     }
+}
+
+export type AppRootAction = AddPost | ChangePostMessage
+
+export type AddPost = ReturnType<typeof addPost>
+export type ChangePostMessage = ReturnType<typeof changePostMessage>
+
+export const addPost = () => {
+    return {type: 'ADD-POST'} as const
+}
+export const changePostMessage = (symbol: string) => {
+    return {
+        type: 'CHANGE-POST-MESSAGE',
+        payload: {symbol}
+    } as const
 }

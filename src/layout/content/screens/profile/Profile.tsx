@@ -10,12 +10,11 @@ import {ProfilePageType} from '../../../../redux/state';
 
 type ProfileProps = {
     state: ProfilePageType
-    addPost:()=>void
-    changeCurrentPostMessage: (symbol:string)=> void
+    dispatch:(action:any)=>void
 }
 
 export const Profile: React.FC<ProfileProps> = (props) => {
-    const {state, addPost, changeCurrentPostMessage} = props;
+    const {state, dispatch} = props;
     return (
         <StyledMain>
             <AboutUser/>
@@ -23,8 +22,7 @@ export const Profile: React.FC<ProfileProps> = (props) => {
                 <PageBlockLeft>
                     <UserBoard posts={state.posts.addedPosts}
                                currentPostMessage={state.posts.currentPostMessage}
-                               addPost={addPost}
-                               changeCurrentPostMessage={changeCurrentPostMessage}
+                               dispatch={dispatch}
                     />
                 </PageBlockLeft>
                 <PageBlockRight>

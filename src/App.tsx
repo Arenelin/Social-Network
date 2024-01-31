@@ -7,17 +7,16 @@ import {RootStateType} from './redux/state';
 
 type AppProps = {
     state: RootStateType
-    addPost: () => void
-    changeCurrentPostMessage: (symbol: string) => void
+    dispatch:(action:any)=>void
 }
 
 const App: React.FC<AppProps> = (props) => {
-    const {state, addPost, changeCurrentPostMessage} = props;
+    const {state,dispatch} = props;
     return (
         <BrowserRouter>
             <div className="App">
                 <Header/>
-                <Content addPost={addPost} changeCurrentPostMessage={changeCurrentPostMessage} state={state}/>
+                <Content state={state} dispatch={dispatch}/>
             </div>
         </BrowserRouter>
     );

@@ -1,6 +1,5 @@
 import './index.css';
-import {RootStateType} from './redux/state';
-import {store} from './redux/state'
+import {RootStateType, store} from './redux/state';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
@@ -11,8 +10,7 @@ const rerenderEntireTree = (state: RootStateType) => {
         <>
             <GlobalStyle/>
             <App state={state}
-                 addPost={store.addPost.bind(store)}
-                 changeCurrentPostMessage={store.changeCurrentPostMessage.bind(store)}
+                 dispatch={store.dispatch.bind(store)}
             />
         </>,
         document.getElementById('root')

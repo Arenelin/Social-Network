@@ -2,6 +2,10 @@ import styled from 'styled-components';
 
 const SearchChat = styled.div`
     border-bottom: 1px solid #DCE1E6FF;
+    background-color: #ffffff;
+    position: sticky;
+    top: 66px;
+    border-radius: 12px 12px 0 0;
 `
 
 const WrapperInputSearch = styled.div`

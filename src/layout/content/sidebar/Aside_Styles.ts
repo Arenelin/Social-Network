@@ -8,7 +8,7 @@ const Aside = styled.aside`
 
 const MenuItems = styled.ul`
     position: sticky;
-    top: 12px;
+    top: 62px;
 `
 
 const MenuLinkWrapper = styled.div`

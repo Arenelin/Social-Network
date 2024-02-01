@@ -7,9 +7,11 @@ import f5 from '../assets/images/friend5.jpg'
 import f6 from '../assets/images/friend6.jpg'
 import f7 from '../assets/images/friend7.jpg'
 import f8 from '../assets/images/friend8.jpg'
+import {AddPost, ChangePostMessage, profileReducer} from './profileReducer';
+import {AddMessage, ChangeDialogMessage, messengerReducer} from './messengerReducer';
 
 export type ChatType = {
-    id: string
+    id: number
     authorName: string
     lastMessage: string
     date: string
@@ -28,8 +30,22 @@ export type FriendType = {
     avatar: string
 }
 
+export type MessageType = {
+    id: string
+    text: string
+    time: string
+    authorName: string
+    authorAvatar: string
+}
+
+export type MessagesType = {
+    addedMessages: MessageType[]
+    currentDialogMessage: string
+}
+
 export type MessengerPageType = {
     chats: ChatType[]
+    messages: MessagesType
 }
 
 export type PostsType = {
@@ -75,24 +91,40 @@ export const store = {
         messengerPage: {
             chats: [
                 {
-                    id: v1(),
+                    id: 1,
                     authorName: 'Darya Akmaykina',
                     lastMessage: 'How are you?',
                     date: '25 Mar 2023'
                 },
                 {
-                    id: v1(),
+                    id: 2,
                     authorName: 'Nikita Akmaykin',
                     lastMessage: 'I am a developer!',
                     date: '18 Sep 2023'
                 },
                 {
-                    id: v1(),
+                    id: 3,
                     authorName: 'Alexey Akmaykin',
                     lastMessage: 'I go to home',
                     date: '31 Dec 2023'
                 },
             ],
+            messages: {
+                addedMessages: [
+                    {id: v1(), text: 'Hi', time: '10:10 am', authorName: 'Darya', authorAvatar: f1},
+                    {
+                        id: v1(),
+                        text: 'How is your IT-KAMASUTRA?',
+                        time: '10:14 am',
+                        authorName: 'Darya',
+                        authorAvatar: f1
+                    },
+                    {id: v1(), text: 'Hi', time: '10:20 am', authorName: 'Darya', authorAvatar: f1},
+                    {id: v1(), text: 'Hi', time: '10:52 am', authorName: 'Darya', authorAvatar: f1},
+                    {id: v1(), text: 'Hi', time: '11:17 am', authorName: 'Darya', authorAvatar: f1},
+                ],
+                currentDialogMessage: ''
+            }
         },
     },
     _callSubscriber(state: RootStateType) {
@@ -105,40 +137,10 @@ export const store = {
         return this._state;
     },
     dispatch(action: AppRootAction) {
-        switch (action.type) {
-            case 'ADD-POST': {
-                const newPost: PostType = {
-                    id: v1(),
-                    title: this._state.profilePage.posts.currentPostMessage,
-                    likesCount: 0
-                }
-                this._state.profilePage.posts.addedPosts.push(newPost)
-                this._state.profilePage.posts.currentPostMessage = '';
-                this._callSubscriber(this._state)
-                break
-            }
-            case 'CHANGE-POST-MESSAGE': {
-                this._state.profilePage.posts.currentPostMessage = action.payload.symbol;
-                this._callSubscriber(this._state)
-                break
-            }
-            default:
-                return this._state
-        }
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._state.messengerPage = messengerReducer(this._state.messengerPage, action)
+        this._callSubscriber(this._state);
     }
 }
 
-export type AppRootAction = AddPost | ChangePostMessage
-
-export type AddPost = ReturnType<typeof addPost>
-export type ChangePostMessage = ReturnType<typeof changePostMessage>
-
-export const addPost = () => {
-    return {type: 'ADD-POST'} as const
-}
-export const changePostMessage = (symbol: string) => {
-    return {
-        type: 'CHANGE-POST-MESSAGE',
-        payload: {symbol}
-    } as const
-}
+export type AppRootAction = AddPost | ChangePostMessage | AddMessage | ChangeDialogMessage

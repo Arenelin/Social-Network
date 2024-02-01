@@ -3,7 +3,7 @@ import './App.css';
 import {Header} from './layout/header/Header';
 import {Content} from './layout/content/Content';
 import {BrowserRouter} from 'react-router-dom';
-import {RootStateType} from './redux/state';
+import {RootStateType} from './redux/store';
 
 type AppProps = {
     state: RootStateType

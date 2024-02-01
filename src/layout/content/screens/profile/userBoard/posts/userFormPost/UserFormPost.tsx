@@ -1,11 +1,12 @@
 import React, {useRef} from 'react';
 import {S} from './UserFormPost_Styles';
 import {UniversalButton} from '../../../../../../../components/buttons/UniversalButton';
-import {addPost, changePostMessage} from '../../../../../../../redux/state';
+import {AppRootAction} from '../../../../../../../redux/store';
+import {addPost, changePostMessage} from '../../../../../../../redux/profileReducer';
 
 type UserFormPostProps = {
     currentPostMessage: string
-    dispatch: (action: any) => void
+    dispatch: (action: AppRootAction) => void
 }
 
 export const UserFormPost: React.FC<UserFormPostProps> = (props) => {

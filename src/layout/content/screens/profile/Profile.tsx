@@ -6,11 +6,11 @@ import {UserBoard} from './userBoard/UserBoard';
 import {UserActivity} from './userActivity/UserActivity';
 import {PageBlockLeft} from '../../../../components/blockWrappers/pageBlockLeft/PageBlockLeft';
 import {PageBlockRight} from '../../../../components/blockWrappers/pageBlockRight/PageBlockRight';
-import {ProfilePageType} from '../../../../redux/state';
+import {AppRootAction, ProfilePageType} from '../../../../redux/store';
 
 type ProfileProps = {
     state: ProfilePageType
-    dispatch:(action:any)=>void
+    dispatch: (action: AppRootAction) => void
 }
 
 export const Profile: React.FC<ProfileProps> = (props) => {

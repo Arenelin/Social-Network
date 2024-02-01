@@ -4,7 +4,7 @@ import {NavLink} from 'react-router-dom';
 import {S} from './Chat_Styles'
 
 type ChatProps = {
-    id: string
+    id: number
     lastMessage: string
     authorName: string
     date: string
@@ -12,7 +12,6 @@ type ChatProps = {
 
 export const Chat: React.FC<ChatProps> = (props) => {
     const {id, lastMessage, authorName, date} = props;
-
     return (
         <S.Chat>
             <NavLink to={`/messenger/${id}`}>

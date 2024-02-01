@@ -5,7 +5,7 @@ import {PageBlockLeft} from '../../../../components/blockWrappers/pageBlockLeft/
 import {PageBlockRight} from '../../../../components/blockWrappers/pageBlockRight/PageBlockRight';
 import {ChatsBoard} from './chatsBoard/ChatsBoard';
 import {FilterChats} from './filterChats/FilterChats';
-import {MessengerPageType} from '../../../../redux/state';
+import {MessengerPageType} from '../../../../redux/store';
 
 type MessengerProps = {
     state: MessengerPageType
@@ -17,7 +17,7 @@ export const Messenger: React.FC<MessengerProps> = (props) => {
         <StyledDialogs>
             <FlexWrapper gap={'16px'}>
                 <PageBlockLeft>
-                    <ChatsBoard chats={state.chats}/>
+                    <ChatsBoard state={state}/>
                 </PageBlockLeft>
                 <PageBlockRight>
                     <FilterChats/>

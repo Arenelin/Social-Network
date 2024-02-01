@@ -1,7 +1,7 @@
 import React from 'react';
 import {Chat} from './chat/Chat';
 import {S} from './Chats_Styles';
-import {ChatType} from '../../../../../../redux/state';
+import {ChatType} from '../../../../../../redux/store';
 
 type ChatsProps = {
     chats: ChatType[]

@@ -1,7 +1,39 @@
 import {AppRootAction, PostType, ProfilePageType} from './store';
 import {v1} from 'uuid';
+import f1 from '../assets/images/friend1.jpg';
+import f2 from '../assets/images/friend2.jpg';
+import f3 from '../assets/images/friend3.jpg';
+import f4 from '../assets/images/friend4.jpg';
+import f5 from '../assets/images/friend5.jpg';
+import f6 from '../assets/images/friend6.jpg';
+import f7 from '../assets/images/friend7.jpg';
+import f8 from '../assets/images/friend8.jpg';
 
-export const profileReducer = (state: ProfilePageType, action: AppRootAction): ProfilePageType => {
+const initialState: ProfilePageType = {
+    posts: {
+        addedPosts: [
+            {id: v1(), title: 'Lorem ipsum dolor sit amet,', likesCount: 0},
+            {id: v1(), title: 'Lorem ipsum dolor sit amet,', likesCount: 0},
+            {id: v1(), title: ' consectetur adipisicing elit.', likesCount: 14},
+            {id: v1(), title: 'Adipisci cupiditate deserunt', likesCount: 2},
+            {id: v1(), title: 'explicabo iure laboriosam nam nostrum', likesCount: 10},
+            {id: v1(), title: '  reiciendis repellendus sed temporibus?', likesCount: 8},
+        ],
+        currentPostMessage: ''
+    },
+    friends: [
+        {id: v1(), firstName: 'Kristina', lastName: 'Ovsyannikova', avatar: f1},
+        {id: v1(), firstName: 'Anastasia', lastName: 'Sudakina', avatar: f2},
+        {id: v1(), firstName: 'Roman', lastName: 'Azarov', avatar: f3},
+        {id: v1(), firstName: 'Leonid', lastName: 'Gempel', avatar: f4},
+        {id: v1(), firstName: 'Evgeny', lastName: 'Andreev', avatar: f5},
+        {id: v1(), firstName: 'Marina', lastName: 'Bantser', avatar: f6},
+        {id: v1(), firstName: 'Ekaterina', lastName: 'Feyn', avatar: f7},
+        {id: v1(), firstName: 'Natasha', lastName: 'Vlasova', avatar: f8},
+    ]
+}
+
+export const profileReducer = (state: ProfilePageType = initialState, action: AppRootAction): ProfilePageType => {
     switch (action.type) {
         case 'ADD-POST': {
             const stateCopy = {...state}

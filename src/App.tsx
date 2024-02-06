@@ -7,11 +7,11 @@ import {RootStateType} from './redux/store';
 
 type AppProps = {
     state: RootStateType
-    dispatch:(action:any)=>void
+    dispatch: (action: any) => void
 }
 
 const App: React.FC<AppProps> = (props) => {
-    const {state,dispatch} = props;
+    const {state, dispatch} = props;
     return (
         <BrowserRouter>
             <div className="App">

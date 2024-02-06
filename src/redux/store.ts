@@ -111,17 +111,17 @@ export const store = {
             ],
             messages: {
                 addedMessages: [
-                    {id: v1(), text: 'Hi', time: '10:10 am', authorName: 'Darya', authorAvatar: f1},
+                    {id: v1(), text: 'Hi', time: '10:10', authorName: 'Darya', authorAvatar: f1},
                     {
                         id: v1(),
                         text: 'How is your IT-KAMASUTRA?',
-                        time: '10:14 am',
+                        time: '10:14',
                         authorName: 'Darya',
                         authorAvatar: f1
                     },
-                    {id: v1(), text: 'Hi', time: '10:20 am', authorName: 'Darya', authorAvatar: f1},
-                    {id: v1(), text: 'Hi', time: '10:52 am', authorName: 'Darya', authorAvatar: f1},
-                    {id: v1(), text: 'Hi', time: '11:17 am', authorName: 'Darya', authorAvatar: f1},
+                    {id: v1(), text: 'Hi', time: '10:20', authorName: 'Darya', authorAvatar: f1},
+                    {id: v1(), text: 'Hi', time: '10:52', authorName: 'Darya', authorAvatar: f1},
+                    {id: v1(), text: 'Hi', time: '11:17', authorName: 'Darya', authorAvatar: f1},
                 ],
                 currentDialogMessage: ''
             }

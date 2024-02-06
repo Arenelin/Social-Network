@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import {AppRootAction, MessageType} from '../../../../../../redux/store';
 import {Message} from './message/Message';
 import {addMessage, changeDialogMessage} from '../../../../../../redux/messengerReducer';
+import {NavLink} from 'react-router-dom';
 
 type DialogProps = {
     messages: MessageType[]
@@ -24,13 +25,13 @@ export const Dialog: React.FC<DialogProps> = (props) => {
                  time={m.time}
                  authorAvatar={m.authorAvatar}
         />)
-    const refTextArea = useRef<HTMLTextAreaElement>(null)
+    const refTextArea = useRef<HTMLInputElement>(null)
     const onChangeHandler = () => {
         if (refTextArea.current !== null) {
             dispatch(changeDialogMessage(refTextArea.current.value))
         }
     }
-    const addNewMessage = (e: KeyboardEvent<HTMLTextAreaElement>) => {
+    const addNewMessage = (e: KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter' && refTextArea.current?.value.trim()) {
             dispatch(addMessage())
         }
@@ -41,10 +42,19 @@ export const Dialog: React.FC<DialogProps> = (props) => {
                 <PageBlockLeft>
                     <GeneralBlockWrapper>
                         <DialogBoard>
-                            <HeaderDialogBoard>Darya Akmaykina</HeaderDialogBoard>
+                            <HeaderDialogBoard>
+                                <NavLink to={'/messenger'}>Back</NavLink>
+                                <InterlocutorInfo>
+                                    <InterlocutorName>{'Darya Akmaykina'}</InterlocutorName>
+                                    <OnlineTime>{'last seen today at 07:15'}</OnlineTime>
+                                </InterlocutorInfo>
+                                Button
+                                Button
+                                Button
+                            </HeaderDialogBoard>
                             <BodyDialogBoard>{listMessages}</BodyDialogBoard>
                             <MessageForm>
-                                <textarea
+                                <input
                                     value={currentDialogMessage}
                                     ref={refTextArea}
                                     onChange={onChangeHandler}
@@ -73,11 +83,34 @@ const DialogBoard = styled.div`
     align-items: center;
 `
 const HeaderDialogBoard = styled.div`
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 1px solid grey;
+`
+
+const BodyDialogBoard = styled.ul`
+    max-width: 430px;
+    //width: 100%;
+    padding: 0 40px;
+    
+`
+
+const InterlocutorInfo = styled.div`
+    padding: 8px 0 4px;
+`
+
+const OnlineTime = styled.div`
+    color: #626d7a;
+    font-size: 12px;
+    line-height: 17px;
+`
+const InterlocutorName = styled.div`
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+`
+
+const MessageForm = styled.div`
 
 `
-const BodyDialogBoard = styled.div``
-
-const MessageForm = styled.form`
-
-`
-// <NavLink to={'/messenger'}>Back</NavLink>

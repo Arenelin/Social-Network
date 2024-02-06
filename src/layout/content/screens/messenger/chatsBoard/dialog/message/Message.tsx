@@ -21,24 +21,34 @@ export const Message: React.FC<MessageProps> = (props) => {
 };
 
 const StylesMessage = styled.li`
-display: flex;
+    display: flex;
+    margin-bottom: 12px;
+    padding-top: 6px;
 `
 const AuthorAvatar = styled.img`
-width: 36px;
+    width: 36px;
     height: 36px;
     object-fit: cover;
     border-radius: 50%;
 `
 const AuthorName = styled.span`
-
+color: #2a5885;
+    line-height: 13px;
+    font-weight: 700;
+    font-size: 13px;
 `
 const TimeMessage = styled.span`
-
+color: #818c99;
+    line-height: 17px;
+    font-size: 12px;
+    margin-left: 8px;
 `
 const MessageText = styled.p`
-
+padding-top: 2px;
+  
 `
 const MessageWrapper = styled.div`
+    margin-left: 15px;
 
 `
 const InfoMessageWrapper = styled.div`

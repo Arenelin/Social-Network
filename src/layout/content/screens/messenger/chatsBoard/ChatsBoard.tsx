@@ -16,7 +16,6 @@ export const ChatsBoard: React.FC<ChatsBoardProps> = (props) => {
             <GeneralBlockWrapper>
                 <SearchChat/>
                 <Chats chats={state.chats}/>
-
             </GeneralBlockWrapper>
         </StyledChatsBoard>
     );

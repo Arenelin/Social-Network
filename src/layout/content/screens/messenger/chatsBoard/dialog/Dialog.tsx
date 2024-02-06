@@ -5,19 +5,19 @@ import {FilterChats} from '../../filterChats/FilterChats';
 import {FlexWrapper} from '../../../../../../components/FlexWrapper';
 import {GeneralBlockWrapper} from '../../../../../../components/blockWrappers/generalBlockWrapper/GeneralBlockWrapper';
 import styled from 'styled-components';
-import {AppRootAction, MessageType} from '../../../../../../redux/store';
+import {MessageType} from '../../../../../../redux/store';
 import {Message} from './message/Message';
-import {addMessage, changeDialogMessage} from '../../../../../../redux/messengerReducer';
 import {NavLink} from 'react-router-dom';
 
 type DialogProps = {
     messages: MessageType[]
     currentDialogMessage: string
-    dispatch: (action: AppRootAction) => void
+    changeMessageOfDialog: (value: string) => void
+    addMessage: () => void
 }
 
 export const Dialog: React.FC<DialogProps> = (props) => {
-    const {messages, currentDialogMessage, dispatch} = props;
+    const {messages, currentDialogMessage, addMessage, changeMessageOfDialog} = props;
     const listMessages: JSX.Element[] = messages.map(m =>
         <Message key={m.id}
                  text={m.text}
@@ -28,12 +28,12 @@ export const Dialog: React.FC<DialogProps> = (props) => {
     const refTextArea = useRef<HTMLInputElement>(null)
     const onChangeHandler = () => {
         if (refTextArea.current !== null) {
-            dispatch(changeDialogMessage(refTextArea.current.value))
+            changeMessageOfDialog(refTextArea.current.value)
         }
     }
     const addNewMessage = (e: KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter' && refTextArea.current?.value.trim()) {
-            dispatch(addMessage())
+            addMessage()
         }
     }
     return (
@@ -93,7 +93,7 @@ const BodyDialogBoard = styled.ul`
     max-width: 430px;
     //width: 100%;
     padding: 0 40px;
-    
+
 `
 
 const InterlocutorInfo = styled.div`

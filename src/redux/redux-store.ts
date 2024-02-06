@@ -8,3 +8,5 @@ const rootReducer = combineReducers({
 })
 
 export const store = createStore(rootReducer)
+
+export type AppRootReducerType = ReturnType<typeof rootReducer>

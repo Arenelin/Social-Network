@@ -11,9 +11,7 @@ const rerenderEntireTree = (state: RootStateType) => {
     ReactDOM.render(
         <>
             <GlobalStyle/>
-            <App state={state}
-                 dispatch={store.dispatch.bind(store)}
-            />
+            <App state={state} store={store}/>
         </>,
         document.getElementById('root')
     );

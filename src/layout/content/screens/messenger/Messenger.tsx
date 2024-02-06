@@ -5,10 +5,13 @@ import {PageBlockLeft} from '../../../../components/blockWrappers/pageBlockLeft/
 import {PageBlockRight} from '../../../../components/blockWrappers/pageBlockRight/PageBlockRight';
 import {ChatsBoard} from './chatsBoard/ChatsBoard';
 import {FilterChats} from './filterChats/FilterChats';
-import {MessengerPageType} from '../../../../redux/store';
+import {AppRootAction, MessengerPageType} from '../../../../redux/store';
+import {EmptyObject, Store} from 'redux';
+import {AppRootReducerType} from '../../../../redux/redux-store';
 
 type MessengerProps = {
     state: MessengerPageType
+    store: Store<EmptyObject & AppRootReducerType, AppRootAction>
 }
 
 export const Messenger: React.FC<MessengerProps> = (props) => {

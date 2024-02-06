@@ -8,48 +8,45 @@ import {Messenger} from './screens/messenger/Messenger';
 import {S} from './Content_Styles'
 import React from 'react';
 import {AppRootAction, RootStateType} from '../../redux/store';
-import {Dialog} from './screens/messenger/chatsBoard/dialog/Dialog';
 import {Music} from './screens/music/Music/Music';
+import {DialogContainer} from './screens/messenger/chatsBoard/dialog/DialogContainer';
+import {EmptyObject, Store} from 'redux';
+import {AppRootReducerType} from '../../redux/redux-store';
 
 type ContentProps = {
     state: RootStateType
-    dispatch:(action:AppRootAction)=>void
+    store: Store<EmptyObject & AppRootReducerType, AppRootAction>
 }
 
 export const Content: React.FC<ContentProps> = (props) => {
-    const {state, dispatch} = props;
+    const {state, store} = props;
     return (
         <S.Content>
             <Container>
                 <FlexWrapper gap={'6px'}>
                     <Aside/>
                     <S.ScreensWrapper>
-                        <Route path="/profile" render={() =>
-                            <Profile
-                                state={state.profilePage}
-                                dispatch={dispatch}
-                            />}/>
-                        <Route exact path="/messenger" render={() => <Messenger state={state.messengerPage}/>}/>
-                        <Route path="/friends" render={() => <Friends/>}/>
-                        <Route path="/audios" render={() => <Music/>}/>
-                        <Route path="/messenger/1" render={() =>
-                            <Dialog messages={state.messengerPage.messages.addedMessages}
-                                    currentDialogMessage={state.messengerPage.messages.currentDialogMessage}
-                                    dispatch={dispatch}
-                            />}/>
-                        <Route path="/messenger/2" render={() =>
-                            <Dialog messages={state.messengerPage.messages.addedMessages}
-                                    currentDialogMessage={state.messengerPage.messages.currentDialogMessage}
-                                    dispatch={dispatch}
-                            />}/>
-                        <Route path="/messenger/3" render={() =>
-                            <Dialog messages={state.messengerPage.messages.addedMessages}
-                                    currentDialogMessage={state.messengerPage.messages.currentDialogMessage}
-                                    dispatch={dispatch}
-                            />}/>
+                         <Route path="/profile" render={() =>
+                             <Profile state={state.profilePage} store={store}/>}
+                         />
+                         <Route exact path="/messenger" render={() =>
+                             <Messenger state={state.messengerPage} store={store}/>}
+                         />
+                         <Route path="/friends" render={() => <Friends/>}/>
+                         <Route path="/audios" render={() => <Music/>}/>
+                         <Route path="/messenger/1" render={() =>
+                             <DialogContainer store={store}/>}
+                         />
+                         <Route path="/messenger/2" render={() =>
+                             <DialogContainer store={store}/>}
+                         />
+                         <Route path="/messenger/3" render={() =>
+                             <DialogContainer store={store}/>}
+                         />
                     </S.ScreensWrapper>
                 </FlexWrapper>
             </Container>
         </S.Content>
     )
 }
+

@@ -1,52 +1,54 @@
 import {Container} from '../../components/Container';
 import {FlexWrapper} from '../../components/FlexWrapper';
-import {Profile} from './screens/profile/Profile';
 import {Aside} from './sidebar/Aside';
-import {Route} from 'react-router-dom';
-import {Friends} from './screens/friends/Friends/Friends';
-import {Messenger} from './screens/messenger/Messenger';
+import {Navigate, Route, Routes} from 'react-router-dom';
 import {S} from './Content_Styles'
 import React from 'react';
-import {AppRootAction, RootStateType} from '../../redux/store';
-import {Music} from './screens/music/Music/Music';
-import {DialogContainer} from './screens/messenger/chatsBoard/dialog/DialogContainer';
+import {AppRootAction} from '../../redux/store';
 import {EmptyObject, Store} from 'redux';
 import {AppRootReducerType} from '../../redux/redux-store';
+import {News} from './screens/news/News/News';
+import {Profile} from './screens/profile/Profile';
+import {Messenger} from './screens/messenger/Messenger';
+import {Friends} from './screens/friends/Friends/Friends';
+import {Music} from './screens/music/Music/Music';
+import {Error404} from './screens/error/Error404/Error404';
 
 type ContentProps = {
-    state: RootStateType
     store: Store<EmptyObject & AppRootReducerType, AppRootAction>
 }
 
+const PATH = {
+    FEED: '/feed',
+    PROFILE: '/profile',
+    MESSENGER: '/messenger/*',
+    FRIENDS: '/friends',
+    MUSIC: '/audios',
+    ERROR: '/error404'
+} as const
+
 export const Content: React.FC<ContentProps> = (props) => {
-    const {state, store} = props;
+    const {store} = props;
     return (
         <S.Content>
             <Container>
                 <FlexWrapper gap={'6px'}>
                     <Aside/>
                     <S.ScreensWrapper>
-                         <Route path="/profile" render={() =>
-                             <Profile state={state.profilePage} store={store}/>}
-                         />
-                         <Route exact path="/messenger" render={() =>
-                             <Messenger state={state.messengerPage} store={store}/>}
-                         />
-                         <Route path="/friends" render={() => <Friends/>}/>
-                         <Route path="/audios" render={() => <Music/>}/>
-                         <Route path="/messenger/1" render={() =>
-                             <DialogContainer store={store}/>}
-                         />
-                         <Route path="/messenger/2" render={() =>
-                             <DialogContainer store={store}/>}
-                         />
-                         <Route path="/messenger/3" render={() =>
-                             <DialogContainer store={store}/>}
-                         />
+                        <Routes>
+                            <Route path={'/'} element={<Navigate to={PATH.FEED}/>}/>
+                            <Route path={PATH.FEED} element={<News/>}/>
+                            <Route path={PATH.PROFILE} element={<Profile store={store}/>}/>
+                            <Route path={PATH.MESSENGER} element={<Messenger store={store}/>}/>
+                            <Route path={PATH.FRIENDS} element={<Friends/>}/>
+                            <Route path={PATH.MUSIC} element={<Music/>}/>
+
+                            <Route path={'*'} element={<Navigate to={PATH.ERROR}/>}/>
+                            <Route path={PATH.ERROR} element={<Error404/>}/>
+                        </Routes>
                     </S.ScreensWrapper>
                 </FlexWrapper>
             </Container>
         </S.Content>
     )
 }
-

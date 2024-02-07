@@ -2,20 +2,22 @@ import React from 'react';
 import styled from 'styled-components';
 import {GeneralBlockWrapper} from '../../../../../components/blockWrappers/generalBlockWrapper/GeneralBlockWrapper';
 import {SearchChat} from './searchChat/SearchChat';
-import {Chats} from './chats/Chats';
-import {MessengerPageType} from '../../../../../redux/store';
+import {AppRootAction} from '../../../../../redux/store';
+import {EmptyObject, Store} from 'redux';
+import {AppRootReducerType} from '../../../../../redux/redux-store';
+import {ChatsContainer} from './ChatsContainer';
 
 type ChatsBoardProps = {
-    state: MessengerPageType
+    store: Store<EmptyObject & AppRootReducerType, AppRootAction>
 }
 
 export const ChatsBoard: React.FC<ChatsBoardProps> = (props) => {
-    const {state} = props;
+    const {store} = props;
     return (
         <StyledChatsBoard>
             <GeneralBlockWrapper>
                 <SearchChat/>
-                <Chats chats={state.chats}/>
+                <ChatsContainer store={store}/>
             </GeneralBlockWrapper>
         </StyledChatsBoard>
     );

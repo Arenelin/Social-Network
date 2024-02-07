@@ -3,29 +3,28 @@ import {AboutUser} from './about/About';
 import {FlexWrapper} from '../../../../components/FlexWrapper';
 import React from 'react';
 import {UserBoard} from './userBoard/UserBoard';
-import {UserActivity} from './userActivity/UserActivity';
 import {PageBlockLeft} from '../../../../components/blockWrappers/pageBlockLeft/PageBlockLeft';
 import {PageBlockRight} from '../../../../components/blockWrappers/pageBlockRight/PageBlockRight';
-import {AppRootAction, ProfilePageType} from '../../../../redux/store';
+import {AppRootAction} from '../../../../redux/store';
 import {EmptyObject, Store} from 'redux';
 import {AppRootReducerType} from '../../../../redux/redux-store';
+import {UserActivityContainer} from './userActivity/UserActivityContainer';
 
 type ProfileProps = {
-    state: ProfilePageType
     store: Store<EmptyObject & AppRootReducerType, AppRootAction>
 }
 
 export const Profile: React.FC<ProfileProps> = (props) => {
-    const {state, store} = props;
+    const {store} = props;
     return (
         <StyledMain>
             <AboutUser/>
             <FlexWrapper gap={'16px'}>
                 <PageBlockLeft>
-                    <UserBoard posts={state.posts.addedPosts} store={store}/>
+                    <UserBoard store={store}/>
                 </PageBlockLeft>
                 <PageBlockRight>
-                    <UserActivity friends={state.friends}/>
+                    <UserActivityContainer store={store}/>
                 </PageBlockRight>
             </FlexWrapper>
         </StyledMain>

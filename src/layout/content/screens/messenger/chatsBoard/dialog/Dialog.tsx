@@ -1,7 +1,5 @@
 import React, {KeyboardEvent, useRef} from 'react';
 import {PageBlockLeft} from '../../../../../../components/blockWrappers/pageBlockLeft/PageBlockLeft';
-import {PageBlockRight} from '../../../../../../components/blockWrappers/pageBlockRight/PageBlockRight';
-import {FilterChats} from '../../filterChats/FilterChats';
 import {FlexWrapper} from '../../../../../../components/FlexWrapper';
 import {GeneralBlockWrapper} from '../../../../../../components/blockWrappers/generalBlockWrapper/GeneralBlockWrapper';
 import styled from 'styled-components';
@@ -66,9 +64,6 @@ export const Dialog: React.FC<DialogProps> = (props) => {
                         </DialogBoard>
                     </GeneralBlockWrapper>
                 </PageBlockLeft>
-                <PageBlockRight>
-                    <FilterChats/>
-                </PageBlockRight>
             </FlexWrapper>
         </div>
     );

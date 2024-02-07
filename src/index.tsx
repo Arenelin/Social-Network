@@ -11,12 +11,12 @@ const rerenderEntireTree = (state: RootStateType) => {
     ReactDOM.render(
         <>
             <GlobalStyle/>
-            <App state={state} store={store}/>
+            <App store={store}/>
         </>,
         document.getElementById('root')
     );
 }
-const subscriber = ()=>{
+const subscriber = () => {
     const actualState = store.getState()
     rerenderEntireTree(actualState)
 }

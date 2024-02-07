@@ -1,13 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import {NavigationUserPosts} from './navigationUserPosts/NavigationUserPosts';
-import {AppRootAction} from '../../../../../../../redux/store';
 import {AllUserPostsContainer} from './allUserPosts/AllUserPostsContainer';
 import {EmptyObject, Store} from 'redux';
-import {AppRootReducerType} from '../../../../../../../redux/redux-store';
+import {AllActionsType, AppRootReducerType} from '../../../../../../../redux/redux-store';
 
 type UserPostsProps = {
-    store: Store<EmptyObject & AppRootReducerType, AppRootAction>
+    store: Store<EmptyObject & AppRootReducerType, AllActionsType>
 }
 
 export const UserPosts: React.FC<UserPostsProps> = (props) => {

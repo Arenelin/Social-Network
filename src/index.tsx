@@ -1,12 +1,11 @@
 import './index.css';
-import {RootStateType} from './redux/store';
-import {store} from './redux/redux-store'
+import {AppRootReducerType, store} from './redux/redux-store'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import {GlobalStyle} from './styles/Global.styled';
 
-const rerenderEntireTree = (state: RootStateType) => {
+const rerenderEntireTree = (state: AppRootReducerType) => {
     debugger
     ReactDOM.render(
         <>

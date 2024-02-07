@@ -5,13 +5,12 @@ import React from 'react';
 import {UserBoard} from './userBoard/UserBoard';
 import {PageBlockLeft} from '../../../../components/blockWrappers/pageBlockLeft/PageBlockLeft';
 import {PageBlockRight} from '../../../../components/blockWrappers/pageBlockRight/PageBlockRight';
-import {AppRootAction} from '../../../../redux/store';
 import {EmptyObject, Store} from 'redux';
-import {AppRootReducerType} from '../../../../redux/redux-store';
+import {AllActionsType, AppRootReducerType} from '../../../../redux/redux-store';
 import {UserActivityContainer} from './userActivity/UserActivityContainer';
 
 type ProfileProps = {
-    store: Store<EmptyObject & AppRootReducerType, AppRootAction>
+    store: Store<EmptyObject & AppRootReducerType, AllActionsType>
 }
 
 export const Profile: React.FC<ProfileProps> = (props) => {

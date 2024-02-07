@@ -2,13 +2,12 @@ import React from 'react';
 import './App.css';
 import {Header} from './layout/header/Header';
 import {Content} from './layout/content/Content';
-import {AppRootAction} from './redux/store';
-import {AppRootReducerType} from './redux/redux-store';
+import {AllActionsType, AppRootReducerType} from './redux/redux-store';
 import {EmptyObject, Store} from 'redux';
 import {HashRouter} from 'react-router-dom';
 
 type AppProps = {
-    store: Store<EmptyObject & AppRootReducerType, AppRootAction>
+    store: Store<EmptyObject & AppRootReducerType, AllActionsType>
 }
 
 const App: React.FC<AppProps> = (props) => {

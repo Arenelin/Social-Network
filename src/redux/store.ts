@@ -7,11 +7,10 @@ import f5 from '../assets/images/friend5.jpg'
 import f6 from '../assets/images/friend6.jpg'
 import f7 from '../assets/images/friend7.jpg'
 import f8 from '../assets/images/friend8.jpg'
-import {AddPost, ChangePostMessage, profileReducer} from './profileReducer';
-import {AddMessage, ChangeDialogMessage, messengerReducer} from './messengerReducer';
+// import {AddMessage, ChangeDialogMessage} from './chatsReducer';
 
 export type ChatType = {
-    id: number
+    id: string
     authorName: string
     lastMessage: string
     date: string
@@ -40,7 +39,6 @@ export type MessageType = {
 
 export type MessagesType = {
     addedMessages: MessageType[]
-    currentDialogMessage: string
 }
 
 export type MessengerPageType = {
@@ -136,11 +134,11 @@ export const store = {
     getState() {
         return this._state;
     },
-    dispatch(action: AppRootAction) {
-        this._state.profilePage = profileReducer(this._state.profilePage, action)
-        this._state.messengerPage = messengerReducer(this._state.messengerPage, action)
-        this._callSubscriber(this._state);
-    }
+    // dispatch(action: AppRootAction) {
+        // this._state.profilePage = profileReducer(this._state.profilePage, action)
+        // this._state.messengerPage = chatsReducer(this._state.messengerPage, action)
+        // this._callSubscriber(this._state);
+    // }
 }
 
-export type AppRootAction = AddPost | ChangePostMessage | AddMessage | ChangeDialogMessage
+// export type AppRootAction = AddPost | ChangePostMessage | AddMessage | ChangeDialogMessage

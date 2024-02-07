@@ -5,14 +5,12 @@ import {PageBlockLeft} from '../../../../components/blockWrappers/pageBlockLeft/
 import {PageBlockRight} from '../../../../components/blockWrappers/pageBlockRight/PageBlockRight';
 import {ChatsBoard} from './chatsBoard/ChatsBoard';
 import {FilterChats} from './filterChats/FilterChats';
-import {AppRootAction} from '../../../../redux/store';
 import {EmptyObject, Store} from 'redux';
-import {AppRootReducerType} from '../../../../redux/redux-store';
-import {DialogContainer} from './chatsBoard/dialog/DialogContainer';
-import {Route, Routes} from 'react-router-dom';
+import {AllActionsType, AppRootReducerType} from '../../../../redux/redux-store';
+import {Outlet} from 'react-router-dom';
 
 type MessengerProps = {
-    store: Store<EmptyObject & AppRootReducerType, AppRootAction>
+    store: Store<EmptyObject & AppRootReducerType, AllActionsType>
 }
 
 export const Messenger: React.FC<MessengerProps> = (props) => {
@@ -23,11 +21,7 @@ export const Messenger: React.FC<MessengerProps> = (props) => {
             <FlexWrapper gap={'16px'}>
                 <PageBlockLeft>
                     <ChatsBoard store={store}/>
-                    <Routes>
-                        <Route path={"1"} element={<DialogContainer store={store}/>}/>
-                        <Route path={"2"} element={<DialogContainer store={store}/>}/>
-                        <Route path={"3"} element={<DialogContainer store={store}/>}/>
-                    </Routes>
+                    <Outlet/>
                 </PageBlockLeft>
                 <PageBlockRight>
                     <FilterChats/>

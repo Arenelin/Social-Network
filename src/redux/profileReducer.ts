@@ -1,4 +1,4 @@
-import {AppRootAction, PostType, ProfilePageType} from './store';
+import {PostType, ProfilePageType} from './store';
 import {v1} from 'uuid';
 import f1 from '../assets/images/friend1.jpg';
 import f2 from '../assets/images/friend2.jpg';
@@ -33,7 +33,7 @@ const initialState: ProfilePageType = {
     ]
 }
 
-export const profileReducer = (state: ProfilePageType = initialState, action: AppRootAction): ProfilePageType => {
+export const profileReducer = (state: ProfilePageType = initialState, action: ProfileActions): ProfilePageType => {
     switch (action.type) {
         case 'ADD-POST': {
             const stateCopy = {...state}
@@ -57,6 +57,8 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Ap
         }
     }
 }
+
+export type ProfileActions = AddPost | ChangePostMessage
 
 export type AddPost = ReturnType<typeof addPost>
 export type ChangePostMessage = ReturnType<typeof changePostMessage>

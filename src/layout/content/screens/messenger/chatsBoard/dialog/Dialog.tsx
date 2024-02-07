@@ -1,4 +1,4 @@
-import React, {KeyboardEvent, useRef} from 'react';
+import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 import {PageBlockLeft} from '../../../../../../components/blockWrappers/pageBlockLeft/PageBlockLeft';
 import {FlexWrapper} from '../../../../../../components/FlexWrapper';
 import {GeneralBlockWrapper} from '../../../../../../components/blockWrappers/generalBlockWrapper/GeneralBlockWrapper';
@@ -9,29 +9,25 @@ import {NavLink} from 'react-router-dom';
 
 type DialogProps = {
     messages: MessageType[]
-    currentDialogMessage: string
-    changeMessageOfDialog: (value: string) => void
-    addMessage: () => void
+    addMessage: (messageText: string) => void
 }
 
 export const Dialog: React.FC<DialogProps> = (props) => {
-    const {messages, currentDialogMessage, addMessage, changeMessageOfDialog} = props;
-    const listMessages: JSX.Element[] = messages.map(m =>
+    const {messages, addMessage} = props;
+    const listMessages: JSX.Element[] = messages?.map(m =>
         <Message key={m.id}
                  text={m.text}
                  authorName={m.authorName}
                  time={m.time}
                  authorAvatar={m.authorAvatar}
         />)
-    const refTextArea = useRef<HTMLInputElement>(null)
-    const onChangeHandler = () => {
-        if (refTextArea.current !== null) {
-            changeMessageOfDialog(refTextArea.current.value)
-        }
+    const [message, setMessage] = useState<string>('')
+    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        setMessage(e.currentTarget.value)
     }
     const addNewMessage = (e: KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === 'Enter' && refTextArea.current?.value.trim()) {
-            addMessage()
+        if (message.trim() && e.key === 'Enter') {
+            addMessage(message)
         }
     }
     return (
@@ -53,8 +49,7 @@ export const Dialog: React.FC<DialogProps> = (props) => {
                             <BodyDialogBoard>{listMessages}</BodyDialogBoard>
                             <MessageForm>
                                 <input
-                                    value={currentDialogMessage}
-                                    ref={refTextArea}
+                                    value={message}
                                     onChange={onChangeHandler}
                                     onKeyPress={addNewMessage}
                                     autoFocus

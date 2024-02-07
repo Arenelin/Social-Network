@@ -1,12 +1,16 @@
 import {combineReducers, createStore} from 'redux';
-import {profileReducer} from './profileReducer';
-import {messengerReducer} from './messengerReducer';
+import {ProfileActions, profileReducer} from './profileReducer';
+import {ChatsActions, chatsReducer} from './chatsReducer';
+import {MessagesActions, messagesReducer} from './messagesReducer';
 
 const rootReducer = combineReducers({
     profilePage: profileReducer,
-    messengerPage: messengerReducer
+    chats: chatsReducer,
+    messages: messagesReducer
 })
 
 export const store = createStore(rootReducer)
 
 export type AppRootReducerType = ReturnType<typeof rootReducer>
+
+export type AllActionsType = MessagesActions | ChatsActions | ProfileActions

@@ -1,18 +1,15 @@
 import React from 'react';
 import {EmptyObject, Store} from 'redux';
-import {AppRootReducerType} from '../../../../../redux/redux-store';
-import {AppRootAction} from '../../../../../redux/store';
+import {AllActionsType, AppRootReducerType} from '../../../../../redux/redux-store';
 import {Chats} from './chats/Chats';
 
 type ChatsProps = {
-    store: Store<EmptyObject & AppRootReducerType, AppRootAction>
+    store: Store<EmptyObject & AppRootReducerType, AllActionsType>
 }
 
 export const ChatsContainer: React.FC<ChatsProps> = (props) => {
     const {store} = props;
-    const chats = store.getState().messengerPage.chats
+    const chats = store.getState().chats
 
-    return (
-        <Chats chats={chats}/>
-    );
+    return <Chats chats={chats}/>
 };

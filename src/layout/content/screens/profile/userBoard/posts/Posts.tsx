@@ -1,13 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import {UserPosts} from './userPosts/UserPosts';
-import {AppRootAction} from '../../../../../../redux/store';
 import {UserFormPostContainer} from './userFormPost/UserFormPostContainer';
 import {EmptyObject, Store} from 'redux';
-import {AppRootReducerType} from '../../../../../../redux/redux-store';
+import {AllActionsType, AppRootReducerType} from '../../../../../../redux/redux-store';
 
 type PostsProps = {
-    store: Store<EmptyObject & AppRootReducerType, AppRootAction>
+    store: Store<EmptyObject & AppRootReducerType, AllActionsType>
 }
 
 export const Posts: React.FC<PostsProps> = (props) => {

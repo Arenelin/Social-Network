@@ -1,12 +1,11 @@
 import React from 'react';
-import {AppRootAction} from '../../../../../../../redux/store';
 import {addPost, changePostMessage} from '../../../../../../../redux/profileReducer';
 import {UserFormPost} from './UserFormPost';
 import {EmptyObject, Store} from 'redux';
-import {AppRootReducerType} from '../../../../../../../redux/redux-store';
+import {AllActionsType, AppRootReducerType} from '../../../../../../../redux/redux-store';
 
 type UserFormPostProps = {
-    store: Store<EmptyObject & AppRootReducerType, AppRootAction>
+    store: Store<EmptyObject & AppRootReducerType, AllActionsType>
 };
 
 export const UserFormPostContainer: React.FC<UserFormPostProps> = (props) => {

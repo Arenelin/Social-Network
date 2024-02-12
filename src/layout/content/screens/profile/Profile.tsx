@@ -5,25 +5,20 @@ import React from 'react';
 import {UserBoard} from './userBoard/UserBoard';
 import {PageBlockLeft} from '../../../../components/blockWrappers/pageBlockLeft/PageBlockLeft';
 import {PageBlockRight} from '../../../../components/blockWrappers/pageBlockRight/PageBlockRight';
-import {EmptyObject, Store} from 'redux';
-import {AllActionsType, AppRootReducerType} from '../../../../redux/redux-store';
 import {UserActivityContainer} from './userActivity/UserActivityContainer';
 
-type ProfileProps = {
-    store: Store<EmptyObject & AppRootReducerType, AllActionsType>
-}
+type ProfileProps = {}
 
-export const Profile: React.FC<ProfileProps> = (props) => {
-    const {store} = props;
+export const Profile: React.FC<ProfileProps> = () => {
     return (
         <StyledMain>
             <AboutUser/>
             <FlexWrapper gap={'16px'}>
                 <PageBlockLeft>
-                    <UserBoard store={store}/>
+                    <UserBoard/>
                 </PageBlockLeft>
                 <PageBlockRight>
-                    <UserActivityContainer store={store}/>
+                    <UserActivityContainer/>
                 </PageBlockRight>
             </FlexWrapper>
         </StyledMain>

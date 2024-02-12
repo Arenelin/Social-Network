@@ -1,26 +1,29 @@
 import './index.css';
-import {AppRootReducerType, store} from './redux/redux-store'
+import {store} from './redux/redux-store'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import {GlobalStyle} from './styles/Global.styled';
+import {Provider} from './context/StoreContext';
 
-const rerenderEntireTree = (state: AppRootReducerType) => {
+const rerenderEntireTree = () => {
     debugger
     ReactDOM.render(
         <>
             <GlobalStyle/>
-            <App store={store}/>
+            <Provider store={store}>
+                <App/>
+            </Provider>
+
         </>,
         document.getElementById('root')
     );
 }
 const subscriber = () => {
-    const actualState = store.getState()
-    rerenderEntireTree(actualState)
+    rerenderEntireTree()
 }
 
-rerenderEntireTree(store.getState())
+rerenderEntireTree()
 
 store.subscribe(subscriber)
 

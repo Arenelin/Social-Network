@@ -2,19 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 import {Interests} from './interests/Interests';
 import {Posts} from './posts/Posts';
-import {EmptyObject, Store} from 'redux';
-import {AllActionsType, AppRootReducerType} from '../../../../../redux/redux-store';
 
-type UserBoardProps = {
-    store: Store<EmptyObject & AppRootReducerType, AllActionsType>
-}
+type UserBoardProps = {}
 
-export const UserBoard: React.FC<UserBoardProps> = (props) => {
-    const {store} = props;
+export const UserBoard: React.FC<UserBoardProps> = () => {
+
     return (
         <StyledUserBoard>
             <Interests/>
-            <Posts store={store}/>
+            <Posts/>
         </StyledUserBoard>
     );
 };

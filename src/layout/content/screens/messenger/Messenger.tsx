@@ -5,22 +5,17 @@ import {PageBlockLeft} from '../../../../components/blockWrappers/pageBlockLeft/
 import {PageBlockRight} from '../../../../components/blockWrappers/pageBlockRight/PageBlockRight';
 import {ChatsBoard} from './chatsBoard/ChatsBoard';
 import {FilterChats} from './filterChats/FilterChats';
-import {EmptyObject, Store} from 'redux';
-import {AllActionsType, AppRootReducerType} from '../../../../redux/redux-store';
 import {Outlet} from 'react-router-dom';
 
-type MessengerProps = {
-    store: Store<EmptyObject & AppRootReducerType, AllActionsType>
-}
+type MessengerProps = {}
 
-export const Messenger: React.FC<MessengerProps> = (props) => {
-    const {store} = props;
+export const Messenger: React.FC<MessengerProps> = () => {
 
     return (
         <StyledDialogs>
             <FlexWrapper gap={'16px'}>
                 <PageBlockLeft>
-                    <ChatsBoard store={store}/>
+                    <ChatsBoard/>
                     <Outlet/>
                 </PageBlockLeft>
                 <PageBlockRight>

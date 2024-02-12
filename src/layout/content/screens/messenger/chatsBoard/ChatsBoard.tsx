@@ -2,21 +2,17 @@ import React from 'react';
 import styled from 'styled-components';
 import {GeneralBlockWrapper} from '../../../../../components/blockWrappers/generalBlockWrapper/GeneralBlockWrapper';
 import {SearchChat} from './searchChat/SearchChat';
-import {EmptyObject, Store} from 'redux';
-import {AllActionsType, AppRootReducerType} from '../../../../../redux/redux-store';
 import {ChatsContainer} from './ChatsContainer';
 
-type ChatsBoardProps = {
-    store: Store<EmptyObject & AppRootReducerType, AllActionsType>
-}
+type ChatsBoardProps = {}
 
-export const ChatsBoard: React.FC<ChatsBoardProps> = (props) => {
-    const {store} = props;
+export const ChatsBoard: React.FC<ChatsBoardProps> = () => {
+
     return (
         <StyledChatsBoard>
             <GeneralBlockWrapper>
                 <SearchChat/>
-                <ChatsContainer store={store}/>
+                <ChatsContainer />
             </GeneralBlockWrapper>
         </StyledChatsBoard>
     );

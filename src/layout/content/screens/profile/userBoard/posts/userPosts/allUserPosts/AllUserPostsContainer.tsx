@@ -1,15 +1,17 @@
 import React from 'react';
-import {EmptyObject, Store} from 'redux';
-import {AllActionsType, AppRootReducerType} from '../../../../../../../../redux/redux-store';
 import {AllUserPosts} from './AllUserPosts';
+import {StoreContext} from '../../../../../../../../context/StoreContext';
 
-type AllUserProps = {
-    store: Store<EmptyObject & AppRootReducerType, AllActionsType>
-}
+type AllUserProps = {}
 
-export const AllUserPostsContainer: React.FC<AllUserProps> = (props) => {
-    const {store} = props;
-    const posts = store.getState().profilePage.posts.addedPosts
+export const AllUserPostsContainer: React.FC<AllUserProps> = () => {
 
-    return <AllUserPosts posts={posts}/>
+    return (
+        <StoreContext.Consumer>
+            {store => {
+                const posts = store.getState().profilePage.posts.addedPosts
+                return <AllUserPosts posts={posts}/>
+            }}
+        </StoreContext.Consumer>
+    )
 };

@@ -4,8 +4,6 @@ import {Aside} from './sidebar/Aside';
 import {Navigate, Route, Routes} from 'react-router-dom';
 import {S} from './Content_Styles'
 import React from 'react';
-import {EmptyObject, Store} from 'redux';
-import {AllActionsType, AppRootReducerType} from '../../redux/redux-store';
 import {News} from './screens/news/News/News';
 import {Profile} from './screens/profile/Profile';
 import {Messenger} from './screens/messenger/Messenger';
@@ -14,9 +12,7 @@ import {Music} from './screens/music/Music/Music';
 import {Error404} from './screens/error/Error404/Error404';
 import {DialogContainer} from './screens/messenger/chatsBoard/dialog/DialogContainer';
 
-type ContentProps = {
-    store: Store<EmptyObject & AppRootReducerType, AllActionsType>
-}
+type ContentProps = {}
 
 const PATH = {
     FEED: '/feed',
@@ -27,8 +23,8 @@ const PATH = {
     ERROR: '/error404'
 } as const
 
-export const Content: React.FC<ContentProps> = (props) => {
-    const {store} = props;
+export const Content: React.FC<ContentProps> = () => {
+
     return (
         <S.Content>
             <Container>
@@ -38,9 +34,9 @@ export const Content: React.FC<ContentProps> = (props) => {
                         <Routes>
                             <Route path={'/'} element={<Navigate to={PATH.FEED}/>}/>
                             <Route path={PATH.FEED} element={<News/>}/>
-                            <Route path={PATH.PROFILE} element={<Profile store={store}/>}/>
-                            <Route path={PATH.MESSENGER} element={<Messenger store={store}/>}>
-                                <Route path={':id'} element={<DialogContainer store={store}/>}/>
+                            <Route path={PATH.PROFILE} element={<Profile/>}/>
+                            <Route path={PATH.MESSENGER} element={<Messenger/>}>
+                                <Route path={':id'} element={<DialogContainer/>}/>
                             </Route>
                             <Route path={PATH.FRIENDS} element={<Friends/>}/>
                             <Route path={PATH.MUSIC} element={<Music/>}/>

@@ -2,20 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 import {NavigationUserPosts} from './navigationUserPosts/NavigationUserPosts';
 import {AllUserPostsContainer} from './allUserPosts/AllUserPostsContainer';
-import {EmptyObject, Store} from 'redux';
-import {AllActionsType, AppRootReducerType} from '../../../../../../../redux/redux-store';
 
-type UserPostsProps = {
-    store: Store<EmptyObject & AppRootReducerType, AllActionsType>
-}
+type UserPostsProps = {}
 
-export const UserPosts: React.FC<UserPostsProps> = (props) => {
-    const {store} = props;
+export const UserPosts: React.FC<UserPostsProps> = () => {
 
     return (
         <StyledUserPosts>
             <NavigationUserPosts/>
-            <AllUserPostsContainer store={store}/>
+            <AllUserPostsContainer/>
         </StyledUserPosts>
     );
 };

@@ -13,6 +13,7 @@ type MapDispatchProps = {
 
 export type DialogProps = MapStateProps & MapDispatchProps
 const mapStateToProps = (state: AppRootReducerType): MapStateProps => {
+    debugger
     return {
         messages: state.messages,
     }

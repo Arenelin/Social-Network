@@ -1,30 +1,23 @@
-import React from 'react';
-import {addPost, changePostMessage} from '../../../../../../../redux/profileReducer';
+import {addPost} from '../../../../../../../redux/profileReducer';
 import {UserFormPost} from './UserFormPost';
-import {StoreContext} from '../../../../../../../context/StoreContext';
+import {AppRootReducerType} from '../../../../../../../redux/redux-store';
+import {connect} from 'react-redux';
+import {Dispatch} from 'redux';
 
-type UserFormPostProps = {};
+export type UserFormPostProps = MapDispatchType
 
-export const UserFormPostContainer: React.FC<UserFormPostProps> = () => {
+type MapDispatchType = {
+    addNewPost: (value: string) => void
+}
+const mapStateToProps = (state: AppRootReducerType) => {
+    return {}
+}
 
-    return (
-        <StoreContext.Consumer>
-            {(store) => {
-                const dispatch = store.dispatch
-                const currentMessage = store.getState().profilePage.posts.currentPostMessage
-                const changeMessageOfPost = (value: string) => {
-                    dispatch(changePostMessage(value));
-                };
-                const addNewPost = () => {
-                    dispatch(addPost());
-                };
+const mapDispatchToProps = (dispatch: Dispatch): MapDispatchType => {
+    return {
+        addNewPost: (value: string) => dispatch(addPost(value))
+    }
+}
 
-                return <UserFormPost
-                    currentPostMessage={currentMessage}
-                    changeMessageOfPost={changeMessageOfPost}
-                    addNewPost={addNewPost}
-                />
-            }}
-        </StoreContext.Consumer>
-    );
-};
+export const UserFormPostContainer =
+    connect(mapStateToProps, mapDispatchToProps)(UserFormPost)

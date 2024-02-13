@@ -1,17 +1,22 @@
-import React from 'react';
 import {UserActivity} from './UserActivity';
-import {StoreContext} from '../../../../../context/StoreContext';
+import {AppRootReducerType} from '../../../../../redux/redux-store';
+import {connect} from 'react-redux';
+import {ProfilePageType} from '../../../../../redux/profileReducer';
+import {Dispatch} from 'redux';
 
-type UserActivityProps = {}
+type MapStateType = Omit<ProfilePageType, 'posts'>
 
-export const UserActivityContainer: React.FC<UserActivityProps> = () => {
+export type UserActivityProps = MapStateType
 
-    return (
-        <StoreContext.Consumer>
-            {store => {
-                const friends = store.getState().profilePage.friends
-                return <UserActivity friends={friends}/>
-            }}
-        </StoreContext.Consumer>
-    )
-};
+const mapStateToProps = (state: AppRootReducerType): MapStateType => {
+    return {
+        friends: state.profilePage.friends
+    }
+}
+
+const mapDispatchToProps = (dispatch: Dispatch) => {
+    return {}
+}
+
+export const UserActivityContainer =
+    connect(mapStateToProps, mapDispatchToProps)(UserActivity)

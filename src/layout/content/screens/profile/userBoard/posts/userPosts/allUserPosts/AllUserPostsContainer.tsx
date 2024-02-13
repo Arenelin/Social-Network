@@ -1,17 +1,22 @@
-import React from 'react';
 import {AllUserPosts} from './AllUserPosts';
-import {StoreContext} from '../../../../../../../../context/StoreContext';
+import {AppRootReducerType} from '../../../../../../../../redux/redux-store';
+import {connect} from 'react-redux';
+import {ProfilePageType} from '../../../../../../../../redux/profileReducer';
+import {Dispatch} from 'redux';
 
-type AllUserProps = {}
+type MapStateProps = Omit<ProfilePageType, 'friends'>
 
-export const AllUserPostsContainer: React.FC<AllUserProps> = () => {
+export type AllUserProps = MapStateProps
 
-    return (
-        <StoreContext.Consumer>
-            {store => {
-                const posts = store.getState().profilePage.posts.addedPosts
-                return <AllUserPosts posts={posts}/>
-            }}
-        </StoreContext.Consumer>
-    )
-};
+const mapStateToProps = (state: AppRootReducerType): MapStateProps => {
+    return {
+        posts: state.profilePage.posts,
+    }
+}
+
+const mapDispatchToProps = (dispatch: Dispatch) => {
+    return {}
+}
+
+export const AllUserPostsContainer =
+    connect(mapStateToProps, mapDispatchToProps)(AllUserPosts)

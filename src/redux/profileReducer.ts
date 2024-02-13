@@ -1,4 +1,3 @@
-import {PostType, ProfilePageType} from './store';
 import {v1} from 'uuid';
 import f1 from '../assets/images/friend1.jpg';
 import f2 from '../assets/images/friend2.jpg';
@@ -9,18 +8,33 @@ import f6 from '../assets/images/friend6.jpg';
 import f7 from '../assets/images/friend7.jpg';
 import f8 from '../assets/images/friend8.jpg';
 
-const initialState: ProfilePageType = {
-    posts: {
-        addedPosts: [
-            {id: v1(), title: 'Lorem ipsum dolor sit amet,', likesCount: 0},
-            {id: v1(), title: 'Lorem ipsum dolor sit amet,', likesCount: 0},
-            {id: v1(), title: ' consectetur adipisicing elit.', likesCount: 14},
-            {id: v1(), title: 'Adipisci cupiditate deserunt', likesCount: 2},
-            {id: v1(), title: 'explicabo iure laboriosam nam nostrum', likesCount: 10},
-            {id: v1(), title: '  reiciendis repellendus sed temporibus?', likesCount: 8},
-        ],
-        currentPostMessage: ''
-    },
+export type PostType = {
+    id: string
+    title: string
+    likesCount: number
+}
+
+export type FriendType = {
+    id: string
+    firstName: string
+    lastName: string
+    avatar: string
+}
+
+export type ProfilePageType = {
+    posts: PostType[]
+    friends: FriendType[]
+}
+
+const initialState = {
+    posts: [
+        {id: v1(), title: 'Lorem ipsum dolor sit amet,', likesCount: 0},
+        {id: v1(), title: 'Lorem ipsum dolor sit amet,', likesCount: 0},
+        {id: v1(), title: ' consectetur adipisicing elit.', likesCount: 14},
+        {id: v1(), title: 'Adipisci cupiditate deserunt', likesCount: 2},
+        {id: v1(), title: 'explicabo iure laboriosam nam nostrum', likesCount: 10},
+        {id: v1(), title: '  reiciendis repellendus sed temporibus?', likesCount: 8},
+    ] as PostType[],
     friends: [
         {id: v1(), firstName: 'Kristina', lastName: 'Ovsyannikova', avatar: f1},
         {id: v1(), firstName: 'Anastasia', lastName: 'Sudakina', avatar: f2},
@@ -30,27 +44,20 @@ const initialState: ProfilePageType = {
         {id: v1(), firstName: 'Marina', lastName: 'Bantser', avatar: f6},
         {id: v1(), firstName: 'Ekaterina', lastName: 'Feyn', avatar: f7},
         {id: v1(), firstName: 'Natasha', lastName: 'Vlasova', avatar: f8},
-    ]
+    ] as FriendType[]
 }
 
-export const profileReducer = (state: ProfilePageType = initialState, action: ProfileActions): ProfilePageType => {
+type InitialStateType = typeof initialState
+
+export const profileReducer = (state: InitialStateType = initialState, action: ProfileActions): InitialStateType => {
     switch (action.type) {
         case 'ADD-POST': {
-            const stateCopy = {...state}
             const newPost: PostType = {
                 id: v1(),
-                title: stateCopy.posts.currentPostMessage,
+                title: action.payload.value,
                 likesCount: 0
             }
-            stateCopy.posts.addedPosts =
-                [...stateCopy.posts.addedPosts, newPost]
-            stateCopy.posts.currentPostMessage = '';
-            return stateCopy;
-        }
-        case 'CHANGE-POST-MESSAGE': {
-            const stateCopy = {...state}
-            stateCopy.posts.currentPostMessage = action.payload.symbol;
-            return stateCopy;
+            return {...state, posts: [...state.posts, newPost]}
         }
         default: {
             return state;
@@ -58,17 +65,10 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Pr
     }
 }
 
-export type ProfileActions = AddPost | ChangePostMessage
+export type ProfileActions = AddPost
 
 export type AddPost = ReturnType<typeof addPost>
-export type ChangePostMessage = ReturnType<typeof changePostMessage>
 
-export const addPost = () => {
-    return {type: 'ADD-POST'} as const
-}
-export const changePostMessage = (symbol: string) => {
-    return {
-        type: 'CHANGE-POST-MESSAGE',
-        payload: {symbol}
-    } as const
+export const addPost = (value: string) => {
+    return {type: 'ADD-POST', payload: {value}} as const
 }

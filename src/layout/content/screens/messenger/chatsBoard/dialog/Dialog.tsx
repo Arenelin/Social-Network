@@ -3,31 +3,27 @@ import {PageBlockLeft} from '../../../../../../components/blockWrappers/pageBloc
 import {FlexWrapper} from '../../../../../../components/FlexWrapper';
 import {GeneralBlockWrapper} from '../../../../../../components/blockWrappers/generalBlockWrapper/GeneralBlockWrapper';
 import styled from 'styled-components';
-import {MessageType} from '../../../../../../redux/store';
 import {Message} from './message/Message';
 import {NavLink} from 'react-router-dom';
-
-type DialogProps = {
-    messages: MessageType[]
-    addMessage: (messageText: string) => void
-}
+import {DialogProps} from './DialogContainer';
 
 export const Dialog: React.FC<DialogProps> = (props) => {
     const {messages, addMessage} = props;
-    const listMessages: JSX.Element[] = messages?.map(m =>
+    const [message, setMessage] = useState<string>('')
+    const listMessages: JSX.Element[] = messages.map(m =>
         <Message key={m.id}
                  text={m.text}
                  authorName={m.authorName}
                  time={m.time}
                  authorAvatar={m.authorAvatar}
         />)
-    const [message, setMessage] = useState<string>('')
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setMessage(e.currentTarget.value)
     }
     const addNewMessage = (e: KeyboardEvent<HTMLInputElement>) => {
         if (message.trim() && e.key === 'Enter') {
             addMessage(message)
+            setMessage('')
         }
     }
     return (

@@ -1,17 +1,23 @@
-import React from 'react';
 import {Chats} from './chats/Chats';
-import {StoreContext} from '../../../../../context/StoreContext';
+import {connect} from 'react-redux';
+import {AppRootReducerType} from '../../../../../redux/redux-store';
+import {Dispatch} from 'redux';
+import {ChatType} from '../../../../../redux/messagesReducer';
 
-type ChatsProps = {}
+export type ChatsProps = MapStateType
 
-export const ChatsContainer: React.FC<ChatsProps> = () => {
+type MapStateType = {
+    chats: ChatType[]
+}
 
-    return (
-        <StoreContext.Consumer>
-            {store => {
-                const chats = store.getState().chats
-                return <Chats chats={chats}/>
-            }}
-        </StoreContext.Consumer>
-    )
-};
+const mapStateToProps = (state: AppRootReducerType): MapStateType => {
+    return {
+        chats: state.chats
+    }
+}
+
+const mapDispatchToProps = (dispatch: Dispatch) => {
+    return {}
+}
+
+export const ChatsContainer = connect(mapStateToProps, mapDispatchToProps)(Chats)

@@ -1,30 +1,29 @@
-import React from 'react';
 import {Dialog} from './Dialog';
-import {useParams} from 'react-router-dom';
-import {addMessage} from '../../../../../../redux/messagesReducer';
-import {StoreContext} from '../../../../../../context/StoreContext';
+import {addMessage, MessageType} from '../../../../../../redux/messagesReducer';
+import {AppRootReducerType} from '../../../../../../redux/redux-store';
+import {connect} from 'react-redux';
+import {Dispatch} from 'redux';
 
-type DialogProps = {}
-
-type MyParams = {
-    id: string
+type MapStateProps = {
+    messages: MessageType[],
+}
+type MapDispatchProps = {
+    addMessage: (messageText: string) => void
 }
 
-export const DialogContainer: React.FC<DialogProps> = () => {
-    const {id} = useParams<MyParams>() as MyParams
+export type DialogProps = MapStateProps & MapDispatchProps
+const mapStateToProps = (state: AppRootReducerType): MapStateProps => {
+    return {
+        messages: state.messages,
+    }
+}
 
-    return (
-        <StoreContext.Consumer>
-            {store => {
-                const nameAuthorOfMessage = store.getState().chats.filter(u => u.id === id)[0].authorName;
-                const dispatch = store.dispatch;
-                const messages = store.getState().messages[id].addedMessages;
-                const addMessageInDialog = (messageText: string) => {
-                    dispatch(addMessage(id, nameAuthorOfMessage, messageText));
-                }
+const mapDispatchToProps = (dispatch: Dispatch): MapDispatchProps => {
+    return {
+        addMessage: (messageText: string) =>
+            dispatch(addMessage(messageText))
+    }
+}
+export const DialogContainer = connect(mapStateToProps, mapDispatchToProps)(Dialog)
 
-                return <Dialog messages={messages} addMessage={addMessageInDialog}/>
-            }}
-        </StoreContext.Consumer>
-    )
-};
+

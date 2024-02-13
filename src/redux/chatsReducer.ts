@@ -1,5 +1,5 @@
-import {ChatType} from './store';
 import {v1} from 'uuid';
+import {ChatType} from './messagesReducer';
 
 export const userId_1 = v1()
 export const userId_2 = v1()

@@ -4,10 +4,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import {GlobalStyle} from './styles/Global.styled';
-import {Provider} from './context/StoreContext';
+import {Provider} from 'react-redux';
 
 const rerenderEntireTree = () => {
-    debugger
     ReactDOM.render(
         <>
             <GlobalStyle/>

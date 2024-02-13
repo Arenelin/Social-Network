@@ -1,27 +1,28 @@
-import React, {useRef} from 'react';
+import React, {ChangeEvent, useState} from 'react';
 import {S} from './UserFormPost_Styles';
 import {UniversalButton} from '../../../../../../../components/buttons/UniversalButton';
+import {UserFormPostProps} from './UserFormPostContainer';
 
-type UserFormPostProps = {
-    currentPostMessage: string
-    addNewPost: () => void
-    changeMessageOfPost: (value: string) => void
-}
 
 export const UserFormPost: React.FC<UserFormPostProps> = (props) => {
-    const {currentPostMessage, addNewPost, changeMessageOfPost} = props;
-    const refTextArea = useRef<HTMLTextAreaElement>(null);
+    const {addNewPost} = props;
+    const [postText, setPostText] = useState('')
 
-    const onChangeHandler = () => {
-        if (refTextArea.current !== null) {
-            changeMessageOfPost(refTextArea.current.value)
+    const onChangeHandler = (e:ChangeEvent<HTMLTextAreaElement>) => {
+        setPostText(e.currentTarget.value)
+    }
+
+    const addPost = () => {
+        if (postText.trim()) {
+            addNewPost(postText)
+            setPostText('')
         }
     }
 
     return (
         <S.UserFormPost>
-            <S.TextArea ref={refTextArea} onChange={onChangeHandler} value={currentPostMessage}/>
-            <UniversalButton callback={addNewPost} type={'sec-ry'} name={'Post'}/>
+            <S.TextArea onChange={onChangeHandler} value={postText}/>
+            <UniversalButton callback={addPost} type={'sec-ry'} name={'Post'}/>
         </S.UserFormPost>
     );
 };

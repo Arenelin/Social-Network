@@ -4,13 +4,9 @@ import {GeneralBlockWrapper} from '../../../../../components/blockWrappers/gener
 import {PlaceholderNoInformation} from '../../../../../components/placeholders/noInformation/PlaceholderNoInformation';
 import {S} from './UserActivity_Styles';
 import {UniversalButton} from '../../../../../components/buttons/UniversalButton';
-import {FriendType} from '../../../../../redux/store';
 import {Friend} from './Friend/Friend';
 import {NavLink} from 'react-router-dom';
-
-type UserActivityProps = {
-    friends: FriendType[]
-}
+import {UserActivityProps} from './UserActivityContainer';
 
 export const UserActivity: React.FC<UserActivityProps> = (props) => {
     const {friends} = props;

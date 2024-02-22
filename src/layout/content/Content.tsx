@@ -11,6 +11,8 @@ import {Friends} from './screens/friends/Friends/Friends';
 import {Music} from './screens/music/Music/Music';
 import {Error404} from './screens/error/Error404/Error404';
 import {DialogContainer} from './screens/messenger/chatsBoard/dialog/DialogContainer';
+import {AllUserFriends} from './screens/friends/Friends/AllUserFriends/AllUserFriends';
+import {PossibleFriendsContainer} from './screens/friends/PossibleFriendsContainer';
 
 type ContentProps = {}
 
@@ -38,7 +40,10 @@ export const Content: React.FC<ContentProps> = () => {
                             <Route path={PATH.MESSENGER} element={<Messenger/>}>
                                 <Route path={':id'} element={<DialogContainer/>}/>
                             </Route>
-                            <Route path={PATH.FRIENDS} element={<Friends/>}/>
+                            <Route path={PATH.FRIENDS} element={<Friends/>}>
+                                <Route path={''} element={<AllUserFriends/>}/>
+                                <Route path={'find-friends'} element={<PossibleFriendsContainer/>}/>
+                            </Route>
                             <Route path={PATH.MUSIC} element={<Music/>}/>
 
                             <Route path={'*'} element={<Navigate to={PATH.ERROR}/>}/>

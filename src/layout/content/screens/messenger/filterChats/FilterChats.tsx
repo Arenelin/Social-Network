@@ -1,16 +1,7 @@
 import React from 'react';
-import {GeneralBlockWrapper} from '../../../../../components/blockWrappers/generalBlockWrapper/GeneralBlockWrapper';
-import {FilterTab} from '../../../../../components/buttons/filterTab/FilterTab';
-import {S} from './FilterChats_Styles'
+import {FilterContent} from '../../../../../components/filterContent/FilterContent';
+import {dataFilterContent} from './dataFilterContent/dataFilterContent';
 
 export const FilterChats: React.FC = () => {
-    return (
-        <S.FilterChats>
-            <GeneralBlockWrapper>
-                <FilterTab text={'All chats'}/>
-                <FilterTab text={'Unread'}/>
-                <FilterTab text={'Business notifications'}/>
-            </GeneralBlockWrapper>
-        </S.FilterChats>
-    );
+    return <FilterContent data={dataFilterContent}/>
 };

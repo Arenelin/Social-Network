@@ -1,12 +1,12 @@
 import {v1} from 'uuid';
-import f1 from '../assets/images/friend1.jpg';
-import f2 from '../assets/images/friend2.jpg';
-import f3 from '../assets/images/friend3.jpg';
-import f4 from '../assets/images/friend4.jpg';
-import f5 from '../assets/images/friend5.jpg';
-import f6 from '../assets/images/friend6.jpg';
-import f7 from '../assets/images/friend7.jpg';
-import f8 from '../assets/images/friend8.jpg';
+import f1 from '../../assets/images/friend1.jpg';
+import f2 from '../../assets/images/friend2.jpg';
+import f3 from '../../assets/images/friend3.jpg';
+import f4 from '../../assets/images/friend4.jpg';
+import f5 from '../../assets/images/friend5.jpg';
+import f6 from '../../assets/images/friend6.jpg';
+import f7 from '../../assets/images/friend7.jpg';
+import f8 from '../../assets/images/friend8.jpg';
 
 export type PostType = {
     id: string

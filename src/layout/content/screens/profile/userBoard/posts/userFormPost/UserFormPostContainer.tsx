@@ -1,4 +1,4 @@
-import {addPost} from '../../../../../../../redux/profileReducer';
+import {addPost} from '../../../../../../../redux/reducers/profileReducer';
 import {UserFormPost} from './UserFormPost';
 import {AppRootReducerType} from '../../../../../../../redux/redux-store';
 import {connect} from 'react-redux';

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {MessageType} from '../../../../../../../redux/messagesReducer';
+import {MessageType} from '../../../../../../../redux/reducers/messagesReducer';
 
 type MessageProps = Omit<MessageType, 'id'>
 

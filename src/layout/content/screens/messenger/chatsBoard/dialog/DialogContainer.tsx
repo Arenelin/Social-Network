@@ -1,5 +1,5 @@
 import {Dialog} from './Dialog';
-import {addMessage, MessageType} from '../../../../../../redux/messagesReducer';
+import {addMessage, MessageType} from '../../../../../../redux/reducers/messagesReducer';
 import {AppRootReducerType} from '../../../../../../redux/redux-store';
 import {connect} from 'react-redux';
 import {Dispatch} from 'redux';

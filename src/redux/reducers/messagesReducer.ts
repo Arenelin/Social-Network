@@ -1,5 +1,5 @@
 import {v1} from 'uuid';
-import f1 from '../assets/images/friend1.jpg';
+import f1 from '../../assets/images/friend1.jpg';
 
 export type MessageType = {
     id: string

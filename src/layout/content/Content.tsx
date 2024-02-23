@@ -20,7 +20,7 @@ const PATH = {
     FEED: '/feed',
     PROFILE: '/profile',
     MESSENGER: '/messenger',
-    FRIENDS: '/friends',
+    FRIENDS: '/friends/*',
     MUSIC: '/audios',
     ERROR: '/error404'
 } as const

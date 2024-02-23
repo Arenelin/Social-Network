@@ -5,6 +5,7 @@ import {
     addFriend,
     PossibleFriendsType,
     removeFromListPossibleFriends,
+    setPossibleFriends,
     unfriend
 } from '../../../../redux/reducers/possibleFriendsReducer';
 import {PossibleFriends} from './PossibleFriends/PossibleFriends';
@@ -18,6 +19,7 @@ type MapDispatchType = {
     addFriend: (userId: string) => void
     unfriend: (userId: string) => void
     removeUserFromList: (userId: string) => void
+    setPossibleFriends: (users: PossibleFriendsType[]) => void
 }
 
 const mapStateToProps = (state: AppRootReducerType): MapStateType => {
@@ -30,7 +32,8 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
         addFriend: (userId: string) => dispatch(addFriend(userId)),
         unfriend: (userId: string) => dispatch(unfriend(userId)),
-        removeUserFromList: (userId: string) => dispatch(removeFromListPossibleFriends(userId))
+        removeUserFromList: (userId: string) => dispatch(removeFromListPossibleFriends(userId)),
+        setPossibleFriends: (users: PossibleFriendsType[]) => dispatch(setPossibleFriends(users))
     }
 }
 

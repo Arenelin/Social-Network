@@ -7,17 +7,7 @@ export type PossibleFriendsType = {
     isAddedFriend: boolean
 }
 
-const initialState: PossibleFriendsType[] = [
-    // {id: v1(), firstName: 'Kristina', lastName: 'Ovsyannikova', avatar: f1, mutualFriends: [], isAddedFriend: false},
-    // {id: v1(), firstName: 'Anastasia', lastName: 'Sudakina', avatar: f2, mutualFriends: [], isAddedFriend: false},
-    // {id: v1(), firstName: 'Roman', lastName: 'Azarov', avatar: f3, mutualFriends: [], isAddedFriend: false},
-    // {id: v1(), firstName: 'Leonid', lastName: 'Gempel', avatar: f4, mutualFriends: [], isAddedFriend: false},
-    // {id: v1(), firstName: 'Evgeny', lastName: 'Andreev', avatar: f5, mutualFriends: [], isAddedFriend: false},
-    // {id: v1(), firstName: 'Marina', lastName: 'Bantser', avatar: f6, mutualFriends: [], isAddedFriend: false},
-    // {id: v1(), firstName: 'Ekaterina', lastName: 'Feyn', avatar: f7, mutualFriends: [], isAddedFriend: false},
-    // {id: v1(), firstName: 'Natasha', lastName: 'Vlasova', avatar: f8, mutualFriends: [], isAddedFriend: false},
-]
-
+const initialState: PossibleFriendsType[] = []
 
 export const possibleFriendsReducer = (state: PossibleFriendsType[] = initialState, action: PossibleFriendsActions): PossibleFriendsType[] => {
     switch (action.type) {

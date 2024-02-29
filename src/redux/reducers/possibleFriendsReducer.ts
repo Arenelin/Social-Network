@@ -16,6 +16,7 @@ export const possibleFriendsReducer = (state: UserDomainType[] = initialState, a
         case 'UNFRIEND':
             return state.map(u => u.id === action.payload.userId ? {...u, followed: false} : u)
         case 'SET-POSSIBLE-FRIENDS':
+            debugger
             return [...state, ...action.payload.users]
         default:
             return state

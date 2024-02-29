@@ -1,52 +1,47 @@
 import React from 'react';
 import {PageBlockLeft} from '../../../../../components/blockWrappers/pageBlockLeft/PageBlockLeft';
 import {GeneralBlockWrapper} from '../../../../../components/blockWrappers/generalBlockWrapper/GeneralBlockWrapper';
-import {PossibleFriendsProps} from '../PossibleFriendsContainer';
 import styled from 'styled-components';
 import {PossibleFriend} from './PossibleFriend/PossibleFriend';
 import defaultUserPhoto from '../../../../../assets/images/github.webp'
-import {usersApi} from '../../../../../api/users-api';
+import {UserDomainType, usersApi} from '../../../../../api/users-api';
+import {PossibleFriendsProps} from '../PossibleFriendsContainer';
 
-export const PossibleFriends: React.FC<PossibleFriendsProps> = (props) => {
-    const {possibleFriends, addFriend, unfriend, setPossibleFriends} = props;
-    const listUsers = possibleFriends.map(f =>
-        <PossibleFriend
-            key={f.id}
-            id={f.id}
-            followed={f.followed}
-            name={f.name}
-            avatar={f.photos.large ? f.photos.large : defaultUserPhoto}
-            status={f.status}
-            addFriend={addFriend}
-            unfriend={unfriend}
-        />);
-
-    const getUsers = ()=>{
-        if (possibleFriends.length === 0) {
-            usersApi.getUsers()
-                .then(res => setPossibleFriends(res.data.items))
-        }
+export class PossibleFriends extends React.Component<PossibleFriendsProps, any> {
+    constructor(props: PossibleFriendsProps) {
+        super(props);
+        usersApi.getUsers()
+            .then(res => this.props.setPossibleFriends(res.data.items))
     }
-
-    return (
-        <div>
-            <PageBlockLeft>
-                <GeneralBlockWrapper>
-                    <TitleSearchFriends>Find friends</TitleSearchFriends>
-                    <FormSearchFriends>
-                        <InputSearchFriends placeholder={'Search'}/>
-                        <ButtonSearchFriends>+</ButtonSearchFriends>
-                    </FormSearchFriends>
-                    <GetUsersButton onClick={getUsers}>Get users</GetUsersButton>
-                    <PossibleFriendsWrapper>
-                        {listUsers}
-                    </PossibleFriendsWrapper>
-                </GeneralBlockWrapper>
-            </PageBlockLeft>
-        </div>
-
-    );
-};
+    render() {
+        return (
+            <div>
+                <PageBlockLeft>
+                    <GeneralBlockWrapper>
+                        <TitleSearchFriends>Find friends</TitleSearchFriends>
+                        <FormSearchFriends>
+                            <InputSearchFriends placeholder={'Search'}/>
+                            <ButtonSearchFriends>+</ButtonSearchFriends>
+                        </FormSearchFriends>
+                        <PossibleFriendsWrapper>
+                            {this.props.possibleFriends.map((f: UserDomainType) =>
+                                <PossibleFriend
+                                    key={f.id}
+                                    id={f.id}
+                                    followed={f.followed}
+                                    name={f.name}
+                                    avatar={f.photos.large ? f.photos.large : defaultUserPhoto}
+                                    status={f.status}
+                                    addFriend={this.props.addFriend}
+                                    unfriend={this.props.unfriend}
+                                />)}
+                        </PossibleFriendsWrapper>
+                    </GeneralBlockWrapper>
+                </PageBlockLeft>
+            </div>
+        )
+    }
+}
 
 const TitleSearchFriends = styled.h3`
     padding: 20px;
@@ -79,12 +74,4 @@ const PossibleFriendsWrapper = styled.div`
     grid-template-columns: 160px 160px 160px;
     column-gap: 15px;
     justify-content: center;
-`
-
-const GetUsersButton = styled.button`
-    padding: 5px 20px;
-    background-color: #dac9c9;
-    border: none;
-    border-radius: 8px;
-    margin: 0 0 10px 10px;
 `

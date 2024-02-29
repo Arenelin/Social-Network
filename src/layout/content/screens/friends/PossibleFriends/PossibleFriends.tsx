@@ -21,9 +21,11 @@ export const PossibleFriends: React.FC<PossibleFriendsProps> = (props) => {
             unfriend={unfriend}
         />);
 
-    if (possibleFriends.length === 0) {
-        usersApi.getUsers()
-            .then(res => setPossibleFriends(res.data.items))
+    const getUsers = ()=>{
+        if (possibleFriends.length === 0) {
+            usersApi.getUsers()
+                .then(res => setPossibleFriends(res.data.items))
+        }
     }
 
     return (
@@ -35,6 +37,7 @@ export const PossibleFriends: React.FC<PossibleFriendsProps> = (props) => {
                         <InputSearchFriends placeholder={'Search'}/>
                         <ButtonSearchFriends>+</ButtonSearchFriends>
                     </FormSearchFriends>
+                    <GetUsersButton onClick={getUsers}>Get users</GetUsersButton>
                     <PossibleFriendsWrapper>
                         {listUsers}
                     </PossibleFriendsWrapper>
@@ -76,4 +79,12 @@ const PossibleFriendsWrapper = styled.div`
     grid-template-columns: 160px 160px 160px;
     column-gap: 15px;
     justify-content: center;
+`
+
+const GetUsersButton = styled.button`
+    padding: 5px 20px;
+    background-color: #dac9c9;
+    border: none;
+    border-radius: 8px;
+    margin: 0 0 10px 10px;
 `

@@ -1,7 +1,7 @@
 import {UserDomainType} from '../../api/users-api';
 
 // types
-type PossibleFriendsActions =
+export type PossibleFriendsActions =
     | ReturnType<typeof addFriend>
     | ReturnType<typeof unfriend>
     | ReturnType<typeof setPossibleFriends>

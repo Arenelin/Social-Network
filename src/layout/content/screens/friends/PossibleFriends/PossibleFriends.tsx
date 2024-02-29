@@ -4,51 +4,26 @@ import {GeneralBlockWrapper} from '../../../../../components/blockWrappers/gener
 import {PossibleFriendsProps} from '../PossibleFriendsContainer';
 import styled from 'styled-components';
 import {PossibleFriend} from './PossibleFriend/PossibleFriend';
-import {v1} from 'uuid';
-import f1 from '../../../../../assets/images/friend1.jpg';
-import f2 from '../../../../../assets/images/friend2.jpg';
-import f3 from '../../../../../assets/images/friend3.jpg';
-import f4 from '../../../../../assets/images/friend4.jpg';
-import f5 from '../../../../../assets/images/friend5.jpg';
-import f6 from '../../../../../assets/images/friend6.jpg';
-import f7 from '../../../../../assets/images/friend7.jpg';
-import f8 from '../../../../../assets/images/friend8.jpg';
+import defaultUserPhoto from '../../../../../assets/images/github.webp'
+import {usersApi} from '../../../../../api/users-api';
 
 export const PossibleFriends: React.FC<PossibleFriendsProps> = (props) => {
-    const {possibleFriends, addFriend, unfriend, removeUserFromList, setPossibleFriends} = props;
+    const {possibleFriends, addFriend, unfriend, setPossibleFriends} = props;
     const listUsers = possibleFriends.map(f =>
         <PossibleFriend
             key={f.id}
             id={f.id}
-            firstName={f.firstName}
-            lastName={f.lastName}
-            avatar={f.avatar}
-            mutualFriends={f.mutualFriends}
-            isAddedFriend={f.isAddedFriend}
+            followed={f.followed}
+            name={f.name}
+            avatar={f.photos.large ? f.photos.large : defaultUserPhoto}
+            status={f.status}
             addFriend={addFriend}
             unfriend={unfriend}
-            removeUserFromList={removeUserFromList}
         />);
 
-    const users = [
-        {
-            id: v1(),
-            firstName: 'Kristina',
-            lastName: 'Ovsyannikova',
-            avatar: f1,
-            mutualFriends: [],
-            isAddedFriend: false
-        },
-        {id: v1(), firstName: 'Anastasia', lastName: 'Sudakina', avatar: f2, mutualFriends: [], isAddedFriend: false},
-        {id: v1(), firstName: 'Roman', lastName: 'Azarov', avatar: f3, mutualFriends: [], isAddedFriend: false},
-        {id: v1(), firstName: 'Leonid', lastName: 'Gempel', avatar: f4, mutualFriends: [], isAddedFriend: false},
-        {id: v1(), firstName: 'Evgeny', lastName: 'Andreev', avatar: f5, mutualFriends: [], isAddedFriend: false},
-        {id: v1(), firstName: 'Marina', lastName: 'Bantser', avatar: f6, mutualFriends: [], isAddedFriend: false},
-        {id: v1(), firstName: 'Ekaterina', lastName: 'Feyn', avatar: f7, mutualFriends: [], isAddedFriend: false},
-        {id: v1(), firstName: 'Natasha', lastName: 'Vlasova', avatar: f8, mutualFriends: [], isAddedFriend: false}
-    ]
     if (possibleFriends.length === 0) {
-        setPossibleFriends(users)
+        usersApi.getUsers()
+            .then(res => setPossibleFriends(res.data.items))
     }
 
     return (

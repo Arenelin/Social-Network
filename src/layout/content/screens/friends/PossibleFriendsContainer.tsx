@@ -1,25 +1,19 @@
 import {connect} from 'react-redux';
 import {Dispatch} from 'redux';
 import {AppRootReducerType} from '../../../../redux/redux-store';
-import {
-    addFriend,
-    PossibleFriendsType,
-    removeFromListPossibleFriends,
-    setPossibleFriends,
-    unfriend
-} from '../../../../redux/reducers/possibleFriendsReducer';
+import {addFriend, setPossibleFriends, unfriend} from '../../../../redux/reducers/possibleFriendsReducer';
 import {PossibleFriends} from './PossibleFriends/PossibleFriends';
+import {UserDomainType} from '../../../../api/users-api';
 
 export type PossibleFriendsProps = MapStateType & MapDispatchType
 
 type MapStateType = {
-    possibleFriends: PossibleFriendsType[]
+    possibleFriends: UserDomainType[]
 }
 type MapDispatchType = {
-    addFriend: (userId: string) => void
-    unfriend: (userId: string) => void
-    removeUserFromList: (userId: string) => void
-    setPossibleFriends: (users: PossibleFriendsType[]) => void
+    addFriend: (userId: number) => void
+    unfriend: (userId: number) => void
+    setPossibleFriends: (users: UserDomainType[]) => void
 }
 
 const mapStateToProps = (state: AppRootReducerType): MapStateType => {
@@ -30,10 +24,9 @@ const mapStateToProps = (state: AppRootReducerType): MapStateType => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
-        addFriend: (userId: string) => dispatch(addFriend(userId)),
-        unfriend: (userId: string) => dispatch(unfriend(userId)),
-        removeUserFromList: (userId: string) => dispatch(removeFromListPossibleFriends(userId)),
-        setPossibleFriends: (users: PossibleFriendsType[]) => dispatch(setPossibleFriends(users))
+        addFriend: (userId: number) => dispatch(addFriend(userId)),
+        unfriend: (userId: number) => dispatch(unfriend(userId)),
+        setPossibleFriends: (users: UserDomainType[]) => dispatch(setPossibleFriends(users))
     }
 }
 

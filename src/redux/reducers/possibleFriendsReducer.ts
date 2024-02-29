@@ -1,48 +1,34 @@
-export type PossibleFriendsType = {
-    id: string
-    firstName: string
-    lastName: string
-    avatar: string
-    mutualFriends: string[]
-    isAddedFriend: boolean
-}
+import {UserDomainType} from '../../api/users-api';
 
-const initialState: PossibleFriendsType[] = []
+// types
+type PossibleFriendsActions =
+    | ReturnType<typeof addFriend>
+    | ReturnType<typeof unfriend>
+    | ReturnType<typeof setPossibleFriends>
 
-export const possibleFriendsReducer = (state: PossibleFriendsType[] = initialState, action: PossibleFriendsActions): PossibleFriendsType[] => {
+const initialState: UserDomainType[] = []
+
+// reducer
+export const possibleFriendsReducer = (state: UserDomainType[] = initialState, action: PossibleFriendsActions): UserDomainType[] => {
     switch (action.type) {
-        case 'ADD-AS-FRIENDS': {
-            return state.map(u => u.id === action.payload.userId ? {...u, isAddedFriend: true} : u)
-        }
-        case 'UNFRIEND': {
-            return state.map(u => u.id === action.payload.userId ? {...u, isAddedFriend: false} : u)
-        }
-        case 'REMOVE-FROM-LIST-POSSIBLE-FRIENDS': {
-            return state.filter(u => u.id !== action.payload.userId)
-        }
-        case 'SET-POSSIBLE-FRIENDS': {
+        case 'ADD-AS-FRIEND':
+            return state.map(u => u.id === action.payload.userId ? {...u, followed: true} : u)
+        case 'UNFRIEND':
+            return state.map(u => u.id === action.payload.userId ? {...u, followed: false} : u)
+        case 'SET-POSSIBLE-FRIENDS':
             return [...state, ...action.payload.users]
-        }
         default:
             return state
     }
 }
 
-export type PossibleFriendsActions = AddFriend | Unfriend | RemoveFromListPossibleFriends | SetPossibleFriends
-type AddFriend = ReturnType<typeof addFriend>
-type Unfriend = ReturnType<typeof unfriend>
-type RemoveFromListPossibleFriends = ReturnType<typeof removeFromListPossibleFriends>
-type SetPossibleFriends = ReturnType<typeof setPossibleFriends>
-
-export const addFriend = (userId: string) => {
-    return {type: 'ADD-AS-FRIENDS', payload: {userId}} as const
+// actions
+export const addFriend = (userId: number) => {
+    return {type: 'ADD-AS-FRIEND', payload: {userId}} as const
 }
-export const unfriend = (userId: string) => {
+export const unfriend = (userId: number) => {
     return {type: 'UNFRIEND', payload: {userId}} as const
 }
-export const removeFromListPossibleFriends = (userId: string) => {
-    return {type: 'REMOVE-FROM-LIST-POSSIBLE-FRIENDS', payload: {userId}} as const
-}
-export const setPossibleFriends = (users: PossibleFriendsType[]) => {
+export const setPossibleFriends = (users: UserDomainType[]) => {
     return {type: 'SET-POSSIBLE-FRIENDS', payload: {users}} as const
 }

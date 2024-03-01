@@ -6,14 +6,35 @@ import {PossibleFriend} from './PossibleFriend/PossibleFriend';
 import defaultUserPhoto from '../../../../../assets/images/github.webp'
 import {UserDomainType, usersApi} from '../../../../../api/users-api';
 import {PossibleFriendsProps} from '../PossibleFriendsContainer';
+import s from './possibleFriends.module.css'
 
 export class PossibleFriends extends React.Component<PossibleFriendsProps, any> {
-    constructor(props: PossibleFriendsProps) {
-        super(props);
-        usersApi.getUsers()
+    componentDidMount() {
+        usersApi.getUsers(this.props.currentPage, this.props.pageSize)
+            .then(res => {
+                this.props.setPossibleFriends(res.data.items)
+                this.props.setTotalCount(res.data.totalCount)
+            })
+    }
+
+    onPageChanged = (currentPage: number) => {
+        this.props.setCurrentPage(currentPage)
+        usersApi.getUsers(currentPage, this.props.pageSize)
             .then(res => this.props.setPossibleFriends(res.data.items))
     }
+
     render() {
+        const pagesCount = Math.ceil(this.props.totalCount / this.props.pageSize)
+        const listPagination = [];
+        for (let i = 1; i <= pagesCount; i++) {
+            listPagination.push(i)
+        }
+        const listOfButtonPagination = listPagination
+            .map(p => {
+                return <button key={p} className={this.props.currentPage === p ? `${s.selected}  ${s.default}` : s.default}
+                               onClick={() => this.onPageChanged(p)}>{p}</button>
+            })
+
         return (
             <div>
                 <PageBlockLeft>
@@ -23,6 +44,7 @@ export class PossibleFriends extends React.Component<PossibleFriendsProps, any> 
                             <InputSearchFriends placeholder={'Search'}/>
                             <ButtonSearchFriends>+</ButtonSearchFriends>
                         </FormSearchFriends>
+                        <div>{listOfButtonPagination}</div>
                         <PossibleFriendsWrapper>
                             {this.props.possibleFriends.map((f: UserDomainType) =>
                                 <PossibleFriend

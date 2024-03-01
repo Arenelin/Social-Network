@@ -20,7 +20,8 @@ type ResponseType = {
 
 // api
 export const usersApi = {
-    getUsers() {
-        return axios.get<ResponseType>('https://social-network.samuraijs.com/api/1.0/users')
+    getUsers(currentPage: number, pageSize: number) {
+        return axios
+            .get<ResponseType>(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${pageSize} `)
     }
 }

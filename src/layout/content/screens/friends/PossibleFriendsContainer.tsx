@@ -8,7 +8,7 @@ import {
     setTotalCount,
     unfriend
 } from '../../../../redux/reducers/possibleFriendsReducer';
-import {PossibleFriends} from './PossibleFriends/PossibleFriends';
+import {PossibleFriendsAPIComponent} from './PossibleFriends/PossibleFriendsAPIComponent/PossibleFriendsAPIComponent';
 import {UserDomainType} from '../../../../api/users-api';
 
 export type PossibleFriendsProps = MapStateType & MapDispatchType
@@ -48,4 +48,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
 }
 
 export const PossibleFriendsContainer =
-    connect(mapStateToProps, mapDispatchToProps)(PossibleFriends)
+    connect(mapStateToProps, mapDispatchToProps)(PossibleFriendsAPIComponent)

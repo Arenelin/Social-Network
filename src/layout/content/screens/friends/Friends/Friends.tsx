@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import {PageBlockLeft} from '../../../../../components/blockWrappers/pageBlockLeft/PageBlockLeft';
 import {PageBlockRight} from '../../../../../components/blockWrappers/pageBlockRight/PageBlockRight';
 import {FlexWrapper} from '../../../../../components/FlexWrapper';
-import {SortedUsers} from '../PossibleFriends/SortedUsers/SortedUsers';
+import {SortedUsers} from '../PossibleFriends/PossibleFriendsAPIComponent/PossibleFriendsFunc/SortedUsers/SortedUsers';
 import {FilterContent} from '../../../../../components/filterContent/FilterContent';
 import {dataFilterContent} from './dataFilterContent/dataFilterContent';
 

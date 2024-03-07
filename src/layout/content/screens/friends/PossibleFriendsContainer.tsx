@@ -6,6 +6,7 @@ import {
     setCurrentPage,
     setPossibleFriends,
     setTotalCount,
+    toggleFetchStatus,
     unfriend
 } from '../../../../redux/reducers/possibleFriendsReducer';
 import {PossibleFriendsAPIComponent} from './PossibleFriends/PossibleFriendsAPIComponent/PossibleFriendsAPIComponent';
@@ -18,6 +19,7 @@ type MapStateType = {
     pageSize: number
     totalCount: number
     currentPage: number
+    isFetching: boolean
 }
 type MapDispatchType = {
     addFriend: (userId: number) => void
@@ -25,6 +27,7 @@ type MapDispatchType = {
     setPossibleFriends: (users: UserDomainType[]) => void
     setCurrentPage: (currentPage: number) => void
     setTotalCount: (totalCount: number) => void
+    toggleFetchStatus: (status: boolean) => void
 }
 
 const mapStateToProps = (state: AppRootReducerType): MapStateType => {
@@ -32,7 +35,8 @@ const mapStateToProps = (state: AppRootReducerType): MapStateType => {
         possibleFriends: state.possibleFriends.users,
         pageSize: state.possibleFriends.pageSize,
         totalCount: state.possibleFriends.totalCount,
-        currentPage: state.possibleFriends.currentPage
+        currentPage: state.possibleFriends.currentPage,
+        isFetching: state.possibleFriends.isFetching
     }
 }
 
@@ -43,7 +47,8 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
         setPossibleFriends: (users: UserDomainType[]) =>
             dispatch(setPossibleFriends(users)),
         setCurrentPage: (currentPage: number) => dispatch(setCurrentPage(currentPage)),
-        setTotalCount: (totalCount: number) => dispatch(setTotalCount(totalCount))
+        setTotalCount: (totalCount: number) => dispatch(setTotalCount(totalCount)),
+        toggleFetchStatus: (status: boolean) => dispatch(toggleFetchStatus(status))
     }
 }
 

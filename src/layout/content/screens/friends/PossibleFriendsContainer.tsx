@@ -1,5 +1,4 @@
 import {connect} from 'react-redux';
-import {Dispatch} from 'redux';
 import {AppRootReducerType} from '../../../../redux/redux-store';
 import {
     addFriend,
@@ -40,17 +39,12 @@ const mapStateToProps = (state: AppRootReducerType): MapStateType => {
     }
 }
 
-const mapDispatchToProps = (dispatch: Dispatch) => {
-    return {
-        addFriend: (userId: number) => dispatch(addFriend(userId)),
-        unfriend: (userId: number) => dispatch(unfriend(userId)),
-        setPossibleFriends: (users: UserDomainType[]) =>
-            dispatch(setPossibleFriends(users)),
-        setCurrentPage: (currentPage: number) => dispatch(setCurrentPage(currentPage)),
-        setTotalCount: (totalCount: number) => dispatch(setTotalCount(totalCount)),
-        toggleFetchStatus: (status: boolean) => dispatch(toggleFetchStatus(status))
-    }
-}
-
 export const PossibleFriendsContainer =
-    connect(mapStateToProps, mapDispatchToProps)(PossibleFriendsAPIComponent)
+    connect(mapStateToProps, {
+        addFriend,
+        unfriend, 
+        setPossibleFriends,
+        setCurrentPage,
+        setTotalCount,
+        toggleFetchStatus
+    })(PossibleFriendsAPIComponent)

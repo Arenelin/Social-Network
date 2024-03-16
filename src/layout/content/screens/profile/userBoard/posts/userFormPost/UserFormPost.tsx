@@ -3,18 +3,15 @@ import {S} from './UserFormPost_Styles';
 import {UniversalButton} from '../../../../../../../components/buttons/UniversalButton';
 import {UserFormPostProps} from './UserFormPostContainer';
 
-
 export const UserFormPost: React.FC<UserFormPostProps> = (props) => {
-    const {addNewPost} = props;
+    const {addPost} = props;
     const [postText, setPostText] = useState('')
-
     const onChangeHandler = (e:ChangeEvent<HTMLTextAreaElement>) => {
         setPostText(e.currentTarget.value)
     }
-
-    const addPost = () => {
+    const addNewPost = () => {
         if (postText.trim()) {
-            addNewPost(postText)
+            addPost(postText)
             setPostText('')
         }
     }
@@ -22,7 +19,7 @@ export const UserFormPost: React.FC<UserFormPostProps> = (props) => {
     return (
         <S.UserFormPost>
             <S.TextArea onChange={onChangeHandler} value={postText}/>
-            <UniversalButton callback={addPost} type={'sec-ry'} name={'Post'}/>
+            <UniversalButton callback={addNewPost} type={'sec-ry'} name={'Post'}/>
         </S.UserFormPost>
     );
 };

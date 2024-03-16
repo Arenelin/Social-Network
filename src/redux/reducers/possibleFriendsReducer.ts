@@ -42,7 +42,8 @@ export const possibleFriendsReducer = (state: InitialStateType = initialState, a
             }
         case 'SET-POSSIBLE-FRIENDS':
             return {
-                ...state, users: action.payload.users.map(u => ({...u, isFetching: false}))
+                // ...state, users: action.payload.users.map(u => ({...u, isFetching: false}))
+                ...state, users: action.payload.users
             }
         case 'SET-CURRENT-PAGE':
             return {...state, currentPage: action.payload.currentPage}
@@ -56,14 +57,20 @@ export const possibleFriendsReducer = (state: InitialStateType = initialState, a
 }
 
 // actions
-export const addFriend = (userId: number) => ({type: 'ADD-AS-FRIEND', payload: {userId}} as const)
+export const addFriend = (userId: number) =>
+    ({type: 'ADD-AS-FRIEND', payload: {userId}} as const)
 
-export const unfriend = (userId: number) => ({type: 'UNFRIEND', payload: {userId}} as const)
+export const unfriend = (userId: number) =>
+    ({type: 'UNFRIEND', payload: {userId}} as const)
 
-export const setPossibleFriends = (users: UserDomainType[]) => ({type: 'SET-POSSIBLE-FRIENDS', payload: {users}} as const)
+export const setPossibleFriends = (users: UserDomainType[]) =>
+    ({type: 'SET-POSSIBLE-FRIENDS', payload: {users}} as const)
 
-export const setCurrentPage = (currentPage: number) => ({type: 'SET-CURRENT-PAGE', payload: {currentPage}} as const)
+export const setCurrentPage = (currentPage: number) =>
+    ({type: 'SET-CURRENT-PAGE', payload: {currentPage}} as const)
 
-export const setTotalCount = (totalCount: number) => ({type: 'SET-TOTAL-COUNT', payload: {totalCount}} as const)
+export const setTotalCount = (totalCount: number) =>
+    ({type: 'SET-TOTAL-COUNT', payload: {totalCount}} as const)
 
-export const toggleFetchStatus = (status: boolean) => ({type: 'TOGGLE-IS-FETCHING', payload: {status}} as const)
+export const toggleFetchStatus = (status: boolean) =>
+    ({type: 'TOGGLE-IS-FETCHING', payload: {status}} as const)

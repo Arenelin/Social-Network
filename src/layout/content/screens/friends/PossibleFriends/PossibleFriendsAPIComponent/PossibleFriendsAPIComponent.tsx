@@ -29,11 +29,13 @@ export class PossibleFriendsAPIComponent extends React.Component<PossibleFriends
     render() {
         return (
             <>
-                {this.props.isFetching ? <Preloader/> : null}
-                <PossibleFriendsFunc totalCount={this.props.totalCount} pageSize={this.props.pageSize}
-                                     currentPage={this.props.currentPage} onPageChanged={this.onPageChanged}
-                                     possibleFriends={this.props.possibleFriends} addFriend={this.props.addFriend}
-                                     unfriend={this.props.unfriend}/>
+                {this.props.isFetching
+                    ? <Preloader/>
+                    : <PossibleFriendsFunc totalCount={this.props.totalCount} pageSize={this.props.pageSize}
+                                           currentPage={this.props.currentPage} onPageChanged={this.onPageChanged}
+                                           possibleFriends={this.props.possibleFriends} addFriend={this.props.addFriend}
+                                           unfriend={this.props.unfriend}/>}
+
             </>
 
         )

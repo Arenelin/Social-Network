@@ -34,7 +34,6 @@ export class PossibleFriendsAPIComponent extends React.Component<PossibleFriends
                                            unfriend={this.props.unfriend}/>}
 
             </>
-
         )
     }
 }

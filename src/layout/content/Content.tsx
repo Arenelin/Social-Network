@@ -13,9 +13,7 @@ import {Error404} from './screens/error/Error404/Error404';
 import {DialogContainer} from './screens/messenger/chatsBoard/dialog/DialogContainer';
 import {AllUserFriends} from './screens/friends/Friends/AllUserFriends/AllUserFriends';
 import {PossibleFriendsContainer} from './screens/friends/PossibleFriendsContainer';
-import {
-    PossibleFriendProfileContainer
-} from "./screens/friends/PossibleFriends/PossibleFriendsAPIComponent/PossibleFriendsFunc/PossibleFriendProfileContainer/PossibleFriendProfileContainer";
+import {UserProfileContainer} from "./screens/userProfile/userProfileContainer/UserProfileContainer";
 
 type ContentProps = {}
 
@@ -51,7 +49,7 @@ export const Content: React.FC<ContentProps> = () => {
                             <Route path={PATH.MUSIC} element={<Music/>}/>
 
                             <Route path={'*'} element={<Navigate to={PATH.ERROR}/>}/>
-                            <Route path={PATH.USER_PROFILE} element={<PossibleFriendProfileContainer/>}/>
+                            <Route path={PATH.USER_PROFILE} element={<UserProfileContainer/>}/>
                             <Route path={PATH.ERROR} element={<Error404/>}/>
                         </Routes>
                     </S.ScreensWrapper>

@@ -13,16 +13,20 @@ import {Error404} from './screens/error/Error404/Error404';
 import {DialogContainer} from './screens/messenger/chatsBoard/dialog/DialogContainer';
 import {AllUserFriends} from './screens/friends/Friends/AllUserFriends/AllUserFriends';
 import {PossibleFriendsContainer} from './screens/friends/PossibleFriendsContainer';
+import {
+    PossibleFriendProfileContainer
+} from "./screens/friends/PossibleFriends/PossibleFriendsAPIComponent/PossibleFriendsFunc/PossibleFriendProfileContainer/PossibleFriendProfileContainer";
 
 type ContentProps = {}
 
 const PATH = {
     FEED: '/feed',
-    PROFILE: '/profile',
+    MY_PROFILE: '/profile',
     MESSENGER: '/messenger',
     FRIENDS: '/friends/*',
     MUSIC: '/audios',
-    ERROR: '/error404'
+    ERROR: '/error404',
+    USER_PROFILE:'/id/:userId'
 } as const
 
 export const Content: React.FC<ContentProps> = () => {
@@ -36,7 +40,7 @@ export const Content: React.FC<ContentProps> = () => {
                         <Routes>
                             <Route path={'/'} element={<Navigate to={PATH.FEED}/>}/>
                             <Route path={PATH.FEED} element={<News/>}/>
-                            <Route path={PATH.PROFILE} element={<Profile/>}/>
+                            <Route path={PATH.MY_PROFILE} element={<Profile/>}/>
                             <Route path={PATH.MESSENGER} element={<Messenger/>}>
                                 <Route path={':id'} element={<DialogContainer/>}/>
                             </Route>
@@ -47,6 +51,7 @@ export const Content: React.FC<ContentProps> = () => {
                             <Route path={PATH.MUSIC} element={<Music/>}/>
 
                             <Route path={'*'} element={<Navigate to={PATH.ERROR}/>}/>
+                            <Route path={PATH.USER_PROFILE} element={<PossibleFriendProfileContainer/>}/>
                             <Route path={PATH.ERROR} element={<Error404/>}/>
                         </Routes>
                     </S.ScreensWrapper>

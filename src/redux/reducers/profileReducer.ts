@@ -7,26 +7,30 @@ import f5 from '../../assets/images/friend5.jpg';
 import f6 from '../../assets/images/friend6.jpg';
 import f7 from '../../assets/images/friend7.jpg';
 import f8 from '../../assets/images/friend8.jpg';
+import {UserResponseType} from "../../api/users-api";
 
+// types
 export type PostType = {
     id: string
     title: string
     likesCount: number
 }
-
 export type FriendType = {
     id: string
     firstName: string
     lastName: string
     avatar: string
 }
-
 export type ProfilePageType = {
     posts: PostType[]
     friends: FriendType[]
+    userProfile: UserResponseType | null
 }
+export type ProfileActions = AddPost | SetUserProfile
+export type AddPost = ReturnType<typeof addPost>
+export type SetUserProfile = ReturnType<typeof setUserProfile>
 
-const initialState = {
+const initialState: ProfilePageType = {
     posts: [
         {id: v1(), title: 'Lorem ipsum dolor sit amet,', likesCount: 0},
         {id: v1(), title: 'Lorem ipsum dolor sit amet,', likesCount: 0},
@@ -44,12 +48,12 @@ const initialState = {
         {id: v1(), firstName: 'Marina', lastName: 'Bantser', avatar: f6},
         {id: v1(), firstName: 'Ekaterina', lastName: 'Feyn', avatar: f7},
         {id: v1(), firstName: 'Natasha', lastName: 'Vlasova', avatar: f8},
-    ] as FriendType[]
+    ] as FriendType[],
+    userProfile: null,
 }
 
-type InitialStateType = typeof initialState
-
-export const profileReducer = (state: InitialStateType = initialState, action: ProfileActions): InitialStateType => {
+// reducer
+export const profileReducer = (state: ProfilePageType = initialState, action: ProfileActions): ProfilePageType => {
     switch (action.type) {
         case 'ADD-POST': {
             const newPost: PostType = {
@@ -59,16 +63,22 @@ export const profileReducer = (state: InitialStateType = initialState, action: P
             }
             return {...state, posts: [...state.posts, newPost]}
         }
+        case "SET-USER-PROFILE": {
+            return {...state, userProfile: action.payload.user}
+        }
         default: {
             return state;
         }
     }
 }
 
-export type ProfileActions = AddPost
 
-export type AddPost = ReturnType<typeof addPost>
-
+// actions
 export const addPost = (value: string) => {
     return {type: 'ADD-POST', payload: {value}} as const
 }
+export const setUserProfile = (user: UserResponseType) => {
+    return {type: 'SET-USER-PROFILE', payload: {user}} as const
+}
+
+// thunks

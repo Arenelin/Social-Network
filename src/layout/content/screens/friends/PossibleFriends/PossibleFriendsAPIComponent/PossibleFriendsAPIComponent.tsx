@@ -6,15 +6,14 @@ import {Preloader} from '../../../../../../components/Preloader/Preloader';
 
 export class PossibleFriendsAPIComponent extends React.Component<PossibleFriendsProps, any> {
     componentDidMount() {
-        this.props.toggleFetchStatus(true)
-        usersApi.getUsers(this.props.currentPage, this.props.pageSize)
-            .then(res => {
-                this.props.setPossibleFriends(res.data.items)
-                this.props.setTotalCount(res.data.totalCount)
-                this.props.toggleFetchStatus(false)
-            })
+            this.props.toggleFetchStatus(true)
+            usersApi.getUsers(this.props.currentPage, this.props.pageSize)
+                .then(res => {
+                    this.props.setPossibleFriends(res.data.items)
+                    this.props.setTotalCount(res.data.totalCount)
+                    this.props.toggleFetchStatus(false)
+                })
     }
-
     onPageChanged = (currentPage: number) => {
         this.props.toggleFetchStatus(true)
         this.props.setCurrentPage(currentPage)
@@ -23,9 +22,7 @@ export class PossibleFriendsAPIComponent extends React.Component<PossibleFriends
                 this.props.setPossibleFriends(res.data.items)
                 this.props.toggleFetchStatus(false)
             })
-
     }
-
     render() {
         return (
             <>

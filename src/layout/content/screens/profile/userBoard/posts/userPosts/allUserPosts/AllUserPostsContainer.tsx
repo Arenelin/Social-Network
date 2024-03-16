@@ -1,9 +1,11 @@
 import {AllUserPosts} from './AllUserPosts';
 import {AppRootReducerType} from '../../../../../../../../redux/redux-store';
 import {connect} from 'react-redux';
-import {ProfilePageType} from '../../../../../../../../redux/reducers/profileReducer';
+import {PostType} from '../../../../../../../../redux/reducers/profileReducer';
 
-type MapStateProps = Omit<ProfilePageType, 'friends'>
+type MapStateProps = {
+    posts: PostType[]
+}
 
 export type AllUserProps = MapStateProps
 

@@ -14,5 +14,6 @@ const rootReducer = combineReducers({
 export const store = createStore(rootReducer)
 
 export type AppRootReducerType = ReturnType<typeof rootReducer>
-
+// @ts-ignore
+window.store = store
 export type AllActionsType = MessagesActions | ChatsActions | ProfileActions | PossibleFriendsActions

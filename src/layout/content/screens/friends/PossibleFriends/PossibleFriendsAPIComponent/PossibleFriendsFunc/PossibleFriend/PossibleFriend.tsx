@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import {NavLink} from "react-router-dom";
 
 type PossibleFriendProps = {
     id: number
@@ -31,11 +32,15 @@ export const PossibleFriend: React.FC<PossibleFriendProps> = (props) => {
     return (
         <StyledPossibleFriend>
             <UserPhotoWrapper>
-                <UserPhoto src={avatar}/>
+                <NavLink to={`/id/${id}`}>
+                    <UserPhoto src={avatar}/>
+                </NavLink>
             </UserPhotoWrapper>
             <UserInfo>
                 <UserDescription>
-                    <UserName>{name}</UserName>
+                    <NavLink to={`/id/${id}`}>
+                        <UserName>{name}</UserName>
+                    </NavLink>
                     <UserLabel>{status}</UserLabel>
                 </UserDescription>
                 {!followed

@@ -1,8 +1,10 @@
 import axios from 'axios';
 
+const instance = axios.create({
+    baseURL: 'https://social-network.samuraijs.com/api/1.0'
+})
 
 // types
-
 export type UserDomainType = {
     followed: boolean
     id: number
@@ -18,10 +20,37 @@ type ResponseType = {
     error: null
 }
 
+type UserContactsType = {
+    github: string
+    vk: string
+    facebook: string
+    instagram: string
+    twitter: string
+    website: string
+    youtube: string
+    mainLink: string
+}
+
+type UserPhotosType = {
+    small: string
+    large: string
+}
+
+export type UserResponseType = {
+    userId: number
+    lookingForAJob: boolean
+    lookingForAJobDescription: string
+    fullName: string
+    contacts: UserContactsType
+    photos: UserPhotosType
+}
+
 // api
 export const usersApi = {
     getUsers(currentPage: number, pageSize: number) {
-        return axios
-            .get<ResponseType>(`https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${pageSize}`)
+        return instance.get<ResponseType>(`/users?page=${currentPage}&count=${pageSize}`)
+    },
+    getCurrentUser(id: number) {
+        return instance.get<UserResponseType>(`/profile/${id}`)
     }
 }

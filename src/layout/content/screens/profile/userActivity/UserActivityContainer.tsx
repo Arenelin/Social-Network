@@ -1,12 +1,13 @@
 import {UserActivity} from './UserActivity';
 import {AppRootReducerType} from '../../../../../redux/redux-store';
 import {connect} from 'react-redux';
-import {ProfilePageType} from '../../../../../redux/reducers/profileReducer';
+import {FriendType} from '../../../../../redux/reducers/profileReducer';
 
-type MapStateType = Omit<ProfilePageType, 'posts'>
+type MapStateType = {
+    friends: FriendType[]
+}
 
 export type UserActivityProps = MapStateType
-
 const mapStateToProps = (state: AppRootReducerType): MapStateType => {
     return {
         friends: state.profilePage.friends

@@ -9,7 +9,7 @@ type MapDispatchType = {
     addPost: (value: string) => void
 }
 const mapStateToProps = (state: AppRootReducerType) => {
-    return {name:'oleg', age:20}
+    return {}
 }
 export const UserFormPostContainer =
     connect(mapStateToProps, {addPost})(UserFormPost)

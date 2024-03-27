@@ -1,39 +1,44 @@
 import styled from 'styled-components';
-import myPhoto from '../../../../../assets/images/photo_2021-09-05_17-53-37.jpg'
 import {Icon} from '../../../../../components/icon/Icon';
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import {UniversalButton} from '../../../../../components/buttons/UniversalButton';
-import {GeneralBlockWrapper} from '../../../../../components/blockWrappers/generalBlockWrapper/GeneralBlockWrapper';
 
-export const AboutUser: React.FC = () => {
-    const someFunction = () => {}
+type AboutUserType = {
+    fullName: string
+    status: string
+    avatarSrc: string
+}
+
+export const AboutUser: React.FC<AboutUserType> = (props) => {
+    const {fullName, status, avatarSrc} = props;
+    const someFunction = () => {
+    }
     return (
         <StyledAboutUser>
-                <UserDescription>
-                    <UserPhotoWrapper>
-                        <UserAvatar></UserAvatar>
-                    </UserPhotoWrapper>
-                    <UserBody>
-                        <UserInfo>
-                            <UserName>Nikita Akmaykin</UserName>
-                            <UserStatus>When I am building an empire, do not come to me without materials and
-                                tools.</UserStatus>
-                            <ShortInfoCell>
-                                <Icon iconId={'info'} w={'18'} h={'18'} viewBox={'0 0 17 17'}/>
-                                <LearnMore>Learn More</LearnMore>
-                            </ShortInfoCell>
-                        </UserInfo>
-                        <WrapperButtons>
-                            <NavLink to={'/edit'}>
-                                <UniversalButton callback={someFunction} name={'Edit profile'}/>
-                            </NavLink>
-                            <UniversalButton callback={someFunction} name={'More'} withIconRight>
-                                <Icon iconId={'arrow-to-down'} viewBox={'0 0 512 512'} w={'16'} h={'12'}/>
-                            </UniversalButton>
-                        </WrapperButtons>
-                    </UserBody>
-                </UserDescription>
+            <UserDescription>
+                <UserPhotoWrapper>
+                    <UserAvatar src={avatarSrc}></UserAvatar>
+                </UserPhotoWrapper>
+                <UserBody>
+                    <UserInfo>
+                        <UserName>{fullName}</UserName>
+                        <UserStatus>{status && status.length > 0 && status}</UserStatus>
+                        <ShortInfoCell>
+                            <Icon iconId={'info'} w={'18'} h={'18'} viewBox={'0 0 17 17'}/>
+                            <LearnMore>Learn More</LearnMore>
+                        </ShortInfoCell>
+                    </UserInfo>
+                    <WrapperButtons>
+                        <NavLink to={'/edit'}>
+                            <UniversalButton callback={someFunction} name={'Edit profile'}/>
+                        </NavLink>
+                        <UniversalButton callback={someFunction} name={'More'} withIconRight>
+                            <Icon iconId={'arrow-to-down'} viewBox={'0 0 512 512'} w={'16'} h={'12'}/>
+                        </UniversalButton>
+                    </WrapperButtons>
+                </UserBody>
+            </UserDescription>
         </StyledAboutUser>
     )
 }
@@ -92,8 +97,8 @@ const UserPhotoWrapper = styled.div`
     position: relative;
 `
 
-const UserAvatar = styled.div`
-    background-image: url(${myPhoto});
+const UserAvatar = styled.div<{ src: string }>`
+    background-image: url(${props => props.src});
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: cover;

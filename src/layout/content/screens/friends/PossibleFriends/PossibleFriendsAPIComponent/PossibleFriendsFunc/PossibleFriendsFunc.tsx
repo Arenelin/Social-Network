@@ -17,6 +17,7 @@ type PossibleFriendsProps = {
     onPageChanged: (currentPage: number) => void
     addFriend: (userId: number) => void
     unfriend: (userId: number) => void
+    toggleFetchStatus: (status: boolean) => void
 };
 export const PossibleFriendsFunc: React.FC<PossibleFriendsProps> = (props) => {
     const {
@@ -26,7 +27,8 @@ export const PossibleFriendsFunc: React.FC<PossibleFriendsProps> = (props) => {
         possibleFriends,
         onPageChanged,
         addFriend,
-        unfriend
+        unfriend,
+        toggleFetchStatus
     } = props;
 
     const pagesCount = Math.ceil(totalCount / pageSize)
@@ -60,6 +62,7 @@ export const PossibleFriendsFunc: React.FC<PossibleFriendsProps> = (props) => {
                                 status={f.status}
                                 addFriend={addFriend}
                                 unfriend={unfriend}
+                                toggleFetchStatus={toggleFetchStatus}
                             />)}
                     </PossibleFriendsWrapper>
                 </GeneralBlockWrapper>

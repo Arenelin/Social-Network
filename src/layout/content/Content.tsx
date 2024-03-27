@@ -5,7 +5,6 @@ import {Navigate, Route, Routes} from 'react-router-dom';
 import {S} from './Content_Styles'
 import React from 'react';
 import {News} from './screens/news/News/News';
-import {Profile} from './screens/profile/Profile';
 import {Messenger} from './screens/messenger/Messenger';
 import {Friends} from './screens/friends/Friends/Friends';
 import {Music} from './screens/music/Music/Music';
@@ -19,12 +18,18 @@ type ContentProps = {}
 
 const PATH = {
     FEED: '/feed',
-    MY_PROFILE: '/profile',
-    MESSENGER: '/messenger',
-    FRIENDS: '/friends/*',
+    MESSENGER: {
+        allDialogs: '/messenger',
+        currentDialog: '/messenger:id'
+    } ,
+    FRIENDS: {
+        allFriends: '/friends/*',
+        findFriends: 'find-friends'
+    },
     MUSIC: '/audios',
     ERROR: '/error404',
-    USER_PROFILE:'/id/:userId'
+    USER_PROFILE: '/id/:userId?',
+    WRONG: '*'
 } as const
 
 export const Content: React.FC<ContentProps> = () => {
@@ -38,18 +43,18 @@ export const Content: React.FC<ContentProps> = () => {
                         <Routes>
                             <Route path={'/'} element={<Navigate to={PATH.FEED}/>}/>
                             <Route path={PATH.FEED} element={<News/>}/>
-                            <Route path={PATH.MY_PROFILE} element={<Profile/>}/>
-                            <Route path={PATH.MESSENGER} element={<Messenger/>}>
-                                <Route path={':id'} element={<DialogContainer/>}/>
+                            <Route path={PATH.USER_PROFILE} element={<UserProfileContainer/>}/>
+                            <Route path={PATH.MESSENGER.allDialogs} element={<Messenger/>}>
+                                <Route path={PATH.MESSENGER.currentDialog} element={<DialogContainer/>}/>
                             </Route>
-                            <Route path={PATH.FRIENDS} element={<Friends/>}>
+                            <Route path={PATH.FRIENDS.allFriends} element={<Friends/>}>
                                 <Route path={''} element={<AllUserFriends/>}/>
-                                <Route path={'find-friends'} element={<PossibleFriendsContainer/>}/>
+                                <Route path={PATH.FRIENDS.findFriends} element={<PossibleFriendsContainer/>}/>
                             </Route>
                             <Route path={PATH.MUSIC} element={<Music/>}/>
 
-                            <Route path={'*'} element={<Navigate to={PATH.ERROR}/>}/>
-                            <Route path={PATH.USER_PROFILE} element={<UserProfileContainer/>}/>
+                            <Route path={PATH.WRONG} element={<Navigate to={PATH.ERROR}/>}/>
+
                             <Route path={PATH.ERROR} element={<Error404/>}/>
                         </Routes>
                     </S.ScreensWrapper>

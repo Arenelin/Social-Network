@@ -31,7 +31,7 @@ export class PossibleFriendsAPIComponent extends React.Component<PossibleFriends
                     : <PossibleFriendsFunc totalCount={this.props.totalCount} pageSize={this.props.pageSize}
                                            currentPage={this.props.currentPage} onPageChanged={this.onPageChanged}
                                            possibleFriends={this.props.possibleFriends} addFriend={this.props.addFriend}
-                                           unfriend={this.props.unfriend}/>}
+                                           unfriend={this.props.unfriend} toggleFetchStatus={this.props.toggleFetchStatus}/>}
 
             </>
         )

@@ -41,6 +41,7 @@ export type UserResponseType = {
     lookingForAJob: boolean
     lookingForAJobDescription: string
     fullName: string
+    aboutMe: string
     contacts: UserContactsType
     photos: UserPhotosType
 }

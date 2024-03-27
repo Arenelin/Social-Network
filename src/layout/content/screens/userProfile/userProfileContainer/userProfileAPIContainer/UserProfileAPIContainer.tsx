@@ -1,27 +1,25 @@
 import React from 'react';
 import {UserProfileProps} from "../UserProfileContainer";
-import {UserProfileFunc} from "./userProfileFunc/UserProfileFunc";
 import {usersApi} from "../../../../../../api/users-api";
-import {Preloader} from "../../../../../../components/Preloader/Preloader";
+import {Profile} from "../../../profile/Profile";
 
-export class UserProfileAPIContainer extends React.Component<UserProfileProps, any> {
+type UserProfileAPIType = UserProfileProps & { userId?: string }
+
+export class UserProfileAPIContainer extends React.Component<UserProfileAPIType, any> {
     componentDidMount() {
         this.props.toggleFetchStatus(true)
-        usersApi.getCurrentUser(2)
+        let userId = this.props.userId
+            ? +this.props.userId
+            : 30652 // Мой id
+        usersApi.getCurrentUser(userId)
             .then(res => {
                 this.props.setUserProfile(res.data)
                 this.props.toggleFetchStatus(false)
             })
     }
+
     render() {
-        return (
-            <>
-                {this.props.isFetching
-                    ? <Preloader/>
-                    : <UserProfileFunc userProfile={this.props.userProfile}/>
-                }
-            </>
-        )
+        return <Profile userProfile={this.props.userProfile}/>
+
     }
 }
-

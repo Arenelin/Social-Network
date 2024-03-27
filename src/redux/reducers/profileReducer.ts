@@ -26,7 +26,9 @@ export type ProfilePageType = {
     friends: FriendType[]
     userProfile: UserResponseType | null
 }
-export type ProfileActions = AddPost | SetUserProfile
+export type ProfileActions =
+    | AddPost
+    | SetUserProfile
 export type AddPost = ReturnType<typeof addPost>
 export type SetUserProfile = ReturnType<typeof setUserProfile>
 

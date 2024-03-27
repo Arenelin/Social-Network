@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 
 type PossibleFriendProps = {
     id: number
@@ -10,6 +10,7 @@ type PossibleFriendProps = {
     status: string
     addFriend: (userId: number) => void
     unfriend: (userId: number) => void
+    toggleFetchStatus: (status: boolean) => void
 }
 
 export const PossibleFriend: React.FC<PossibleFriendProps> = (props) => {
@@ -21,20 +22,26 @@ export const PossibleFriend: React.FC<PossibleFriendProps> = (props) => {
         status,
         addFriend,
         unfriend,
+        toggleFetchStatus
     } = props;
-
+    const navigate = useNavigate();
     const onAddFriendHandler = () => {
         addFriend(id)
     }
     const onUnfriendHandler = () => {
         unfriend(id)
     }
+    const onclickToUserPage = () => {
+        toggleFetchStatus(true)
+        navigate(`/id/${id}`);
+    }
+
     return (
         <StyledPossibleFriend>
             <UserPhotoWrapper>
-                <NavLink to={`/id/${id}`}>
-                    <UserPhoto src={avatar}/>
-                </NavLink>
+                    <button onClick={onclickToUserPage}>
+                        <UserPhoto src={avatar}/>
+                    </button>
             </UserPhotoWrapper>
             <UserInfo>
                 <UserDescription>

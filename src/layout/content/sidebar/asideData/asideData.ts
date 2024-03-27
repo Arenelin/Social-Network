@@ -10,7 +10,7 @@ export const data:Array<DataType> = [
         id: 1,
         iconId: 'profile',
         title:'My profile',
-        path:'/profile'
+        path:'/id'
     },
     {
         id: 2,

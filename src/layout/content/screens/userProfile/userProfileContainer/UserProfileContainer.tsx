@@ -3,7 +3,7 @@ import {AppRootReducerType} from "../../../../../redux/redux-store";
 import {setUserProfile} from "../../../../../redux/reducers/profileReducer";
 import {toggleFetchStatus} from "../../../../../redux/reducers/possibleFriendsReducer";
 import {connect} from "react-redux";
-import {UserProfileAPIContainer} from "./userProfileAPIContainer/UserProfileAPIContainer";
+import {WithUrlDataContainer} from "./WithUrlDataContainer/WithUrlDataContainer";
 
 // types
 export type UserProfileProps = MapStateType & MapDispatchType
@@ -24,4 +24,4 @@ const mapStateToProps = (state: AppRootReducerType): MapStateType => {
     }
 }
 export const UserProfileContainer =
-    connect(mapStateToProps, {setUserProfile, toggleFetchStatus})(UserProfileAPIContainer)
+    connect(mapStateToProps, {setUserProfile, toggleFetchStatus})(WithUrlDataContainer)

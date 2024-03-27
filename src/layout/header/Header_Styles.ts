@@ -11,6 +11,32 @@ const Header = styled.header`
     z-index: 1;
 `
 
+const WrapperHeader = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+`
+const LoginBlock = styled.div`
+
+`
+const ShortCurrentUserInfo = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 10px;
+`
+const UserName = styled.span`
+
+`
+const UserAvatar = styled.img`
+    width: 30px;
+    height: 30px;
+`
+
 export const S = {
-    Header
+    Header,
+    WrapperHeader,
+    LoginBlock,
+    ShortCurrentUserInfo,
+    UserName,
+    UserAvatar
 }

@@ -15,11 +15,10 @@ const AuthorInfo = styled.div`
     align-items: center;
 `
 
-const Avatar = styled.div`
+const Avatar = styled.img`
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: #d7d5d5;
     margin-right: 12px;
 `
 

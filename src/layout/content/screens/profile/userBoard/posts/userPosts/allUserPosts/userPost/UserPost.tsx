@@ -1,26 +1,39 @@
 import React from 'react';
-import {GeneralBlockWrapper} from '../../../../../../../../../components/blockWrappers/generalBlockWrapper/GeneralBlockWrapper';
+import {
+    GeneralBlockWrapper
+} from '../../../../../../../../../components/blockWrappers/generalBlockWrapper/GeneralBlockWrapper';
 import {FlexWrapper} from '../../../../../../../../../components/FlexWrapper';
 import {Icon} from '../../../../../../../../../components/icon/Icon';
 import {S} from './UserPost_Styles'
 import {UniversalButton} from '../../../../../../../../../components/buttons/UniversalButton';
+import {UserResponseType} from "../../../../../../../../../api/users-api";
+import defaultPhoto from '../../../../../../../../../assets/images/github.webp'
 
 type UserPostProps = {
     message: string
     likesCount: number
+    currentUser: UserResponseType | null
 }
 
-export const UserPost:React.FC<UserPostProps> = (props) => {
-    const {message, likesCount} = props;
-    const someFunction = () => {}
+export const UserPost: React.FC<UserPostProps> = (props) => {
+    const {message, likesCount, currentUser} = props;
+    const userName = currentUser !== null
+        ? currentUser.fullName
+        : ''
+
+    const userPhoto = currentUser !== null && currentUser.photos.small !== null
+        ? currentUser.photos.small
+        : defaultPhoto
+    const someFunction = () => {
+    }
     return (
         <S.UserPost>
             <GeneralBlockWrapper>
                 <FlexWrapper jc={'space-between'} ai={'center'}>
                     <S.AuthorInfo>
-                        <S.Avatar></S.Avatar>
+                        <S.Avatar src={userPhoto}/>
                         <S.AuthorWrapper>
-                            <S.AuthorName>Nikita Akmaykin</S.AuthorName>
+                            <S.AuthorName>{userName}</S.AuthorName>
                             <S.PublicationDate>Today</S.PublicationDate>
                         </S.AuthorWrapper>
                     </S.AuthorInfo>

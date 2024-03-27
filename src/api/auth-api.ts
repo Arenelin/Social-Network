@@ -1,7 +1,9 @@
 import axios from 'axios';
+import {UserResponseType} from "./users-api";
 
 const instance = axios.create({
-    baseURL: 'https://social-network.samuraijs.com/api/1.0'
+    baseURL: 'https://social-network.samuraijs.com/api/1.0',
+    withCredentials: true
 })
 
 // types
@@ -22,5 +24,8 @@ type ResponseMeType = {
 export const authApi = {
     me() {
         return instance.get<ResponseMeType>('/auth/me')
+    },
+    getUser(id: number) {
+        return instance.get<UserResponseType>(`/profile/${id}`)
     }
 }
